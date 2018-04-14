@@ -117,7 +117,9 @@ select,input{
 	margin:5px;
 	line-height:15px;
 }
-
+button{
+	padding:3px 15px;
+}
 #left{
 	float:left;
 	width:13%;
@@ -139,7 +141,7 @@ select,input{
 	margin:0px;
 	padding-left:50px;
 	line-height:36px;
-	background-color:#eeeeee;
+	//background-color:#eeeeee;
 	color:#06266f;
 }
 .menu-item:hover{

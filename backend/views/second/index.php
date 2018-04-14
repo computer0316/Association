@@ -7,7 +7,7 @@ use backend\models\BaseCommunity;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Seconds';
+$this->title = '二手房';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="second-index">

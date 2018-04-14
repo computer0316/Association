@@ -22,6 +22,7 @@ use backend\models\User;
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="jquery-3.3.1.min.js"></script>
     <link href="./css/admin.css" rel="stylesheet">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -40,7 +41,7 @@ use backend\models\User;
 		echo '<p><a href="' . Url::toRoute('user/logout') . '">退出</a></p>';
 	}
 ?>
-		
+
 	</div>
 </header>
 
@@ -48,9 +49,11 @@ use backend\models\User;
 	<div id="left">
 		<p class="menu-title">二手房管理</p>
 		<a href="<?=Url::toRoute('second/index')?>"><p class="menu-item">二手房</p></a>
+		<a href="<?=Url::toRoute('second/create')?>"><p class="menu-item">添加</p></a>
 		<p class="menu-title">权限管理</p>
 		<a href="<?=Url::toRoute('user/index')?>"><p class="menu-item">用户管理</p></a>
-	
+		<a href="<?=Url::toRoute('test/index')?>"><p class="menu-item">测试</p></a>
+
 	</div>
 	<div id="right">
 		<?= Breadcrumbs::widget([
