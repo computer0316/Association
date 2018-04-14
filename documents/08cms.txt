@@ -1,0 +1,14 @@
+多城市版本前台演示地址：app.08cms.com 
+前台、后台登录网址：http://app.08cms.com/login 
+高级经纪人：08cmsbrokervip 
+普通经纪人：08cmsbroker 
+普通会员：08cmsordinary 
+经纪公司: 08cmscompany 
+售楼公司：08cmssale 
+权限管理员：08cmswork 
+内容管理员：08cmscon 
+内容推送：08cmstscon 
+会员管理员：08cmsmember 
+广告管理员：08cmsad 
+东莞管理员：08cmsdg 
+北京管理员：08cmsbj
