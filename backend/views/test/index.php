@@ -10,7 +10,16 @@ use backend\models\Community;
 ?>
 
 <div style="margin:10px;">
-
+	<div id="position-hit">
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+		<p><a class="hitp" href="#">这里是测试文字</a></p>
+	</div>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($test, 'name')->textInput() ?>
@@ -28,16 +37,26 @@ use backend\models\Community;
 
 <script>
 	$(document).ready(function(){
-		$("input").keydown(function(){
-	  		alert('a');
+		$("#test-name").on('input propertychange', function(){
+	  		$("#position-hit").css("display", "block");
+		});
+		$("a.hitp").click(function(){
+			$("#test-name").val($(this).text());
+			$("#position-hit").css("display", "none");
 		});
 	})
 </script>
 <style>
 	#position-hit{
 		position:absolute;
-		border:1px solid blue;
-		left:355px;
-		top:168px;
+		border:1px solid #ccc;
+		background:#ccc;
+		left:365px;
+		top:136px;
+		width:300px;		
+		display:none;
+	}
+	#position-hit p:hover{
+		background:#abc;
 	}
 </style>
