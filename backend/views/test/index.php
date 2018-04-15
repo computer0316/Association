@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\models\Community;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Second */
@@ -11,14 +12,7 @@ use backend\models\Community;
 
 <div style="margin:10px;">
 	<div id="position-hit">
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
-		<p><a class="hitp" href="#">这里是测试文字</a></p>
+
 	</div>
     <?php $form = ActiveForm::begin(); ?>
 
@@ -38,11 +32,13 @@ use backend\models\Community;
 <script>
 	$(document).ready(function(){
 		$("#test-name").on('input propertychange', function(){
+			$("#position-hit").load('?r=test/ajax&str=' + $("#test-name").val(), function(){
+						$("p.hitp").click(function(){
+							$("#test-name").val($(this).text());
+							$("#position-hit").css("display", "none");
+						});
+			});
 	  		$("#position-hit").css("display", "block");
-		});
-		$("a.hitp").click(function(){
-			$("#test-name").val($(this).text());
-			$("#position-hit").css("display", "none");
 		});
 	})
 </script>
@@ -50,13 +46,16 @@ use backend\models\Community;
 	#position-hit{
 		position:absolute;
 		border:1px solid #ccc;
-		background:#ccc;
+		background:white;
 		left:365px;
 		top:136px;
 		width:300px;		
 		display:none;
 	}
+	#position-hit p{
+		line-height:32px;
+	}
 	#position-hit p:hover{
-		background:#abc;
+		background:#eee;
 	}
 </style>

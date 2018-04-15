@@ -8,8 +8,12 @@ use Yii;
  * This is the model class for table "second".
  *
  * @property integer $id
- * @property integer $community_id
+ * @property string $community
  * @property string $position
+ * @property string $type
+ * @property string $building_id
+ * @property string $unit_id
+ * @property string $room_id
  * @property string $price
  * @property string $area
  * @property integer $room
@@ -23,8 +27,8 @@ use Yii;
  * @property string $traffic
  * @property string $specialty
  * @property string $property_fee
- * @property integer $company
- * @property integer $property_company
+ * @property string $company
+ * @property string $property_company
  */
 class Second extends \yii\db\ActiveRecord
 {
@@ -42,15 +46,42 @@ class Second extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['community_id', 'price', 'area', 'room', 'hall', 'toilet', 'direction', 'floor', 'total_floor', 'decoration', 'birth', 'traffic', 'specialty', 'property_fee', 'company', 'property_company'], 'required'],
-            [['community_id', 'room', 'hall', 'toilet', 'floor', 'total_floor', 'birth', 'company', 'property_company'], 'integer'],
+            [['community'], 'required'],
             [['price', 'area', 'property_fee'], 'number'],
-            [['position', 'traffic', 'specialty'], 'string', 'max' => 128],
-            [['direction'], 'string', 'max' => 8],
-            [['decoration'], 'string', 'max' => 16],
+            [['room', 'hall', 'toilet', 'floor', 'total_floor', 'birth'], 'integer'],
+            [['community', 'position'], 'string', 'max' => 128],
+            [['type', 'decoration'], 'string', 'max' => 16],
+            [['building_id', 'unit_id', 'room_id', 'direction'], 'string', 'max' => 8],
+            [['traffic', 'specialty'], 'string', 'max' => 256],
+            [['company', 'property_company'], 'string', 'max' => 64],
         ];
     }
 
+
+	// 房屋的类型
+	public function getHouseType(){
+		return [
+			"高层",
+			"洋房",
+			"公寓",
+			"写字楼",
+			"商住楼",
+			"别墅",
+			"平房",
+			"四合院",
+			"排屋",			
+		];
+	}
+	
+	public function getDecoration(){
+		return [
+			'毛坯',
+			'普通装修',
+			'精装修',
+			'豪华装修',
+		];
+	}
+	
     /**
      * @inheritdoc
      */
@@ -58,8 +89,12 @@ class Second extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'community_id' => '小区',
+            'community' => '小区',
             'position' => '位置',
+            'type' => '房屋类型',
+            'building_id' => '楼号',
+            'unit_id' => '单元号',
+            'room_id' => '房号',
             'price' => '价格',
             'area' => '面积',
             'room' => '室',
@@ -75,6 +110,6 @@ class Second extends \yii\db\ActiveRecord
             'property_fee' => '物业费',
             'company' => '开发商',
             'property_company' => '物业公司',
-        ];
+		];
     }
 }

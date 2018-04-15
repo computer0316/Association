@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Second;
+use backend\models\BaseCommunity;
 use yii\data\Pagination;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -50,6 +51,17 @@ class SecondController extends Controller
                     ]);
     }
 
+	// 提供小区名称动态下拉的ajax数据
+    public function actionCommunityAjax($str){
+    	$result = "";
+		$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
+		foreach($communities as $c){
+			$result .= '<p class="hitp">' . $c->name . '</p>';			
+		}
+		//echo $result;
+		return $result;
+    }
+    
     /**
      * Displays a single Second model.
      * @param integer $id
