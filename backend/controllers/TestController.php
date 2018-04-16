@@ -3,7 +3,6 @@ namespace backend\controllers;
 
 use Yii;
 use yii\web\Controller;
-use yii\web\UploadedFile;
 use common\models\UploadForm;
 use backend\models\Test;
 

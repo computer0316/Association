@@ -62,30 +62,7 @@ class SiteController extends Controller
     	}
     }
     
-    public function actionFile(){
-    	    	$baseDir="roc";
-    	$year	= date("Y");
-    	$month	= date("m");
-    	$time	= date("h-i-s");
-    	echo $year . '<br />';
-    	echo $month . '<br />';
-    	echo $time . '<br />';
-    	if(!file_exists($baseDir)){
-    		mkdir($baseDir, 0777, true);
-    	}
-    	if(!file_exists($baseDir . "/" . $year)){
-    		mkdir($baseDir . "/" . $year, 0777, true);
-    	}
-    	if(!file_exists($baseDir . "/" . $year . "/" . $month)){
-    		mkdir($baseDir . "/" . $year . "/" . $month, 0777, true);
-    	}
-    	$baseDir = $baseDir . "/" . $year . "/" . $month;
-    	for($i=1; $i<10000; $i++){
-    		while(file_exists($baseDir . "/" . $time . "-" . str_pad($i, 4, "0", STR_PAD_LEFT) . ".jpg")){
-    			
-    		}
-    	}
-    }
+
 
     /**
      * Displays homepage.

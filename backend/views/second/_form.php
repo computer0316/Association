@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 <div class="second">
 <div id="community-ajax"></div>
     <?php
-    	$form = ActiveForm::begin(); 
+    	$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); 
 
         echo $form->field($model, 'community',['options' => ['class' => 'form-group l300']]);
         echo $form->field($model, 'position',['options' => ['class' => 'form-group l300']]);
@@ -27,6 +27,8 @@ use yii\widgets\ActiveForm;
         echo $form->field($model, 'direction',['options' => ['class' => 'in-line l80']]);
         echo $form->field($model, 'decoration');                
         echo $form->field($model, 'birth');
+         
+        echo $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*'])->label('上传图片');
         
 //        echo $form->field($model, 'building_id');
 //        echo $form->field($model, 'unit_id');

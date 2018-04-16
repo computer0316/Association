@@ -149,7 +149,11 @@ select,input{
 	font-size:12px;
 	color:red;	
 }
+input[type="file"]{
+	border:none;
+}
 
+/***************** login ******************/
 
 #title{
 	float:left;

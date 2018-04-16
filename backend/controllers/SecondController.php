@@ -5,10 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Second;
 use backend\models\BaseCommunity;
+use backend\models\Picture;
+use common\models\UploadForm;
+
 use yii\data\Pagination;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 
 /**
@@ -56,12 +60,12 @@ class SecondController extends Controller
     	$result = "";
 		$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
 		foreach($communities as $c){
-			$result .= '<p class="hitp">' . $c->name . '</p>';			
+			$result .= '<p class="hitp">' . $c->name . '</p>';
 		}
 		//echo $result;
 		return $result;
     }
-    
+
     /**
      * Displays a single Second model.
      * @param integer $id
@@ -83,14 +87,22 @@ class SecondController extends Controller
     {
 
         $model = new Second();
+        $upload = new UploadForm();
+		$userid = yii::$app->session->get('userid');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
+            $filepaths = $upload->upload($userid);
+
+            foreach($filepaths as $filepath){
+				Picture::create($model->id, "", "second", $filepath);
+            }
         }
+
+        return $this->render('create', [
+            'model' => $model,
+            'upload'=> $upload,
+        ]);
     }
 
     /**
