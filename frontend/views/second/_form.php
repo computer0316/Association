@@ -10,12 +10,12 @@ use yii\widgets\ActiveForm;
 <div class="second">
 <div id="community-ajax"></div>
     <?php
-    	$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); 
+    	$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
 
         echo $form->field($model, 'community',['options' => ['class' => 'form-group l300']]);
         echo $form->field($model, 'position',['options' => ['class' => 'form-group l300']]);
-        
-        echo $form->field($model, 'price');		
+
+        echo $form->field($model, 'price');
         echo $form->field($model, 'room',['options' => ['class' => 'in-line l50']]);
         echo $form->field($model, 'hall',['options' => ['class' => 'in-line l50']]);
         echo $form->field($model, 'toilet',['options' => ['class' => 'in-line l50']]);
@@ -23,19 +23,18 @@ use yii\widgets\ActiveForm;
 
         echo $form->field($model, 'type');
         echo $form->field($model, 'floor', ['options' => ['class' => 'in-line l50']]);
-        echo $form->field($model, 'total_floor',['options' => ['class' => 'in-line l50']]);        
+        echo $form->field($model, 'total_floor',['options' => ['class' => 'in-line l50']]);
         echo $form->field($model, 'direction',['options' => ['class' => 'in-line l80']]);
-        echo $form->field($model, 'decoration');                
+        echo $form->field($model, 'decoration');
         echo $form->field($model, 'birth');
-         
+        echo $form->field($model, 'specialty')->textArea(['row' => 5]);
         echo $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*'])->label('上传图片');
-        
+
 //        echo $form->field($model, 'building_id');
 //        echo $form->field($model, 'unit_id');
 //        echo $form->field($model, 'room_id');
 //
 //        echo $form->field($model, 'traffic');
-//        echo $form->field($model, 'specialty');
 //        echo $form->field($model, 'company');
 //        echo $form->field($model, 'property_fee');
 //        echo $form->field($model, 'property_company');
@@ -67,7 +66,7 @@ use yii\widgets\ActiveForm;
 		background:white;
 		left:420px;
 		top:178px;
-		width:300px;		
+		width:300px;
 		display:none;
 	}
 	#community-ajax p{

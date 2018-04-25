@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
@@ -29,10 +29,10 @@ class Picture extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['item_id', 'item_sub', 'item_name', 'path'], 'required'],
+            [['item_id', 'item_name', 'path'], 'required'],
             [['item_id'], 'integer'],
             [['item_sub', 'item_name'], 'string', 'max' => 16],
-            [['path'], 'string', 'max' => 64],
+            [['path'], 'string', 'max' => 128]
         ];
     }
 
@@ -50,11 +50,22 @@ class Picture extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function create($item_id, $item_sub, $item_name, $path){
-    	self::$item_id		= $item_id;
-    	self::$item_sub		= $item_sub;
-    	self::$item_name	= $item_name;
-    	self::$path			= $path;
-    	self::save();
+    public function create($item_id, $item_sub='', $item_name, $path){
+    	$this->item_id		= $item_id;
+    	$this->item_sub		= $item_sub;
+    	$this->item_name	= $item_name;
+    	$this->path			= $path;
+    	return $this->save();
+    }
+
+    public static function hasPics($item_id, $item_sub='', $item_name){
+    	$pics = [];
+    	if($item_sub<>''){
+    		$pics = self::find()->where(['item_name' => $item_name, 'item_sub' => $item_sub, 'item_id' => $item_id])->all();
+    	}
+    	else{
+    		$pics = self::find()->where(['item_name' => $item_name, 'item_id' => $item_id])->all();
+    	}
+    	return $pics;
     }
 }
