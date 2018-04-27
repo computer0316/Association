@@ -20,53 +20,14 @@ use common\widgets\Alert;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/carousel.js"></script>
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <style>
-    	.login{
-    		width:100%;
-    		height:36px;
-    		float:none;
-    		background-color:#eee;
 
-    		font-size:12px;
-    		line-height:36px;
-    		color:#666;
-    	}
-    	.header{
-    		height:120px;
-    	}
-    	.header img{
-    		height:120px;
-    	}
-    	.nav{
-    		width:100%;
-    		height:42px;
-    		background-color:#d70000;
-    	}
-		.nav-ul li{
-			width:150px;
-			height:100%;
-			text-align:center;
-		}
-		.nav-ul li:hover{
-			background-color:#b20000;
-		}
-		.nav-ul li a{
-			display:block;
-			width:100%;
-			line-height:42px;
-			color:white;
-		}
-    	.footer{
-    		width:100%;
-    		height:120px;
-			background-color:#eee;
-    		font-size:12px;
-    		text-align:center;
-    	}
-    	.footer p{float:none;line-height:24px;}
     </style>
 </head>
 <body>
@@ -78,7 +39,7 @@ use common\widgets\Alert;
 	</div>
 </div>
 <div class="container header">
-	<img src="images/logo.jpg" />
+	<p class="logo-p">廊坊二手信息网</p>
 </div>
 <div class="nav">
 	<div class="container">
@@ -91,6 +52,11 @@ use common\widgets\Alert;
 			<li><a href="#">廊坊求购</a></li>
 		</ul>
 	</div>
+</div>
+<div class="container">
+		<?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
 </div>
 <?= $content ?>
 <div class="footer">

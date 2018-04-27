@@ -4,14 +4,18 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\data\Pagination;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use yii\helpers\Url;
+use yii\web\BadRequestHttpException;
+use yii\web\Controller;
+use yii\web\UploadedFile;
 
-use frontend\models\Second;
+use common\models\LoginForm;
+use common\models\UploadForm;
 use common\models\Picture;
+use frontend\models\Second;
+
 
 /**
  * Site controller

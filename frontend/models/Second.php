@@ -48,7 +48,7 @@ class Second extends \yii\db\ActiveRecord
         return [
             [['community'], 'required'],
             [['price', 'area', 'property_fee'], 'number'],
-            [['room', 'hall', 'toilet', 'floor', 'total_floor', 'birth'], 'integer'],
+            [['room', 'hall', 'toilet', 'floor', 'total_floor', 'birth', 'visit'], 'integer'],
             [['community', 'position'], 'string', 'max' => 128],
             [['type', 'decoration'], 'string', 'max' => 16],
             [['building_id', 'unit_id', 'room_id', 'direction'], 'string', 'max' => 8],
@@ -86,6 +86,7 @@ class Second extends \yii\db\ActiveRecord
             'property_fee' => 'Property Fee',
             'company' => 'Company',
             'property_company' => 'Property Company',
+            'visit'	=> 'ทรฮสมฟ',
         ];
     }
 }

@@ -1,0 +1,42 @@
+.all{
+    width: 585px;height: auto;margin: 10px auto;overflow: hidden;
+}
+.top-img{
+    width: 585px;height: auto;font-size: 0;position: relative;
+}
+.activeimg{
+    overflow: hidden;width:585px; height: 400px;position: relative;
+}
+.top-img .activeimg img{
+    width: 585px;height: 400px;
+}
+.top-img .left{
+    width: 80px;height: 400px;background: rgba(0,0,0,0.4);position: absolute;left: 0;top: 0;text-align: center;line-height: 400px;
+    cursor: pointer;
+}
+.top-img .right{
+    width: 80px;height: 400px;background: rgba(0,0,0,0.4);position: absolute;right:0px;top: 0;text-align: center;line-height: 400px;
+    cursor: pointer;
+}
+.top-img .left:hover,.top-img .right:hover{
+    background: rgba(0,0,0,0.5);
+}
+
+.bot-img{
+    width: 585px;height: 60px;margin-top: 15px;overflow:hidden;overflow-y:hidden;float:left;
+}
+.bot-img ul{
+    width: 585px;height: 90px;overflow:hidden;overflow-y:hidden;float:left;
+}
+.bot-img ul li{
+    width: 90px;height:60px; margin-right: 10px;float: left;border: 1px solid #fff;cursor: pointer;font-size: 0;
+}
+.bot-img ul li.active{
+    border: 1px solid #ff6600;
+}
+.bot-img ul li img{
+    width: 90px;height:60px;
+}
+.bot-img ul li:last-child{
+    margin-right: 0;
+}
