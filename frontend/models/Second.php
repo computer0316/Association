@@ -48,7 +48,7 @@ class Second extends \yii\db\ActiveRecord
         return [
             [['community'], 'required'],
             [['price', 'area', 'property_fee'], 'number'],
-            [['room', 'hall', 'toilet', 'floor', 'total_floor', 'birth', 'visit'], 'integer'],
+            [['city_id', 'room', 'hall', 'toilet', 'floor', 'total_floor', 'birth', 'visit'], 'integer'],
             [['community', 'position'], 'string', 'max' => 128],
             [['type', 'decoration'], 'string', 'max' => 16],
             [['building_id', 'unit_id', 'room_id', 'direction'], 'string', 'max' => 8],
