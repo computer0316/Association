@@ -55,6 +55,7 @@ class Second extends \yii\db\ActiveRecord
             [['traffic'], 'string', 'max' => 256],
             [['specialty'], 'string', 'max' => 512],
             [['company', 'property_company'], 'string', 'max' => 64],
+            [['updatetime'], 'safe'],
         ];
     }
 
@@ -86,7 +87,8 @@ class Second extends \yii\db\ActiveRecord
             'property_fee' => 'Property Fee',
             'company' => 'Company',
             'property_company' => 'Property Company',
-            'visit'	=> '·ÃÎÊÁ¿',
+            'visit'	=> 'è®¿é—®é‡',
+            'updatetime' => 'æ—¶é—´',
         ];
     }
 }

@@ -1,6 +1,7 @@
 		/*********** 总体设计  ***********/
     	html,body{width:100%;}
-    	html,body,div,p,ul,li,table,tr,td{margin:0;padding:0;float:left;}
+    	html,body,div,p,ul,li,table{margin:0;padding:0;float:left;}
+    	tr,td{padding:0;margin:0;}
     	table{border-collapse:collapse;}
     	table,tr,td{border:1px solid;}
     	a{text-decoration:none;color:black;}
@@ -75,7 +76,7 @@
 .breadcrumb li:last-child:after{
 	content:"";
 }
-/**************************************** ****************************************/
+/**************************************** 详情左侧 ****************************************/
 	#title-div{
 		width:100%;
 		padding-top:10px;
@@ -96,6 +97,7 @@
 
 	}
 
+/**************************************** 详情右侧 ****************************************/
 #detail-div{
 	margin:20px 0 0 45px;
 	height:400px;
@@ -124,11 +126,31 @@
 	font-size:14px;
 }
 
+/**************************************** 内容左侧 ****************************************/
+.content-left{
+	width:84%;
+}
+.content-div{
+	padding-left:10px;
+	margin-top:10px;
+}
+.label{
+	width:100px;
+	font-size:12px;
+	color:#999;
+}
+.content-p{
+	width:240px;
+	font-size:12px;
+	color:black;
+
+}
 .spciality-title{
 	width:100%;
 	font-size:22px;
 	font-weight:bold;
-	border-bottom:1px solid orangered;
+	border-bottom:1px solid #ffddcc;
+	margin-top:10px;
 }
 .spciality{
 	width:90%;
@@ -136,4 +158,9 @@
 	margin-top:10px;
 	font-size:14px;
 	color:#999;
+}
+
+/**************************************** 内容右侧 ****************************************/
+.content-right{
+	width:16%;
 }

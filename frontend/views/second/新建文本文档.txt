@@ -1,0 +1,29 @@
+	<div class="all">
+		<div class="top-img">
+			<div class="activeimg">
+			<?php
+				$pics = Picture::hasPics($model->id,'','second');
+				if($pics){
+					foreach($pics as $pic){
+						echo '<img src="' . $pic->path . '" />' . "\n";
+					}
+				}
+			?>
+			</div>
+			<div class="left"><img src="images/left.png"> </div>
+			<div class="right"><img src="images/right.png"></div>
+		</div>
+		<!-- 存放缩略图的容器-->
+		<div class="bot-img">
+			<ul>
+				<?php
+					$pics = Picture::hasPics($model->id,'','second');
+					if($pics){
+						foreach($pics as $pic){
+							echo '<li><img src="' . $pic->path . '" /></li>' . "\n";
+						}
+					}
+				?>
+			</ul>
+		</div>
+	</div>

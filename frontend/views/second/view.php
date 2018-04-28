@@ -16,21 +16,19 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 <div class="container">
 	<div id="title-div" class="">
-		<p class="title">938总站附近大三居仅115万好楼层 无遮挡 全天采光</p>
+		<p class="title"><?php echo $model->community . $model->birth . '年' . $model->decoration . '房' . $model->price . '万' . $model->area . '平米'; ?></p>
 		<p class="tips single">房源编号：<?= $model->id ?></p>
 		<p class="tips">2018-04-27</p><p class="tips">384人浏览</p>
 	</div>
+
 	<div class="all">
 		<div class="top-img">
 			<div class="activeimg">
-			<?php
-				$pics = Picture::hasPics($model->id,'','second');
-				if($pics){
-					foreach($pics as $pic){
-						echo '<img src="' . $pic->path . '" />' . "\n";
-					}
-				}
-			?>
+			<img src="uploads/1/2018/04/16-53-06-00.jpg" />
+<img src="uploads/1/2018/04/16-53-06-01.jpg" />
+<img src="uploads/1/2018/04/16-53-06-02.jpg" />
+<img src="uploads/1/2018/04/16-53-06-03.jpg" />
+<img src="uploads/1/2018/04/16-53-06-04.jpg" />
 			</div>
 			<div class="left"><img src="images/left.png"> </div>
 			<div class="right"><img src="images/right.png"></div>
@@ -38,14 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		<!-- 存放缩略图的容器-->
 		<div class="bot-img">
 			<ul>
-				<?php
-					$pics = Picture::hasPics($model->id,'','second');
-					if($pics){
-						foreach($pics as $pic){
-							echo '<li><img src="' . $pic->path . '" /></li>' . "\n";
-						}
-					}
-				?>
+				<li><img src="uploads/1/2018/04/16-53-06-00.jpg" /></li>
+<li><img src="uploads/1/2018/04/16-53-06-01.jpg" /></li>
+<li><img src="uploads/1/2018/04/16-53-06-02.jpg" /></li>
+<li><img src="uploads/1/2018/04/16-53-06-03.jpg" /></li>
+<li><img src="uploads/1/2018/04/16-53-06-04.jpg" /></li>
 			</ul>
 		</div>
 	</div>
@@ -71,8 +66,31 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 </div>
 <div class="container">
-	<p class="spciality-title">描述</p>
-	<p class="spciality">
-		<?= $model->specialty ?>
-	</p>
+	<div class="content-left">
+		<p class="spciality-title">概况</p>
+		<div class="content-div">
+			<p class="label">房屋总价</p><p class="content-p"><?= $model->price ?>（单价<?= floor($model->price* 10000/$model->area) ?>元㎡）</p>
+			<p class="label">所在楼层</p><p class="content-p"><?= $model->floor ?> 层 / 共 <?= $model->total_floor ?> 层</p>
+		</div>
+		<div class="content-div">
+			<p class="label">房屋户型</p><p class="content-p"><?= $model->room ?>室<?= $model->hall ?>厅<?= $model->toilet ?>卫</p>
+			<p class="label">装修情况</p><p class="content-p"><?= $model->decoration ?></p>
+		</div>
+		<div class="content-div">
+			<p class="label">房本面积</p><p class="content-p"><?= $model->area ?></p>
+			<p class="label">产权年限</p><p class="content-p"><?= $model->birth ?></p>
+		</div>
+		<div class="content-div">
+			<p class="label">房屋朝向</p><p class="content-p"><?= $model->direction ?></p>
+			<p class="label">建筑年代</p><p class="content-p"><?= $model->birth ?></p>
+		</div>
+
+		<p class="spciality-title">描述</p>
+		<p class="spciality">
+			<?= $model->specialty ?>
+		</p>
+	</div>
+	<div class="content-right">
+		2222222
+	</div>
 </div>
