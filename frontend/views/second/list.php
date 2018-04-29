@@ -98,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<img src="<?= smallPic(1) ?>" />
 				<div class="list-first-line">
-					<?php echo '<p class="list-title">' . $second->community . $second->birth . '年' . $second->decoration . '房' . $second->price . '万' . $second->area . '平米</p>'; ?>
+					<?php echo '<a href="?r=second/view&id=' . $second->id . '"><p class="list-title">' . $second->community . $second->birth . '年' . $second->decoration . '房' . $second->price . '万' . $second->area . '平米</p></a>'; ?>
 				</div>
 				<div class="list-line">
 					<p class="item"><?= $second->room ?>室<?= $second->hall ?>厅<?= $second->toilet ?>卫</p>

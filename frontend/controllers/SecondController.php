@@ -15,6 +15,7 @@ use common\models\LoginForm;
 use common\models\UploadForm;
 use common\models\Picture;
 use frontend\models\Second;
+use frontend\models\BaseCommunity;
 
 
 /**
@@ -160,12 +161,18 @@ class SecondController extends Controller
 	// 提供小区名称动态下拉的ajax数据
     public function actionCommunityAjax($str){
     	$result = "";
-		$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
-		foreach($communities as $c){
-			$result .= '<p class="hitp">' . $c->name . '</p>';
+    	if(strlen($str)>0){
+			$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
+			foreach($communities as $c){
+				$result .= '<p class="hitp">' . $c->name . '</p>';
+			}
 		}
-		//echo $result;
-		return $result;
+		if($result==''){
+			return "false";
+		}
+		else{
+			return $result;
+		}
     }
 
 
@@ -176,7 +183,7 @@ class SecondController extends Controller
      */
     public function actionCreate()
     {
-
+		$this->layout = 'list';
         $model = new Second();
         $upload = new UploadForm();
 		$userid = yii::$app->session->get('userid');
@@ -184,11 +191,12 @@ class SecondController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
         	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
             $filepaths = $upload->upload($userid);
-
-            foreach($filepaths as $filepath){
-            	$pic = new Picture();
-				$pic->create($model->id, "1", "second", $filepath);
-            }
+			if($filepaths){
+	            foreach($filepaths as $filepath){
+	            	$pic = new Picture();
+					$pic->create($model->id, "1", "second", $filepath);
+	            }
+	        }
             return $this->redirect(Url::toRoute(['second/view', 'id' => $model->id]));
         }
 

@@ -4,7 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 use common\models\Picture;
-
+use frontend\models\BaseDecoration;
+use frontend\models\BaseHousetype;
+use frontend\models\BaseDirection;
+use frontend\models\BaseConstructure;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Second */
 
@@ -52,11 +55,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div id="area">
 			<p><?= $model->room ?>室<?= $model->hall ?>厅<?= $model->toilet ?>卫</p>
 			<p><?= $model->area ?>平</p>
-			<p><?= $model->direction ?></p>
+			<p><?= BaseDirection::findOne($model->direction)->name ?></p>
 		</div>
 		<div id="floor">
 			<p><?= $model->floor ?> 层 / 共 <?= $model->total_floor ?> 层</p>
-			<p><?= $model->decoration ?></p>
+			<p><?= BaseDecoration::findOne($model->decoration)->name ?></p>
 			<p><?= $model->birth ?>建</p>
 		</div>
 		<div id="community">
@@ -74,20 +77,20 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<div class="content-div">
 			<p class="label">房屋户型</p><p class="content-p"><?= $model->room ?>室<?= $model->hall ?>厅<?= $model->toilet ?>卫</p>
-			<p class="label">装修情况</p><p class="content-p"><?= $model->decoration ?></p>
+			<p class="label">装修情况</p><p class="content-p"><?= BaseDecoration::findOne($model->decoration)->name ?></p>
 		</div>
 		<div class="content-div">
 			<p class="label">房本面积</p><p class="content-p"><?= $model->area ?></p>
 			<p class="label">产权年限</p><p class="content-p"><?= $model->birth ?></p>
 		</div>
 		<div class="content-div">
-			<p class="label">房屋朝向</p><p class="content-p"><?= $model->direction ?></p>
+			<p class="label">房屋朝向</p><p class="content-p"><?= BaseDirection::findOne($model->direction)->name ?></p>
 			<p class="label">建筑年代</p><p class="content-p"><?= $model->birth ?></p>
 		</div>
 
 		<p class="spciality-title">描述</p>
 		<p class="spciality">
-			<?= $model->specialty ?>
+			<?= $model->house_info ?>
 		</p>
 	</div>
 	<div class="content-right">
