@@ -62,7 +62,7 @@ class Second extends \yii\db\ActiveRecord
             [['price', 'area', 'inner_area', 'property_fee'], 'number'],
             [['updatetime'], 'safe'],
             [['title', 'community', 'position'], 'string', 'max' => 128],
-            [['building_id', 'unit_id', 'room_id', 'direction'], 'string', 'max' => 8],
+            [['building_id', 'unit_id', 'room_id'], 'string', 'max' => 8],
             [['house_info', 'mood', 'service'], 'string', 'max' => 512],
         ];
     }

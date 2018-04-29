@@ -214,8 +214,11 @@ class SecondController extends Controller
     public function actionView($id)
     {
     	$this->layout = "view";
+    	$model = Second::findOne($id);
+    	$model->visit = $model->visit + 1;
+    	$model->save();
         return $this->render('view', [
-            'model' => Second::findOne($id),
+            'model' => $model,
         ]);
     }
 

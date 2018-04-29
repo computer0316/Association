@@ -90,6 +90,9 @@ use frontend\models\BaseConstructure;
 			<?= $form->field($model, 'inner_id')->label('内部编号') ?>
 		</div>
 		<div class="line">
+			<?= $form->field($model, 'city_id')->label('所在区域')->dropDownlist(['131003' => '广阳区', '131002' => '安次区', '131001' => '开发区']) ?>
+		</div>
+		<div class="line">
 			<?= $form->field($model, 'community')->textInput(['style' => 'width:300px;']) ?>
 		</div>
 		<div class="line">
@@ -130,21 +133,19 @@ use frontend\models\BaseConstructure;
 		</div>
 		<div class="line">
 			<?= $form->field($model, 'price')->textInput(['style' => 'width:50px;'])  ?>
+			<?= $form->field($model, 'updatetime')->label(false)->hiddenInput(['value' => date("Y-m-d H:i:s", time())])  ?>
 		</div>
-	</div>
-	<p class="title">房源基本信息</p>
-	<div class="create">
 		<div class="line">
 			<?= $form->field($model, 'title')->textInput(['style' => 'width:651px;'])  ?>
 		</div>
 		<div class="line">
-	        <?= $form->field($model, 'house_info')->textArea(['rows' => 8, 'cols' => 80]) ?>
+	        <?= $form->field($model, 'house_info')->textArea(['rows' => 5, 'cols' => 80]) ?>
 		</div>
 		<div class="line">
-    	    <?= $form->field($model, 'mood')->textArea(['rows' => 8, 'cols' => 80]) ?>
+    	    <?= $form->field($model, 'mood')->textArea(['rows' => 5, 'cols' => 80]) ?>
 		</div>
 		<div class="line">
-        	<?= $form->field($model, 'service')->textArea(['rows' => 8, 'cols' => 80]) ?>
+        	<?= $form->field($model, 'service')->textArea(['rows' => 5, 'cols' => 80]) ?>
 		</div>
 		<div class="line">
 			<?= $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*'])->label('上传图片') ?>

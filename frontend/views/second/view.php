@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div id="title-div" class="">
 		<p class="title"><?php echo $model->community . $model->birth . '年' . $model->decoration . '房' . $model->price . '万' . $model->area . '平米'; ?></p>
 		<p class="tips single">房源编号：<?= $model->id ?></p>
-		<p class="tips">2018-04-27</p><p class="tips">384人浏览</p>
+		<p class="tips"><?= date("m-d", strtotime($model->updatetime)) ?></p><p class="tips"><?= $model->visit ?>人浏览</p>
 	</div>
 
 	<div class="all">
