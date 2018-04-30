@@ -34,7 +34,7 @@ use common\widgets\Alert;
 <?php $this->beginBody() ?>
 <div class="login">
 	<div class="container">
-		<p>您好，欢迎来到廊坊二手房中心 [登录] [免费注册]</p>
+		<p>您好，欢迎来到廊坊二手房中心 [<a href="/association/backend/web/?r=user/login">登录</a>] [免费注册]</p>
 		<p class="right-p">地图找房</p>
 	</div>
 </div>

@@ -1,5 +1,5 @@
 		/*********** 总体设计  ***********/
-    	html,body{width:100%;}
+    	html,body{width:100%;font-weight:normal;font: 12px 'Microsoft YaHei','YaHei','SimHei','Hei',Arial,tahoma,arial,sans-serif;}
     	html,body,div,p,ul,li,table,img{margin:0;padding:0;float:left;}
     	tr,td{padding:0;margin:0;}
     	table{border-collapse:collapse;}

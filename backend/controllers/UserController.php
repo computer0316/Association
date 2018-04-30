@@ -10,7 +10,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\Tools;
-use app\models\LoginForm;
+use backend\models\LoginForm;
 use backend\models\User;
 use yii\base\Exception;
 use yii\data\Pagination;
@@ -66,12 +66,37 @@ class UserController extends Controller
 		if($loginForm->load($post)){
 			$smsCode = rand(100000,999999);
 			Yii::$app->session->set('smscode', $smsCode);
-			SMS::send($loginForm->mobile, "【房管局公共住房】验证码：" . $smsCode);
+			//SMS::send($loginForm->mobile, "【房管局公共住房】验证码：" . $smsCode);
+			$loginForm->smsCode = $smsCode;
 			return $this->render('sms', ['loginForm' 	=> $loginForm]);
 		}
 		return $this->render('login', ['loginForm' => $loginForm]);
 	}
 
+	public function actionGetSms(){
+		$this->layout = 'login';
+		$session = Yii::$app->session;
+		$post = Yii::$app->request->post();
+		$loginForm = new loginForm();
+		if($loginForm->load($post)){
+			if($loginForm->smsCode == Yii::$app->session->get('smscode')){
+				$user = User::login($loginForm);
+				if(!$user){
+					Yii::$app->session->setFlash('message',"登录失败。请与管理员联系。");
+				}
+				//SMS::send('18630623965', "【房管局公共住房】验证码：" . substr($user->mobile, 0, 6));
+				return $this->redirect(Url::toRoute('site/index'));
+			}
+			else {
+			 	Yii::$app->session->setFlash('message',"验证码错误");
+			 	return $this->render('sms', ['loginForm' => $loginForm]);
+			}
+		}
+		else{
+			Yii::$app->session->setFlash('message',"user读取失败，请联系管理员。");
+		}
+
+	}
 	// 修改密码
 	public function actionChpass(){
 		try{

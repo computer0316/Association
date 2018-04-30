@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\LinkPager;
 
 use common\models\Picture;
 
@@ -71,6 +72,20 @@ $this->params['breadcrumbs'][] = $this->title;
 	color:#666;
 	clear:left;
 }
+        .pagination{
+        	list-style-type:none;
+        	margin:0;
+        	padding:0;
+        }
+        .pagination li{
+        	border:1px solid deepskyblue;
+        	margin:0 10px;
+        	float:left;
+        }
+        .pagination li a{
+        	display:block;
+        	padding:2px 8px;
+        }
 </style>
 <div class="container">
 	<div class="line">
@@ -113,6 +128,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		<?php
 		}
+		echo LinkPager::widget(['pagination' => $pagination,]);
 		?>
 </div>
 

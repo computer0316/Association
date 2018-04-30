@@ -70,18 +70,28 @@ class User extends \yii\db\ActiveRecord
 	}
 
 
-	// 用户登录
-	public function login(){
-		$user = User::findOne(['mobile' => $this->mobile, 'password' => md5($this->password)]);
+    /*
+    */
+	public static function login($loginForm){
+		$user = self::find()->where(['mobile'	=> $loginForm->mobile])->one();
 		if($user){
 			Yii::$app->session->set('userid', $user->id);
-			$user->updatetime	= date("Y-m-d H:i:s", time());
+			$user->updatetime	= date("Y-m-d H:i:s");
 			$user->ip			= Yii::$app->request->userIP;
 			$user->save();
-			return  true;
+			return $user;
 		}
 		else{
-			return false;
+			$user = new User();
+			$user->name			= $loginForm->mobile;
+			$user->password		= "1";
+			$user->mobile 		= $loginForm->mobile;
+			$user->firsttime 	= date("Y-m-d H:i:s");
+			$user->updatetime	= date("Y-m-d H:i:s");
+			$user->ip			= Yii::$app->request->userIP;
+			$user->save();
+			Yii::$app->session->set('userid', $user->id);
+			return $user;
 		}
 	}
 

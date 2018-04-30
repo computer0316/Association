@@ -75,7 +75,6 @@ class SiteController extends Controller
     {
     	$this->layout = 'view';
     	return $this->render('index');
-        //return $this->redirect(Url::toRoute(['second/view', 'id' => '58']));
     }
 
     /**

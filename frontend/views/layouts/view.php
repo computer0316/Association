@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -34,19 +35,19 @@ use common\widgets\Alert;
 <?php $this->beginBody() ?>
 <div class="login">
 	<div class="container">
-		<p>您好，欢迎来到廊坊二手房中心 [登录] [免费注册]</p>
+		<p>您好，欢迎来到廊坊二手房中心 [<a href="/association/backend/web/?r=user/login">登录</a>] [免费注册]</p>
 		<p class="right-p">地图找房</p>
 	</div>
 </div>
 <div class="container header">
-	<p class="logo-p">廊坊二手信息网</p>
+	<img style="width:210px;height:60px;" src="images/logo.jpg" />
 </div>
 <div class="nav">
 	<div class="container">
 		<ul class="nav-ul">
-			<li><a href="#">网站首页</a></li>
+			<li><a href="<?= Url::toRoute('site/index') ?>">网站首页</a></li>
 			<li><a href="#">廊坊新房</a></li>
-			<li><a href="#">廊坊二手房</a></li>
+			<li><a href="?r=second/list">廊坊二手房</a></li>
 			<li><a href="#">廊坊出租</a></li>
 			<li><a href="#">房产资讯</a></li>
 			<li><a href="#">廊坊求购</a></li>

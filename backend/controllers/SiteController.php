@@ -40,20 +40,20 @@ class SiteController extends Controller
     }
     public function beforeAction($action){
     	$user = User::checkLogin();
-        if($user){        	
+        if($user){
         	return AccessFilter::check($action, $user);
         }
         else{
         	return $this->redirect(Url::toRoute('user/login'));
         }
     }
-    
+
     public function actionAdd(){
     	echo '<meta charset="utf-8">';
     	echo "测试";
     	dir();
     	$strs = IO::getStringsFromFile("d:\work\web\advanced\documents\community.txt");
-    	foreach($strs as $str){    		
+    	foreach($strs as $str){
     		$comm = new Community();
     		$comm->name = $str;
     		if($comm->save()){
@@ -61,7 +61,7 @@ class SiteController extends Controller
     		}
     	}
     }
-    
+
 
 
     /**
