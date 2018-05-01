@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Sms\Sms;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -65,6 +66,11 @@ class SiteController extends Controller
             ],
         ];
     }
+
+	public function actionTest(){
+		echo '<meta charset="utf-8">';
+		var_dump(Sms::send("13931657890", "廊坊二手房", "233218"));
+	}
 
     /**
      * Displays homepage.
