@@ -42,9 +42,9 @@ use common\widgets\Alert;
 <div class="container header">
 	<img style="width:210px;height:60px;" src="images/logo.jpg" />
 </div>
-<div class="nav">
+<div id="nav">
 	<div class="container">
-		<ul class="nav-ul">
+		<ul id="nav-ul">
 			<li><a href="<?= Url::toRoute('site/index') ?>">网站首页</a></li>
 			<li><a href="#">廊坊新房</a></li>
 			<li><a href="?r=second/list">廊坊二手房</a></li>
