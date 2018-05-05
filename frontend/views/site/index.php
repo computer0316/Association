@@ -37,6 +37,8 @@ $this->title = 'My Yii Application';
 	margin-top:12px;
 }
 .item-div .p2{	
+	margin-left:10px;
+	color:#999;
 }
 #article-left{
 	margin-top:10px;
@@ -84,7 +86,7 @@ $this->title = 'My Yii Application';
 	width:280px;	
 }
 
-#second-li{
+#second-list{
 	width:440px;
 	border:1px solid #ccc;
 	margin-top:10px;
@@ -95,7 +97,7 @@ $this->title = 'My Yii Application';
 	background:#f7f7f7;
 	height:30px;
 }
-#second-li .title{
+#second-list .title{
 	font-size:12px;
 	font-weight:normal;
 	color:red;
@@ -163,19 +165,19 @@ $this->title = 'My Yii Application';
 	<div class="title-div">
 		<p class="p1">热门资讯</p>
 		<div class="item-div">
-			<span class="p2">房产资讯</span>&nbsp;|&nbsp;
-			<span class="p2">房产资讯</span>&nbsp;|&nbsp;
-			<span class="p2">房产资讯</span>&nbsp;|&nbsp;
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
 			<span class="p2">数据中心</span>
 		</div>
 	</div>
 	<div id="article-left">
 		<div>
-			<img src="images/test.jpg" />		
+			<img src="images/1.jpg" />		
 			<p>这里是图片描述</p>
 		</div>
 		<div>
-			<img src="images/test.jpg" />		
+			<img src="images/2.jpg" />		
 			<p>这里是图片描述</p>
 		</div>
 	</div>
@@ -204,11 +206,11 @@ $this->title = 'My Yii Application';
 	
 	<div id="article-right">
 		<div>
-			<img src="images/test.jpg" />		
+			<img src="images/3.jpg" />		
 			<p>这里是图片描述</p>
 		</div>
 		<div>
-			<img src="images/test.jpg" />		
+			<img src="images/10.jpg" />		
 			<p>这里是图片描述</p>
 		</div>
 	</div>
@@ -219,13 +221,13 @@ $this->title = 'My Yii Application';
 	<div class="title-div">
 		<p class="p1">二手房</p>
 		<div class="item-div">
-			<span class="p2">房产资讯</span>&nbsp;|&nbsp;
-			<span class="p2">房产资讯</span>&nbsp;|&nbsp;
-			<span class="p2">房产资讯</span>&nbsp;|&nbsp;
-			<span class="p2">数据中心</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">测试中心</span>
 		</div>
 	</div>
-	<div id="second-li">
+	<div id="second-list">
 		<div class="top-div">
 			<p class="title">二手房</p>
 			<p class="more">更多>>></p>
@@ -244,9 +246,103 @@ $this->title = 'My Yii Application';
 		</ul>
 	</div>
 	<div id="second-img">
-		
+		<div class="img-list">			
+			<img src="images/5.jpg" />			
+			<p class="community-name">这里是图片</p>
+			<div class="line">
+				<p class="price">320万</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">3室2厅2卫</p>
+			</div>
+		</div>		
+		<div class="img-list">			
+			<img src="images/6.jpg" />			
+			<p class="community-name">这里是图片</p>
+			<div class="line">
+				<p class="price">320万</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">3室2厅2卫</p>
+			</div>
+		</div>		
+		<div class="img-list">			
+			<img src="images/7.jpg" />			
+			<p class="community-name">这里是图片</p>
+			<div class="line">
+				<p class="price">320万</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">3室2厅2卫</p>
+			</div>
+		</div>		
+		<div class="img-list">			
+			<img src="images/8.jpg" />			
+			<p class="community-name">这里是图片</p>
+			<div class="line">
+				<p class="price">320万</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">3室2厅2卫</p>
+			</div>
+		</div>		
+		<div class="img-list">			
+			<img src="images/9.jpg" />			
+			<p class="community-name">这里是图片</p>
+			<div class="line">
+				<p class="price">320万</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">3室2厅2卫</p>
+			</div>
+		</div>		
+		<div class="img-list">			
+			<img src="images/11.jpg" />			
+			<p class="community-name">这里是图片</p>
+			<div class="line">
+				<p class="price">320万</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">3室2厅2卫</p>
+			</div>
+		</div>		
 	</div>
 </div>
+<style>
+	#second-img{		
+		width:748px;
+		height:300px;
+		margin-top:10px;
+		margin-left:10px;
+		
+	}
+	.img-list{
+		position:relative;
+		width:230px;
+		margin-left:17px;
+		text-align:center;
+		margin-bottom:30px;
+	}
+	.img-list img{		
+		width:100%;
+	}
+	.community-name{
+		position:absolute;
+		left:0;
+		top:148px;
+		color:white;
+		line-height:25px;
+		background:url(images/dark.png);
+		height:25px;
+		width:100%;
+	}
+	.line{
+		position:relative;
+		top:10px;
+		width:100%;
+	}
+	.price {
+		float:left;
+		color:red;
+	}
+	.roomtype{
+		float:right;
+	}
+</style>
 <script>
 	$(document).ready(function(){
 
