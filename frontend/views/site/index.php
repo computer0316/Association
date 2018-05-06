@@ -13,8 +13,7 @@ $this->title = 'My Yii Application';
 }
 .d1four{
 	width:25%;
-	margin-top:20px;
-	height:120px;
+	margin-top:20px;	
 }
 .d1title{
 	width:100%;
@@ -26,7 +25,7 @@ $this->title = 'My Yii Application';
 	margin-right:20px;
 }
 .title-div{
-	margin-top:15px;
+	margin-top:20px;
 	width:100%;	
 }
 .title-div .p1{
@@ -84,8 +83,13 @@ $this->title = 'My Yii Application';
 #article-right{
 	margin-top:10px;
 	width:280px;	
+	margin-left:10px;
 }
-
+#article-right li{
+	font-size:14px;
+	color:#999;
+	line-height:24px;
+}
 #second-list{
 	width:440px;
 	border:1px solid #ccc;
@@ -121,7 +125,110 @@ $this->title = 'My Yii Application';
 .second-ul span{
 	margin-left:30px;
 }
+	#second-img{		
+		width:748px;
+		height:300px;
+		margin-top:10px;
+		margin-left:10px;
+		
+	}
+	.img-list{
+		position:relative;
+		width:230px;
+		margin-left:17px;
+		text-align:center;
+		margin-bottom:45px;
+	}
+	.img-list img{		
+		width:100%;
+	}
+	.community-name{
+		position:absolute;
+		left:0;
+		top:148px;
+		color:white;
+		line-height:25px;
+		background:url(images/dark.png);
+		height:25px;
+		width:100%;
+	}
+	.line{
+		position:relative;
+		top:15px;
+		width:100%;
+	}
+	.price {
+		float:left;
+		color:red;
+	}
+	.roomtype{
+		float:right;
+	}
 </style>
+<style>
+	#nh-left{
+		width:910px;
+		margin-top:10px;
+	}
+.nh-block{
+	position:relative;
+	width:283px;	
+	margin-right:20px;
+	margin-bottom:50px;
+}
+.nh-block img{
+	position:relative;
+	width:283px;
+	height:212px;
+}
+.nh-name-box{
+	position:absolute;
+	background: url('images/dark.png');
+	width:100%;
+	height:36px;
+	left:0;top:177px;
+	filter: Alpha(Opacity=40);
+	opacity: 0.4;
+	text-align:center;
+}
+.nh-name{
+	position:absolute;
+	top:177px;left:10px;
+	color:white;
+	font-size:16px;
+	line-height:36px;
+}
+.nh-line{
+	position:relative;
+	top:10px;
+}
+.nh-item{
+	border:1px solid #999;
+	padding:1px 5px;
+	margin-top:5px;
+	margin-right:10px;
+}
+	#nh-right{
+		width:280px;
+		margin-top:10px;
+		margin-left:10px;
+		background:#f3f3f3;
+	}
+#nh-right li{
+	width:100%;
+	line-height:42px;
+	border-bottom:1px dashed #e3e3e3;
+}
+#nh-right .nhll{
+	margin-left:10px;
+	float:left;	
+}
+#nh-right .nhlr{
+	float:right;
+	margin-right:10px;
+}
+</style>
+
 <div class="big-banner">
 	<img src="images/bb1.jpg" />
 </div>
@@ -160,6 +267,12 @@ $this->title = 'My Yii Application';
 	<p class="d1item">经济住宅</p>
 </div>
 </div>
+<div class="container">
+	<img style="width:100%;margin-top:10px;" src="images/banner1.jpg" />
+	<img style="width:100%;margin-top:2px;" src="images/banner2.gif" />
+	<img style="width:100%;margin-top:2px;" src="images/banner3.gif" />
+	<img style="width:100%;margin-top:2px;" src="images/2.gif" />
+</div>
 <div id="article" class="container">
 <!--热门资讯-->
 	<div class="title-div">
@@ -186,36 +299,157 @@ $this->title = 'My Yii Application';
 		<p id="first">这里是头条这里是头条这里是头条</p>
 		<ul>
 			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
+			<li class="other">碧桂园翡翠蓝山：[有梦碧同行]来优秀的</li>
+			<li class="other">最新！廊坊5月各区（市）房价出炉，快</li>
+			<li class="other">瑞嘉容园三期车位、储藏室正式开抢</li>
+			<li class="other">为什么森林城市会上榜福布斯“影响未来</li>
+			<li class="other">绿城玉兰花园：星空墅 瞰山观星悦生活</li>
 			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
+			<li class="other">碧桂园翡翠蓝山：[有梦碧同行]来优秀的</li>
+			<li class="other">最新！廊坊5月各区（市）房价出炉，快</li>
+			<li class="other">瑞嘉容园三期车位、储藏室正式开抢</li>
+			<li class="other">为什么森林城市会上榜福布斯“影响未来</li>
+			<li class="other">绿城玉兰花园：星空墅 瞰山观星悦生活</li>
 			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
-			<li class="other">君悦府：以品质 敬生活!致谢 一城厚爱!</li>
+			<li class="other">碧桂园翡翠蓝山：[有梦碧同行]来优秀的</li>
+			<li class="other">最新！廊坊5月各区（市）房价出炉，快</li>
+			<li class="other">瑞嘉容园三期车位、储藏室正式开抢</li>
+			<li class="other">为什么森林城市会上榜福布斯“影响未来</li>
+			<li class="other">绿城玉兰花园：星空墅 瞰山观星悦生活</li>
 		</ul>
 	</div>
 	
 	<div id="article-right">
 		<div>
 			<img src="images/3.jpg" />		
-			<p>这里是图片描述</p>
-		</div>
-		<div>
-			<img src="images/10.jpg" />		
-			<p>这里是图片描述</p>
+			<ul>
+				<li>君悦府：以品质 敬生活!致谢 一城厚爱!</li>
+				<li>枣庄碧桂园翡翠蓝山：小小赛车手火热进行中</li>
+				<li>揭开神秘面纱 碧桂园枣庄首场发布会举行</li>
+				<li>绿城玉兰花园：星空墅 瞰山观星悦生活</li>
+				<li>为什么森林城市会上榜福布斯“影响未来的</li>
+				<li>隐藏在世界５００强企业里的基因密码</li>
+				<li>2018年枣庄供地国有建设用地供应计划</li>
+			</ul>
 		</div>
 	</div>
 </div>
-
+<div id="newhouse" class="container">
+	<div class="title-div">
+		<p class="p1">新房</p>
+		<div class="item-div">
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">房产资讯</span><span class="p2">|</span>
+			<span class="p2">测试中心</span>
+		</div>
+	</div>	
+	<div id="nh-left">
+		<div class="nh-block">			
+			<img src="images/new/6.jpg" />			
+			<div class="nh-name-box"></div>
+			<p class="nh-name">这里是图片</p>
+			<div class="nh-line">
+				<p class="price">9800元/㎡</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">90-160㎡</p>
+			</div>
+			<div class="nh-line">
+				<p class="nh-item">学区房</p>
+				<p class="nh-item">高铁站</p>
+			</div>
+		</div>
+		<div class="nh-block">			
+			<img src="images/new/9.jpg" />			
+			<div class="nh-name-box"></div>
+			<p class="nh-name">这里是图片</p>
+			<div class="nh-line">
+				<p class="price">9800元/㎡</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">90-160㎡</p>
+			</div>
+			<div class="nh-line">
+				<p class="nh-item">学区房</p>
+				<p class="nh-item">高铁站</p>
+			</div>
+		</div>
+		<div class="nh-block">			
+			<img src="images/new/4.jpg" />			
+			<div class="nh-name-box"></div>
+			<p class="nh-name">这里是图片</p>
+			<div class="nh-line">
+				<p class="price">9800元/㎡</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">90-160㎡</p>
+			</div>
+			<div class="nh-line">
+				<p class="nh-item">学区房</p>
+				<p class="nh-item">高铁站</p>
+			</div>
+		</div>
+		<div class="nh-block">			
+			<img src="images/new/3.jpg" />			
+			<div class="nh-name-box"></div>
+			<p class="nh-name">这里是图片</p>
+			<div class="nh-line">
+				<p class="price">9800元/㎡</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">90-160㎡</p>
+			</div>
+			<div class="nh-line">
+				<p class="nh-item">学区房</p>
+				<p class="nh-item">高铁站</p>
+			</div>
+		</div>
+		<div class="nh-block">			
+			<img src="images/new/2.jpg" />			
+			<div class="nh-name-box"></div>
+			<p class="nh-name">这里是图片</p>
+			<div class="nh-line">
+				<p class="price">9800元/㎡</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">90-160㎡</p>
+			</div>
+			<div class="nh-line">
+				<p class="nh-item">学区房</p>
+				<p class="nh-item">高铁站</p>
+			</div>
+		</div>
+		<div class="nh-block">			
+			<img src="images/new/1.jpg" />			
+			<div class="nh-name-box"></div>
+			<p class="nh-name">这里是图片</p>
+			<div class="nh-line">
+				<p class="price">9800元/㎡</p>
+				<p>（9800元/㎡）</p>
+				<p class="roomtype">90-160㎡</p>
+			</div>
+			<div class="nh-line">
+				<p class="nh-item">学区房</p>
+				<p class="nh-item">高铁站</p>
+			</div>
+		</div>
+	</div>
+	<div id="nh-right">
+		<ul>
+			<li><p class="nhll">阿尔卡迪亚</p><p class="nhlr">12500元/㎡</p></li>
+			<li><p class="nhll">塞纳荣府</p><p class="nhlr">19500元/㎡</p></li>
+			<li><p class="nhll">盛江南</p><p class="nhlr">14300元/㎡</p></li>
+			<li><p class="nhll">阿尔卡迪亚</p><p class="nhlr">12500元/㎡</p></li>
+			<li><p class="nhll">塞纳荣府</p><p class="nhlr">19500元/㎡</p></li>
+			<li><p class="nhll">盛江南</p><p class="nhlr">14300元/㎡</p></li>
+			<li><p class="nhll">阿尔卡迪亚</p><p class="nhlr">12500元/㎡</p></li>
+			<li><p class="nhll">塞纳荣府</p><p class="nhlr">19500元/㎡</p></li>
+			<li><p class="nhll">盛江南</p><p class="nhlr">14300元/㎡</p></li>
+			<li><p class="nhll">阿尔卡迪亚</p><p class="nhlr">12500元/㎡</p></li>
+			<li><p class="nhll">塞纳荣府</p><p class="nhlr">19500元/㎡</p></li>
+			<li><p class="nhll">盛江南</p><p class="nhlr">14300元/㎡</p></li>
+		</ul>
+	</div>
+</div>
+<div class="container">
+	<img style="width:100%;margin-top:2px;" src="images/banner4.gif" />
+</div>
 <div id="second" class="container">
 <!--二手房-->
 	<div class="title-div">
@@ -233,6 +467,7 @@ $this->title = 'My Yii Application';
 			<p class="more">更多>>></p>
 		</div>
 		<ul class="second-ul">
+			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
 			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
 			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
 			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
@@ -302,47 +537,7 @@ $this->title = 'My Yii Application';
 		</div>		
 	</div>
 </div>
-<style>
-	#second-img{		
-		width:748px;
-		height:300px;
-		margin-top:10px;
-		margin-left:10px;
-		
-	}
-	.img-list{
-		position:relative;
-		width:230px;
-		margin-left:17px;
-		text-align:center;
-		margin-bottom:30px;
-	}
-	.img-list img{		
-		width:100%;
-	}
-	.community-name{
-		position:absolute;
-		left:0;
-		top:148px;
-		color:white;
-		line-height:25px;
-		background:url(images/dark.png);
-		height:25px;
-		width:100%;
-	}
-	.line{
-		position:relative;
-		top:10px;
-		width:100%;
-	}
-	.price {
-		float:left;
-		color:red;
-	}
-	.roomtype{
-		float:right;
-	}
-</style>
+
 <script>
 	$(document).ready(function(){
 
