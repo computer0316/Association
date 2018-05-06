@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\base\Exception;
+use yii\data\Pagination;
 use yii\helpers\VarDumper;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
@@ -10,10 +12,10 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\Tools;
+
 use backend\models\LoginForm;
 use backend\models\User;
-use yii\base\Exception;
-use yii\data\Pagination;
+use backend\models\AttestFilter;
 
 use yii\Roc\IO;
 use yii\Roc\Session;
@@ -23,6 +25,14 @@ class UserController extends Controller
 {
 	public $enableCsrfValidation = false;
 
+	public function behaviors(){
+		return [
+			'timer' => [
+				'class' => AttestFilter::className(),				
+			],		
+		];
+	}
+	
     public function actions()
     {
         return [
@@ -41,6 +51,10 @@ class UserController extends Controller
         ];
     }
 
+	public function actionAttest(){
+		return $this->render('attest');
+	}
+	
 	/*
 	 * 用户列表
 	 */

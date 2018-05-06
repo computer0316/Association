@@ -5,7 +5,7 @@ use Yii;
 use yii\web\Controller;
 use common\models\UploadForm;
 use backend\models\Test;
-
+use backend\models\AttestFilter;
 
 
 
@@ -22,10 +22,20 @@ class TestController extends Controller
     public function behaviors()
     {
         return [
-
+			'timer' => [
+				'class' => AttestFilter::className(),
+				'only' => ['test1'],				
+			],
         ];
     }
 
+	public function actionTest1(){
+		echo 'test1';
+	}
+	public function actionTest2(){
+		echo 'test2';
+	}
+	
     /**
      * {@inheritdoc}
      */
