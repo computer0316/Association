@@ -26,8 +26,7 @@ class SecondController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors(){
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -57,8 +56,7 @@ class SecondController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
-    {
+    public function actions(){
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',

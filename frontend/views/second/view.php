@@ -27,11 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="all">
 		<div class="top-img">
 			<div class="activeimg">
-			<img src="uploads/1/2018/04/16-53-06-00.jpg" />
-<img src="uploads/1/2018/04/16-53-06-01.jpg" />
-<img src="uploads/1/2018/04/16-53-06-02.jpg" />
-<img src="uploads/1/2018/04/16-53-06-03.jpg" />
-<img src="uploads/1/2018/04/16-53-06-04.jpg" />
+			<img src="images/1.jpg" />
+			<img src="images/2.jpg" />
+			<img src="images/3.jpg" />
+			<img src="images/4.jpg" />
+			<img src="images/5.jpg" />
+			<img src="images/1.jpg" />
+			<img src="images/2.jpg" />
+			<img src="images/3.jpg" />
+			<img src="images/4.jpg" />
+			<img src="images/5.jpg" />
 			</div>
 			<div class="left"><img src="images/left.png"> </div>
 			<div class="right"><img src="images/right.png"></div>
@@ -39,11 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
 		<!-- 存放缩略图的容器-->
 		<div class="bot-img">
 			<ul>
-				<li><img src="uploads/1/2018/04/16-53-06-00.jpg" /></li>
-<li><img src="uploads/1/2018/04/16-53-06-01.jpg" /></li>
-<li><img src="uploads/1/2018/04/16-53-06-02.jpg" /></li>
-<li><img src="uploads/1/2018/04/16-53-06-03.jpg" /></li>
-<li><img src="uploads/1/2018/04/16-53-06-04.jpg" /></li>
+				<li><img src="images/1.jpg" /></li>
+				<li><img src="images/2.jpg" /></li>
+				<li><img src="images/3.jpg" /></li>
+				<li><img src="images/4.jpg" /></li>
+				<li><img src="images/5.jpg" /></li>
+				<li><img src="images/1.jpg" /></li>
+				<li><img src="images/2.jpg" /></li>
+				<li><img src="images/3.jpg" /></li>
+				<li><img src="images/4.jpg" /></li>
+				<li><img src="images/5.jpg" /></li>
 			</ul>
 		</div>
 	</div>

@@ -32,7 +32,7 @@ use backend\models\User;
 <?php $this->beginBody() ?>
 
 <header>
-	<p id="title">莱恩网络后台管理系统</p>
+	<p id="title">廊坊市房地产业协会房产管理系统</p>
 	<div class="login">
 <?php
 	$user = User::checkLogin();

@@ -32,7 +32,14 @@ class Test extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 64],
         ];
     }
-
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['login'] = ['name'];
+        $scenarios['register'] = ['name', 'updatetime'];
+        return $scenarios;
+    }
+    
     /**
      * @inheritdoc
      */

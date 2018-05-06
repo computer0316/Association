@@ -164,8 +164,7 @@ $this->title = 'My Yii Application';
 	.roomtype{
 		float:right;
 	}
-</style>
-<style>
+
 	#nh-left{
 		width:910px;
 		margin-top:10px;
@@ -268,9 +267,6 @@ $this->title = 'My Yii Application';
 </div>
 </div>
 <div class="container">
-	<img style="width:100%;margin-top:10px;" src="images/banner1.jpg" />
-	<img style="width:100%;margin-top:2px;" src="images/banner2.gif" />
-	<img style="width:100%;margin-top:2px;" src="images/banner3.gif" />
 	<img style="width:100%;margin-top:2px;" src="images/2.gif" />
 </div>
 <div id="article" class="container">
@@ -333,6 +329,11 @@ $this->title = 'My Yii Application';
 			</ul>
 		</div>
 	</div>
+</div>
+<div class="container">
+	<img style="width:100%;margin-top:10px;" src="images/banner1.jpg" />
+	<img style="width:100%;margin-top:2px;" src="images/banner2.gif" />
+	<img style="width:100%;margin-top:2px;" src="images/banner3.gif" />
 </div>
 <div id="newhouse" class="container">
 	<div class="title-div">

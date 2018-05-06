@@ -76,7 +76,7 @@ class User extends \yii\db\ActiveRecord
 		$user = self::find()->where(['mobile'	=> $loginForm->mobile])->one();
 		if($user){
 			Yii::$app->session->set('userid', $user->id);
-			$user->updatetime	= date("Y-m-d H:i:s");
+			$user->updatetime	= date("Y-m-d H:i:s", time());
 			$user->ip			= Yii::$app->request->userIP;
 			$user->save();
 			return $user;
@@ -86,8 +86,8 @@ class User extends \yii\db\ActiveRecord
 			$user->name			= $loginForm->mobile;
 			$user->password		= "1";
 			$user->mobile 		= $loginForm->mobile;
-			$user->firsttime 	= date("Y-m-d H:i:s");
-			$user->updatetime	= date("Y-m-d H:i:s");
+			$user->firsttime 	= date("Y-m-d H:i:s", time());
+			$user->updatetime	= date("Y-m-d H:i:s", time());
 			$user->ip			= Yii::$app->request->userIP;
 			$user->save();
 			Yii::$app->session->set('userid', $user->id);

@@ -29,7 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
 }
 .list{
 	width:84%;
-	margin-top:60px;
+	padding:30px 0;
+	border-bottom:1px solid #f1f1f1;
+}
+.list:hover{
+	background:#f1f1f1;
 }
 .list img{
 	width:146px;

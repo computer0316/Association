@@ -38,11 +38,11 @@ use common\widgets\Alert;
 		<p class="right-p">地图找房</p>
 	</div>
 </div>
-<!--
+
 <div class="container header">
-	<p class="logo-p">廊坊二手信息网</p>
+	<img src="images/logo.jpg" />
 </div>
-<div class="nav">
+<!--<div class="nav">
 	<div class="container">
 		<ul class="nav-ul">
 			<li><a href="#">网站首页</a></li>

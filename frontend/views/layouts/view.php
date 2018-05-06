@@ -40,7 +40,10 @@ use common\widgets\Alert;
 	</div>
 </div>
 <div class="container header">
-	<img style="width:210px;height:60px;" src="images/logo.jpg" />
+	<img src="images/logo.jpg" />
+	<div id="search">
+		
+	</div>
 </div>
 <div id="nav">
 	<div class="container">

@@ -37,6 +37,18 @@ class TestController extends Controller
             ],
         ];
     }
+    
+    public function actionScenario(){
+    	echo '<meta charset="utf-8">';
+    	$test = new Test(['scenario' => 'register']);
+    	$test->name = 'tom';
+    	if($test->save()){
+    		echo 'success';    		
+    	}
+    	else{
+    		var_dump($test->errors);
+    	}
+    }
 
 	public function actionIndex(){
 		$test = new Test();

@@ -17,7 +17,7 @@ use yii\data\Pagination;
 
 use yii\Roc\IO;
 use yii\Roc\Session;
-use yii\Roc\SMS;
+use yii\Roc\Sms\Sms;
 
 class UserController extends Controller
 {
@@ -66,7 +66,7 @@ class UserController extends Controller
 		if($loginForm->load($post)){
 			$smsCode = rand(100000,999999);
 			Yii::$app->session->set('smscode', $smsCode);
-			//SMS::send($loginForm->mobile, "【房管局公共住房】验证码：" . $smsCode);
+			//SMS::send($loginForm->mobile, "房协二手房", $smsCode);
 			$loginForm->smsCode = $smsCode;
 			return $this->render('sms', ['loginForm' 	=> $loginForm]);
 		}
@@ -84,7 +84,6 @@ class UserController extends Controller
 				if(!$user){
 					Yii::$app->session->setFlash('message',"登录失败。请与管理员联系。");
 				}
-				//SMS::send('18630623965', "【房管局公共住房】验证码：" . substr($user->mobile, 0, 6));
 				return $this->redirect(Url::toRoute('site/index'));
 			}
 			else {
