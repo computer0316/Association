@@ -30,6 +30,7 @@ a:hover{
 	float:left;
 	margin:5px;
 	color:#666;
+	font-size:12px;
 }
 .breadcrumb li:after{
 	content:" >";

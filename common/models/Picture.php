@@ -59,13 +59,21 @@ class Picture extends \yii\db\ActiveRecord
     }
 
     public static function hasPics($item_id, $item_sub='', $item_name){
-    	$pics = [];
+    	$pics = false;
     	if($item_sub<>''){
-    		$pics = self::find()->where(['item_name' => $item_name, 'item_sub' => $item_sub, 'item_id' => $item_id])->all();
+    		$pics = self::find()->orderBy('id desc')->where(['item_name' => $item_name, 'item_sub' => $item_sub, 'item_id' => $item_id])->all();
     	}
     	else{
-    		$pics = self::find()->where(['item_name' => $item_name, 'item_id' => $item_id])->all();
+    		$pics = self::find()->orderBy('id desc')->where(['item_name' => $item_name, 'item_id' => $item_id])->all();
     	}
     	return $pics;
     }
+
+    public static function getPic($item_id, $item_sub='', $item_name){
+    	$pics = self::hasPics($item_id, $item_sub='', $item_name);
+    	if($pics){
+    		return $pics[0]->path;
+    	}    	
+    }
+
 }

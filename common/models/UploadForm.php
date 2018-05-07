@@ -22,7 +22,7 @@ class UploadForm extends Model
             	['imageFiles'], 
             	'file', 
             	'skipOnEmpty' => false, 
-            	'extensions' => 'png, jpg', 
+            	'extensions' => 'png, jpg, gif', 
             	'maxFiles' => 10,
             ],
         ];

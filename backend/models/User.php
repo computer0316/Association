@@ -7,6 +7,8 @@ use yii\helpers\Url;
 use yii\base\Exception;
 use yii\helpers\VarDumper;
 
+use common\models\Picture;
+
 /**
  * This is the model class for table "user".
  *
@@ -32,6 +34,14 @@ class User extends \yii\db\ActiveRecord
 		else{
 			return false;
 		}
+	}
+	
+	public function getPortrait(){
+		return Picture::getPic($this->id, '1', 'portrait');
+	}
+
+	public function getIdentification(){
+		return Picture::getPic($this->id, '1', 'identification');
 	}
 
 	// 检查用户是否登录，如果登录返回用户对象，如果没登录返回false

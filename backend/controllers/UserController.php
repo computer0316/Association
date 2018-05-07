@@ -11,7 +11,11 @@ use yii\helpers\Url;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use app\models\Tools;
+
+use common\models\UploadForm;
+use common\models\Picture;
 
 use backend\models\LoginForm;
 use backend\models\User;
@@ -27,14 +31,17 @@ class UserController extends Controller
 
 	public function behaviors(){
 		return [
-			'timer' => [
-				'class' => AttestFilter::className(),				
+			'attestFilter' => [
+				'class'			=> AttestFilter::className(),				
+				'except'		=> ['login', 'captcha','get-sms', 'logout'],
+				'denyCallback'	=> function($rule, $action){
+					return $this->redirect(Url::toRoute('user/login'));
+				}
 			],		
 		];
 	}
 	
-    public function actions()
-    {
+    public function actions(){
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -51,9 +58,68 @@ class UserController extends Controller
         ];
     }
 
+	// 身份认证
 	public function actionAttest(){
-		return $this->render('attest');
+		$user = User::findOne(1);
+		return $this->render('attest',[
+			'user' => $user,
+		]);
 	}
+	
+	// 上传头像
+	public function actionPortrait(){
+		$user = User::findOne(Yii::$app->session->get('userid'));
+		$upload = new UploadForm();
+		
+		$picture = 'images/portrait.jpg';
+		if($user->getPortrait()){
+			$picture = $user->getPortrait();
+		}
+		if (Yii::$app->request->isPost) {
+	       	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
+	        $filepaths = $upload->upload($user->id);
+			if($filepaths){
+		        foreach($filepaths as $filepath){
+		            $pic = new Picture();
+					$pic->create($user->id, "1", "portrait", $filepath);
+		        }
+		    }
+		    $picture = Picture::getPic($user->id, "1", "portrait");
+		}
+		return $this->render('portrait',[
+			'picture' => $picture,
+			'upload' => $upload,
+		]);
+	}
+
+	// 上传头像
+	public function actionIdentification(){
+		$user = User::findOne(Yii::$app->session->get('userid'));
+		$upload = new UploadForm();
+		
+		$picture = 'images/identification.jpg';
+		if($user->getIdentification()){
+			$picture = $user->getIdentification();
+		}
+		if (Yii::$app->request->isPost) {
+	       	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
+	        $filepaths = $upload->upload($user->id);
+			if($filepaths){
+		        foreach($filepaths as $filepath){
+		            $pic = new Picture();
+					$pic->create($user->id, "1", "identification", $filepath);
+		        }
+		    }
+		    $picture = Picture::getPic($user->id, "1", "identification");
+		}
+		return $this->render('identification',[
+			'picture' => $picture,
+			'upload' => $upload,
+		]);
+	}
+	
+	
+	
 	
 	/*
 	 * 用户列表
