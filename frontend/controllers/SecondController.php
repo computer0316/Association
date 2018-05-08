@@ -152,53 +152,6 @@ class SecondController extends Controller
                     ]);
     }
 
-	// 提供小区名称动态下拉的ajax数据
-    public function actionCommunityAjax($str){
-    	$result = "";
-    	if(strlen($str)>0){
-			$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
-			foreach($communities as $c){
-				$result .= '<p class="hitp">' . $c->name . '</p>';
-			}
-		}
-		if($result==''){
-			return "false";
-		}
-		else{
-			return $result;
-		}
-    }
-
-
-    /**
-     * Creates a new Second model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-		$this->layout = 'list';
-        $model = new Second();
-        $upload = new UploadForm();
-		$userid = yii::$app->session->get('userid');
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
-            $filepaths = $upload->upload($userid);
-			if($filepaths){
-	            foreach($filepaths as $filepath){
-	            	$pic = new Picture();
-					$pic->create($model->id, "1", "second", $filepath);
-	            }
-	        }
-            return $this->redirect(Url::toRoute(['second/view', 'id' => $model->id]));
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-            'upload'=> $upload,
-        ]);
-    }
 
      /**
      * Displays a single Second model.

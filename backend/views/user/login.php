@@ -10,16 +10,21 @@
 
 	<div class="form1">
 		<div class="form">
-			<div id="logintitle">廊坊二手房系统用户登录（无需注册，手机号直接登录）</div>
+			<div id="logintitle">廊坊二手房系统用户登录</div>
 <?php
 
-	$form = ActiveForm::begin(['id' => 'clientform']);
+	$form = ActiveForm::begin([
+		'id' => 'clientform',
+		'enableAjaxValidation'   => false,
+    	'enableClientValidation' => false,
+	]);
 
 ?>
 
 	<?= $form->field($loginForm, 'mobile')->textInput(['autofocus' => true, 'class' => 'menu1']) ?>
 
-	<?= $form->field($loginForm, 'verifyCode')->widget(Captcha::className(), ['imageOptions' => ['class' => "captcha"]]) ?>
+	<?= $form->field($loginForm, 'password1')->passwordInput() ?>
+	
 
 <div class="form-group button-group">
 

@@ -44,21 +44,21 @@ use backend\models\User;
 
 	</div>
 </header>
-
 <section>
 	<div id="left">
-		<p class="menu-title">新房</p>
-		<a href="<?=Url::toRoute('new/create')?>"><p class="menu-item">小区添加</p></a>
-		<a href="<?=Url::toRoute('new/list')?>"><p class="menu-item">小区管理</p></a>
 		<p class="menu-title">二手房</p>
-		<a href="<?=Url::toRoute('second/create')?>"><p class="menu-item">房源添加</p></a>
-		<a href="<?=Url::toRoute('second/index')?>"><p class="menu-item">房源管理</p></a>		
+			<a href="<?=Url::toRoute('second/create')?>"><p class="menu-item">房源添加</p></a>
+			<a href="<?=Url::toRoute('second/list')?>"><p class="menu-item">房源管理</p></a>		
+		<p class="menu-title">新房</p>
+			<a href="#"><p class="menu-item">小区添加</p></a>
+			<a href="#"><p class="menu-item">小区管理</p></a>
+			<a href="#"><p class="menu-item">配套管理</p></a>
 		<p class="menu-title">个人中心</p>
-		<a href="<?=Url::toRoute('user/attest')?>"><p class="menu-item">身份认证</p></a>
-		<a href="<?=Url::toRoute('user/changepw')?>"><p class="menu-item">修改密码</p></a>
+			<a href="<?=Url::toRoute('user/attest')?>"><p class="menu-item">身份认证</p></a>
+			<a href="<?=Url::toRoute('user/changepw')?>"><p class="menu-item">修改密码</p></a>
 		<p class="menu-title">权限管理</p>
-		<a href="<?=Url::toRoute('user/index')?>"><p class="menu-item">用户管理</p></a>
-		<a href="<?=Url::toRoute('test/index')?>"><p class="menu-item">测试</p></a>
+			<a href="<?=Url::toRoute('user/index')?>"><p class="menu-item">用户管理</p></a>
+			<a href="<?=Url::toRoute('test/index')?>"><p class="menu-item">测试</p></a>
 
 	</div>
 	<div id="right">

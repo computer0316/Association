@@ -26,8 +26,9 @@ class LoginForm extends Model
     {
         return [
             [['mobile', 'verifyCode'], 'required', 'on' => 'mobile'],
-            [['password', 'password1', 'smsCode'], 'required', 'on' => 'password'],
-            [['smsCode', 'verifyCode', 'password', 'password1'], 'string'],
+            [['mobile', 'password', 'password1', 'smsCode'], 'required', 'on' => 'password'],
+            [['smsCode', 'password', 'password1'], 'string'],
+            [ 'verifyCode', 'captcha', 'message'=>'验证码错误', 'captchaAction'=>'user/captcha'],
             ['password', 'compare', 'compareAttribute' => 'password1'],
             
         ];
@@ -36,8 +37,9 @@ class LoginForm extends Model
     public function scenarios()
     {
     	$scenarios = parent::scenarios();
-        $scenarios['mobile'] = ['mobile', 'verifyCode'];
-        $scenarios['password'] = ['smsCode', 'password'];
+    	$scenarios['login'] = ['mobile', 'password1'];
+        $scenarios['mobile'] = ['mobile', 'verifyCode'];        
+        $scenarios['password'] = ['smsCode', 'password', 'password1', 'mobile'];
         return $scenarios;
 	}
 

@@ -82,7 +82,7 @@ class User extends \yii\db\ActiveRecord
 
     /*
     */
-	public static function login($loginForm){
+	public static function register($loginForm){
 		$user = self::find()->where(['mobile'	=> $loginForm->mobile])->one();
 		if($user){
 			Yii::$app->session->set('userid', $user->id);
@@ -94,7 +94,7 @@ class User extends \yii\db\ActiveRecord
 		else{
 			$user = new User();
 			$user->name			= $loginForm->mobile;
-			$user->password		= "1";
+			$user->password		= md5($loginForm->password);
 			$user->mobile 		= $loginForm->mobile;
 			$user->firsttime 	= date("Y-m-d H:i:s", time());
 			$user->updatetime	= date("Y-m-d H:i:s", time());
@@ -102,6 +102,23 @@ class User extends \yii\db\ActiveRecord
 			$user->save();
 			Yii::$app->session->set('userid', $user->id);
 			return $user;
+		}
+	}
+
+	public static function login($loginForm){
+		$user = self::find()->where([
+			'mobile'	=> $loginForm->mobile,
+			'password'	=> md5($loginForm->password1),
+			])->one();
+		if($user){
+			Yii::$app->session->set('userid', $user->id);
+			$user->updatetime	= date("Y-m-d H:i:s", time());
+			$user->ip			= Yii::$app->request->userIP;
+			$user->save();
+			return $user;
+		}
+		else{
+			return false;
 		}
 	}
 	

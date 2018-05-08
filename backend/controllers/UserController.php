@@ -33,7 +33,7 @@ class UserController extends Controller
 		return [
 			'attestFilter' => [
 				'class'			=> AttestFilter::className(),				
-				'except'		=> ['login', 'captcha','get-sms', 'logout'],
+				'except'		=> ['register', 'login', 'captcha','get-sms', 'captcha','test'],
 				'denyCallback'	=> function($rule, $action){
 					return $this->redirect(Url::toRoute('user/login'));
 				}
@@ -48,15 +48,17 @@ class UserController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
+                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
 				'fixedVerifyCode' => substr(rand(1000,9999), 0),
                 'height' => 50,
                 'width' => 100,
-                'maxLength' => 4,
+                'maxLength' => 8,
                 'minLength' => 4,
 
             ],
         ];
     }
+    
 
 	// 身份认证
 	public function actionAttest(){
@@ -123,7 +125,9 @@ class UserController extends Controller
 	}
 	
 	
-	
+	public function actionTest(){
+		echo substr(rand(1000,9999), 0);
+	}
 	
 	/*
 	 * 用户列表
@@ -143,14 +147,14 @@ class UserController extends Controller
 	}
 
 	// 用户登录
-	public function actionLogin(){
+	public function actionRegister(){
 		$this->layout	= 'login';
 		$loginForm		= new LoginForm(['scenario' => 'mobile']);
 		$post = Yii::$app->request->post();
 		if($loginForm->load($post)){
 			if(User::checkMobile($loginForm->mobile)){
 				Yii::$app->session->setFlash('message', '手机号已被注册');
-				return $this->render('login', [
+				return $this->render('register', [
 					'loginForm' => $loginForm,
 				]);
 			}
@@ -158,9 +162,10 @@ class UserController extends Controller
 			Yii::$app->session->set('smscode', $smsCode);
 			//SMS::send($loginForm->mobile, "房协二手房", $smsCode);
 			$loginForm->smsCode = $smsCode;
-			return $this->render('sms', ['loginForm' 	=> $loginForm]);
+			$loginForm->scenario = 'password';
+			return $this->render('verifycode', ['loginForm' 	=> $loginForm]);
 		}
-		return $this->render('login', ['loginForm' => $loginForm]);
+		return $this->render('register', ['loginForm' => $loginForm]);
 	}
 
 	public function actionGetSms(){
@@ -170,7 +175,7 @@ class UserController extends Controller
 		$loginForm = new loginForm(['scenario' => 'password']);
 		if($loginForm->load($post)){
 			if($loginForm->smsCode == Yii::$app->session->get('smscode')){
-				$user = User::login($loginForm);
+				$user = User::register($loginForm);
 				if(!$user){
 					Yii::$app->session->setFlash('message',"登录失败。请与管理员联系。");
 				}
@@ -178,14 +183,31 @@ class UserController extends Controller
 			}
 			else {
 			 	Yii::$app->session->setFlash('message',"验证码错误");
-			 	return $this->render('sms', ['loginForm' => $loginForm]);
+			 	return $this->render('register', ['loginForm' => $loginForm]);
 			}
 		}
 		else{
 			Yii::$app->session->setFlash('message',"user读取失败，请联系管理员。");
 		}
-
 	}
+	
+	public function actionLogin(){
+		$this->layout = 'login';
+		$loginForm = new LoginForm(['scenario' => 'login']);
+		if($loginForm->load(Yii::$app->request->post())){
+			$user = User::login($loginForm);
+			if($user){
+				return $this->redirect(Url::toRoute('site/index'));
+			}
+			else{
+				Yii::$app->session->setFlash('message', '用户名或密码不对');
+			}
+		}
+		return $this->render('login', [
+				'loginForm' => $loginForm,
+		]);
+	}
+	
 	// 修改密码
 	public function actionChpass(){
 		try{

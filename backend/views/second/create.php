@@ -29,6 +29,7 @@ use frontend\models\BaseConstructure;
 		border-bottom:1px solid #bbb;
 	}
 	.line{
+		float:left;
 		width:100%;
 		margin-top:24px;
 	}
@@ -51,6 +52,9 @@ use frontend\models\BaseConstructure;
 		text-align:right;
 		margin-right:10px;
 	}
+	.form-group{
+		float:left;
+	}
 	.form-group-inline label{
 		width:auto;
 		margin-left:10px;
@@ -59,14 +63,6 @@ use frontend\models\BaseConstructure;
 		float:right;
 		line-height:30px;
 		color:red;
-	}
-	.field-second-room .help-block,.field-second-hall .help-block,.field-second-toilet .help-block{
-		float:none;
-		line-height:20px;
-		position:absolute;
-		top:234px;
-		left:813px;
-		background-color:white;
 	}
 	button{
 		padding:8px 15px;
@@ -93,7 +89,7 @@ use frontend\models\BaseConstructure;
 			<?= $form->field($model, 'city_id')->label('所在区域')->dropDownlist(['131003' => '广阳区', '131002' => '安次区', '131001' => '开发区']) ?>
 		</div>
 		<div class="line">
-			<?= $form->field($model, 'community')->textInput(['style' => 'width:300px;']) ?>
+			<?= $form->field($model, 'community')->textInput(['style' => 'width:300px;', 'autocomplete' => "off"]) ?>
 		</div>
 		<div class="line">
 	        <?= $form->field($model, 'room')->textInput(['style' => 'width:30px;']) ?>
@@ -181,8 +177,8 @@ use frontend\models\BaseConstructure;
 		position:absolute;
 		border:1px solid #ccc;
 		background:white;
-		left:482px;
-		top:204px;
+		left:377px;
+		top:322px;
 		width:300px;
 		display:none;
 	}
