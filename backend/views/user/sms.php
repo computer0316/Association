@@ -20,7 +20,7 @@
 
 	<div class="form1">
 		<div class="form">
-			<div id="logintitle">房屋交换系统短信验证</div>
+			<div id="logintitle">房屋交换系统用户注册</div>
 <?php
 
 	$form = ActiveForm::begin(['action' => Url::toRoute('user/get-sms'), 'id' => 'clientform']);
@@ -28,9 +28,11 @@
 
 		<?= $form->field($loginForm, 'mobile')->hiddenInput()->label(false) ?>
 
-	<div class="form-group">
-		<?= $form->field($loginForm, 'smsCode')->textInput() ?>
-	</div>
+
+		<?= $form->field($loginForm, 'smsCode')->textInput() ?>		
+		<?= $form->field($loginForm, 'password1')->textInput() ?>
+		<?= $form->field($loginForm, 'password')->textInput() ?>
+
 
 
 

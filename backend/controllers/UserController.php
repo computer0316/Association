@@ -66,6 +66,10 @@ class UserController extends Controller
 		]);
 	}
 	
+	public function actionChangepw(){
+		
+	}
+	
 	// 上传头像
 	public function actionPortrait(){
 		$user = User::findOne(Yii::$app->session->get('userid'));
@@ -141,9 +145,15 @@ class UserController extends Controller
 	// 用户登录
 	public function actionLogin(){
 		$this->layout	= 'login';
-		$loginForm		= new LoginForm();
+		$loginForm		= new LoginForm(['scenario' => 'mobile']);
 		$post = Yii::$app->request->post();
 		if($loginForm->load($post)){
+			if(User::checkMobile($loginForm->mobile)){
+				Yii::$app->session->setFlash('message', '手机号已被注册');
+				return $this->render('login', [
+					'loginForm' => $loginForm,
+				]);
+			}
 			$smsCode = rand(100000,999999);
 			Yii::$app->session->set('smscode', $smsCode);
 			//SMS::send($loginForm->mobile, "房协二手房", $smsCode);
@@ -157,7 +167,7 @@ class UserController extends Controller
 		$this->layout = 'login';
 		$session = Yii::$app->session;
 		$post = Yii::$app->request->post();
-		$loginForm = new loginForm();
+		$loginForm = new loginForm(['scenario' => 'password']);
 		if($loginForm->load($post)){
 			if($loginForm->smsCode == Yii::$app->session->get('smscode')){
 				$user = User::login($loginForm);

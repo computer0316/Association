@@ -104,6 +104,11 @@ class User extends \yii\db\ActiveRecord
 			return $user;
 		}
 	}
+	
+	// 检查手机号是否注册
+	public static function checkMobile($mobile){
+		return User::find()->where(['mobile' => $mobile])->one();
+	}
 
 	public function changePassword($userLoad){
 		if($this->password != md5($userLoad->password)){
@@ -139,6 +144,17 @@ class User extends \yii\db\ActiveRecord
 		];
 	}
 
+
+    
+        
+
+    public function scenarios()
+    {
+    	$scenarios = parent::scenarios();
+        $scenatios['login'] = ['username', 'password'];
+        $scenarios['register'] = ['username', 'email', 'password'];
+        return $scenarios;
+	}
 	/**
 	 * @inheritdoc
 	 */
