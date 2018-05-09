@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\widgets\LinkPager;
 
@@ -76,21 +77,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
 	<ul id="list">
+		<li><p class="s1">编号</p><p class="s2">小区</p><p class="s3">户型</p><p class="s2">价格</p><p class="s3">面积</p><p class="s3">操作</p></li>
 		<?php		
-		foreach($seconds as $second){
-		?>
-				<li>
-					<?php
-						echo '<p class="s1">' . $second->id . '</p>';
-						echo '<p class="s2">' . $second->community . '</p>';
-						echo '<p class="s3">' . $second->room . '室' . $second->hall . '厅' . $second->toilet . '卫</p>';
-						echo '<p class="s3">' . $second->price . '</p>';
-						echo '<p class="s3">' . $second->area . '</p>';
-						echo '<p class="s3">' . '<img src="icon/delete.png" /> <img src="icon/top.png" />' . '</p>';
-					?>					
-				</li>
-		<?php
-		}		
+		if($seconds){
+			foreach($seconds as $second){
+			?>
+					<li>
+						<?php
+							echo '<p class="s1">' . $second->id . '</p>';
+							echo '<p class="s2">' . $second->community . '</p>';
+							echo '<p class="s3">' . $second->room . '室' . $second->hall . '厅' . $second->toilet . '卫</p>';
+							echo '<p class="s2">' . $second->price . '元 &nbsp;' . floor($second->price * 10000/$second->area) . '元/㎡' . '</p>';
+							echo '<p class="s3">' . $second->area . '</p>';
+							echo '<p class="s3">';
+							echo '<a href="' . Url::toRoute(['second/edit', 'id' => $second->id]) . '"><img src="icon/edit-o.png" /></a>';
+							echo "<a onclick=\"return(confire('确认要删除吗？')?true:false)\" href=\"" . Url::toRoute(['second/delete', 'id' => $second->id]) . '"><img src="icon/delete.png" /></a>';
+						?>					
+					</li>
+			<?php
+			}		
+		}
+		else{
+			echo '还没有二手房信息';
+		}
 		?>
 	</ul>
 	<?= LinkPager::widget(['pagination' => $pagination,]) ?>

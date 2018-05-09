@@ -3,9 +3,11 @@ namespace backend\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\imagine\Image;
 use common\models\UploadForm;
 use backend\models\Test;
 use backend\models\AttestFilter;
+use backend\models\Captcha;
 
 
 
@@ -24,16 +26,18 @@ class TestController extends Controller
         return [
 			'timer' => [
 				'class' => AttestFilter::className(),
-				'only' => ['test1'],				
+				'only' => ['test'],				
 			],
         ];
     }
 
 	public function actionTest1(){
-		echo 'test1';
+		$captcha = new Captcha();  //实例化一个对象
+		$captcha->doimg();  
+		Yii::$app->session->set('captcha', $captcha->getCode());//验证码保存到SESSION中
 	}
 	public function actionTest2(){
-		echo 'test2';
+		return $this->render('test2');
 	}
 	
     /**

@@ -33,14 +33,14 @@ class SecondController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    //'delete' => ['POST'],
                 ],
             ],
         ];
     }
 
 
-	// �ṩС�����ƶ�̬������ajax����
+	// 提供小区名称动态下拉的ajax数据
     public function actionCommunityAjax($str){
     	$result = "";
     	if(strlen($str)>0){
@@ -56,18 +56,7 @@ class SecondController extends Controller
 			return $result;
 		}
     }
-public function actionTest(){
-	$sec = Second::find()->where('id % 3 =0')->all();
-	foreach($sec as $s){
-		$s->userid = 1;
-		if($s->save()){
-			echo $s->community .'<br />';
-		}
-		else{
-			var_dump($s->errors);
-		}
-	}
-}
+
 
     /**
      * Creates a new Second model.
@@ -97,6 +86,42 @@ public function actionTest(){
             'upload'=> $upload,
         ]);
     }
+    public function actionEdit($id = '')
+    {
+    	if($id <> ''){
+			$model = Second::findOne($id);
+			$userid = yii::$app->session->get('userid');
+	        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+	        	Yii::$app->session->setFlash("message", '成功编辑房源');
+	            return $this->redirect(Url::toRoute('second/edit'));
+	        }
+	        return $this->render('edit', [
+    	        'model' => $model,
+        	]);
+	    }
+	    else{
+	    	return $this->redirect(Url::toRoute('second/list'));
+	    }
+    }
+    
+    public function actionDelete($id = '')
+    {
+    	if($id <> ''){
+			$model = Second::findOne($id);
+			$user = User::findOne(Yii::$app->session->get('userid'));
+			if(isset($user) && $model->userid = $user->id){
+				$model->delete();
+        		Yii::$app->session->setFlash("message", '房源已删除');
+        	}
+        	else{
+        		Yii::$app->session->setFlash("message", '房源删除失败');
+        	}
+	        return $this->redirect(Url::toRoute('second/edit'));
+	    }
+	    else{
+	    	return $this->redirect(Url::toRoute('second/list'));
+	    }
+    }
     
     
             /**
@@ -106,6 +131,10 @@ public function actionTest(){
     public function actionList()
     {
     	$user = User::findOne(Yii::$app->session->get('userid'));
+    	if(!$user){
+			Yii::$app->session->setFlash('message', '请先登录系统');
+			return $this->redirect(Url::toRoute('user/login'));
+    	}
   		$condition = ['userid' => $user->id];
   		$query = Second::find()->where($condition)->orderBy('id desc');
         $count	= $query->count();
@@ -136,19 +165,6 @@ public function actionTest(){
         ]);
     }
     
-    /**
-     * Deletes an existing Second model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
     /**
      * Finds the Second model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

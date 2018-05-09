@@ -25,10 +25,9 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['mobile', 'verifyCode'], 'required', 'on' => 'mobile'],
-            [['mobile', 'password', 'password1', 'smsCode'], 'required', 'on' => 'password'],
+            [['mobile', 'verifyCode'], 'required', 'on' => 'register1'],
+            [['mobile', 'password', 'password1', 'smsCode'], 'required', 'on' => 'register2'],
             [['smsCode', 'password', 'password1'], 'string'],
-            [ 'verifyCode', 'captcha', 'message'=>'验证码错误', 'captchaAction'=>'user/captcha'],
             ['password', 'compare', 'compareAttribute' => 'password1'],
             
         ];
@@ -38,8 +37,8 @@ class LoginForm extends Model
     {
     	$scenarios = parent::scenarios();
     	$scenarios['login'] = ['mobile', 'password1'];
-        $scenarios['mobile'] = ['mobile', 'verifyCode'];        
-        $scenarios['password'] = ['smsCode', 'password', 'password1', 'mobile'];
+        $scenarios['register1'] = ['mobile', 'verifyCode'];        
+        $scenarios['register2'] = ['smsCode', 'password', 'password1', 'mobile'];
         return $scenarios;
 	}
 

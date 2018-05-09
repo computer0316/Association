@@ -30,8 +30,8 @@
 
 
 		<?= $form->field($loginForm, 'smsCode')->textInput() ?>		
-		<?= $form->field($loginForm, 'password1')->textInput() ?>
-		<?= $form->field($loginForm, 'password')->textInput() ?>
+		<?= $form->field($loginForm, 'password1')->passwordInput() ?>
+		<?= $form->field($loginForm, 'password')->passwordInput() ?>
 
 
 

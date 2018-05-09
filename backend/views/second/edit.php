@@ -150,9 +150,6 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="line">
 	        	<?= $form->field($model, 'service')->textArea(['rows' => 5, 'cols' => 80]) ?>
 			</div>
-			<div class="line">
-				<?= $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*'])->label('上传图片') ?>
-			</div>
 		</div>
         <div class="line">
         	<label class="control-label">&nbsp;</label>

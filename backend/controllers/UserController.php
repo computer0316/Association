@@ -46,16 +46,6 @@ class UserController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-				'fixedVerifyCode' => substr(rand(1000,9999), 0),
-                'height' => 50,
-                'width' => 100,
-                'maxLength' => 8,
-                'minLength' => 4,
-
-            ],
         ];
     }
     
@@ -149,9 +139,15 @@ class UserController extends Controller
 	// 用户登录
 	public function actionRegister(){
 		$this->layout	= 'login';
-		$loginForm		= new LoginForm(['scenario' => 'mobile']);
+		$loginForm		= new LoginForm(['scenario' => 'register1']);
 		$post = Yii::$app->request->post();
 		if($loginForm->load($post)){
+			if(Yii::$app->session->get('captcha') <> $loginForm->verifyCode){
+				Yii::$app->session->setFlash('message', '验证码不正确');
+				return $this->render('register', [
+					'loginForm' => $loginForm,
+				]);				
+			}
 			if(User::checkMobile($loginForm->mobile)){
 				Yii::$app->session->setFlash('message', '手机号已被注册');
 				return $this->render('register', [
@@ -160,9 +156,9 @@ class UserController extends Controller
 			}
 			$smsCode = rand(100000,999999);
 			Yii::$app->session->set('smscode', $smsCode);
-			//SMS::send($loginForm->mobile, "房协二手房", $smsCode);
 			$loginForm->smsCode = $smsCode;
-			$loginForm->scenario = 'password';
+			//Sms::send($loginForm->mobile, "房协房产系统", $smsCode);
+			$loginForm->scenario = 'register2';
 			return $this->render('verifycode', ['loginForm' 	=> $loginForm]);
 		}
 		return $this->render('register', ['loginForm' => $loginForm]);
@@ -172,7 +168,7 @@ class UserController extends Controller
 		$this->layout = 'login';
 		$session = Yii::$app->session;
 		$post = Yii::$app->request->post();
-		$loginForm = new loginForm(['scenario' => 'password']);
+		$loginForm = new loginForm(['scenario' => 'register2']);
 		if($loginForm->load($post)){
 			if($loginForm->smsCode == Yii::$app->session->get('smscode')){
 				$user = User::register($loginForm);

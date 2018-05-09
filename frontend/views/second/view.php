@@ -98,9 +98,17 @@ $this->params['breadcrumbs'][] = $this->title;
 			<p class="label">建筑年代</p><p class="content-p"><?= $model->birth ?></p>
 		</div>
 
-		<p class="spciality-title">描述</p>
+		<p class="spciality-title">房源描述</p>
 		<p class="spciality">
 			<?= $model->house_info ?>
+		</p>
+		<p class="spciality-title">业主心态</p>
+		<p class="spciality">
+			<?= $model->mood ?>
+		</p>
+		<p class="spciality-title">公司服务</p>
+		<p class="spciality">
+			<?= $model->service ?>
 		</p>
 	</div>
 	<div class="content-right">
