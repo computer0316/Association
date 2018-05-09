@@ -17,7 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
 	.create{
+		float:left;
 		margin-left:50px;
+		margin-bottom:20px;
 		font-size:14px;
 		color:black;
 	}

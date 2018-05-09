@@ -10,7 +10,7 @@
 
 	<div class="form1">
 		<div class="form">
-			<div id="logintitle">廊坊二手房系统用户登录</div>
+			<div id="logintitle"><?= Yii::$app->params['sitename'] ?>用户登录</div>
 <?php
 
 	$form = ActiveForm::begin([

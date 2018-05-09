@@ -32,7 +32,7 @@ use backend\models\User;
 <?php $this->beginBody() ?>
 
 <header>
-	<p id="title">廊坊市房地产业协会房产管理系统</p>
+	<p id="title"><?= Yii::$app->params['sitename'] ?></p>
 	<div class="login">
 <?php
 	$user = User::checkLogin();
@@ -46,17 +46,22 @@ use backend\models\User;
 </header>
 <section>
 	<div id="left">
-		<p class="menu-title">二手房</p>
+		<p class="menu-title"><img src="icon/house.png">二手房</p>
 			<a href="<?=Url::toRoute('second/create')?>"><p class="menu-item">房源添加</p></a>
 			<a href="<?=Url::toRoute('second/list')?>"><p class="menu-item">房源管理</p></a>		
-		<p class="menu-title">新房</p>
+		<p class="menu-title"><img src="icon/house.png">新房</p>
 			<a href="#"><p class="menu-item">小区添加</p></a>
 			<a href="#"><p class="menu-item">小区管理</p></a>
 			<a href="#"><p class="menu-item">配套管理</p></a>
-		<p class="menu-title">个人中心</p>
+		<p class="menu-title"><img src="icon/article.png">文章管理</p>
+			<a href="#"><p class="menu-item">文章添加</p></a>
+			<a href="#"><p class="menu-item">文章管理</p></a>
+			<a href="#"><p class="menu-item">分类管理</p></a>
+		<p class="menu-title"><img src="icon/account.png">个人中心</p>
+			<a href="<?=Url::toRoute('user/edit')?>"><p class="menu-item">基本资料</p></a>
 			<a href="<?=Url::toRoute('user/attest')?>"><p class="menu-item">身份认证</p></a>
-			<a href="<?=Url::toRoute('user/changepw')?>"><p class="menu-item">修改密码</p></a>
-		<p class="menu-title">权限管理</p>
+			<a href="<?=Url::toRoute('user/chpass')?>"><p class="menu-item">修改密码</p></a>
+		<p class="menu-title"><img src="icon/authority.png">权限管理</p>
 			<a href="<?=Url::toRoute('user/index')?>"><p class="menu-item">用户管理</p></a>
 			<a href="<?=Url::toRoute('test/index')?>"><p class="menu-item">测试</p></a>
 
@@ -70,7 +75,7 @@ use backend\models\User;
 </section>
 
 <footer>
-	<p>关于我们 联系我们 客户服务</p>
+	<p><a href="/association/frontend/web/">网站首页</a> 关于我们 联系我们 客户服务</p>
 </footer>
 
 <?php $this->endBody() ?>

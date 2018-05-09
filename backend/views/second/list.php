@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							echo '<p class="s3">' . $second->area . '</p>';
 							echo '<p class="s3">';
 							echo '<a href="' . Url::toRoute(['second/edit', 'id' => $second->id]) . '"><img src="icon/edit-o.png" /></a>';
-							echo "<a onclick=\"return(confire('确认要删除吗？')?true:false)\" href=\"" . Url::toRoute(['second/delete', 'id' => $second->id]) . '"><img src="icon/delete.png" /></a>';
+							echo "<a onclick=\"return confirm('确认要删除吗？')\" href=\"" . Url::toRoute(['second/delete', 'id' => $second->id]) . '"><img src="icon/delete.png" /></a>';
 						?>					
 					</li>
 			<?php

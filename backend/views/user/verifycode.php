@@ -20,7 +20,7 @@
 
 	<div class="form1">
 		<div class="form">
-			<div id="logintitle">廊坊二手房系统用户注册</div>
+			<div id="logintitle"><?= Yii::$app->params['sitename'] ?>用户注册</div>
 <?php
 
 	$form = ActiveForm::begin(['action' => Url::toRoute('user/get-sms'), 'id' => 'clientform']);

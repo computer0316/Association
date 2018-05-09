@@ -151,12 +151,11 @@ class User extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			//[['name', 'mobile', 'password', 'firsttime', 'updatetime', 'ip'], 'required'],
 			[['name', 'mobile', 'password', 'firsttime', 'updatetime', 'ip'], 'required'],
 			[['password', 'password1', 'password2'], 'required', 'on' => 'changepassword'],
 			[['firsttime', 'updatetime'], 'safe'],
 			[['name', 'mobile'], 'string', 'max' => 16],
-			[['password'], 'string', 'max' => 64],
+			[['password', 'company'], 'string', 'max' => 64],
 			[['ip'], 'string', 'max' => 32]
 		];
 	}
@@ -187,6 +186,7 @@ class User extends \yii\db\ActiveRecord
 			'ip' => 'IP地址',
 			'password1'	=> '新密码',
 			'password2'	=> '确认新密码',
+			'company'	=> '所属公司',
 		];
 	}
 }

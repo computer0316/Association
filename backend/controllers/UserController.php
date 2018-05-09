@@ -222,6 +222,16 @@ class UserController extends Controller
 			]);
 	}
 
+	public function actionEdit(){
+		$user = User::findOne(Yii::$app->session->get('userid'));
+		if($user->load(Yii::$app->request->post()) && $user->save()){
+			Yii::$app->session->setFlash('message', '修改信息成功');
+		}
+		return $this->render('edit', [
+			'user' => $user,
+		]);
+	}
+	
 	public function actionLogout(){
 		User::logout();
 		$this->redirect(Url::toRoute("/site/index"));
