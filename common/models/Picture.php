@@ -43,9 +43,9 @@ class Picture extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'item_id' => 'Item ID',			// ´æ·ÅÕÕÆ¬µÄÏîÄ¿µÄ ID ºÅ£¬±ÈÈç¶þÊÖ·¿ÔòÊÇ second ±íÖÐµÄ ID
-            'item_sub' => 'Item Sub',		// ´æ·ÅÕÕÆ¬ÏîÄ¿µÄ¸¨ÖúÃû³Æ£¬±ÈÈç¶þÊÖ·¿Ô´ÐÅÏ¢ÀïÃæµÄÊµ¾°ÕÕÆ¬¡¢»§ÐÍÍ¼¡¢Î»ÖÃÍ¼µÈ
-            'item_name' => 'Item Name',		// ´æ·ÅÕÕÆ¬ÏîÄ¿µÄÃû³Æ£¬±ÈÈç¶þÊÖ·¿ÊÇ£ºsecond
+            'item_id' => 'Item ID',			// å­˜æ”¾ç…§ç‰‡çš„é¡¹ç›®çš„ ID å·ï¼Œæ¯”å¦‚äºŒæ‰‹æˆ¿åˆ™æ˜¯ second è¡¨ä¸­çš„ ID
+            'item_sub' => 'Item Sub',		// å­˜æ”¾ç…§ç‰‡é¡¹ç›®çš„è¾…åŠ©åç§°ï¼Œæ¯”å¦‚äºŒæ‰‹æˆ¿æºä¿¡æ¯é‡Œé¢çš„å®žæ™¯ç…§ç‰‡ã€æˆ·åž‹å›¾ã€ä½ç½®å›¾ç­‰
+            'item_name' => 'Item Name',		// å­˜æ”¾ç…§ç‰‡é¡¹ç›®çš„åç§°ï¼Œæ¯”å¦‚äºŒæ‰‹æˆ¿æ˜¯ï¼šsecond
             'path' => 'Path',
         ];
     }
@@ -58,7 +58,7 @@ class Picture extends \yii\db\ActiveRecord
     	return $this->save();
     }
 
-    public static function hasPics($item_id, $item_sub='', $item_name){
+    public static function getPics($item_id, $item_sub='', $item_name){
     	$pics = false;
     	if($item_sub<>''){
     		$pics = self::find()->orderBy('id desc')->where(['item_name' => $item_name, 'item_sub' => $item_sub, 'item_id' => $item_id])->all();
@@ -70,9 +70,9 @@ class Picture extends \yii\db\ActiveRecord
     }
 
     public static function getPic($item_id, $item_sub='', $item_name){
-    	$pics = self::hasPics($item_id, $item_sub='', $item_name);
+    	$pics = self::getPics($item_id, $item_sub='', $item_name);
     	if($pics){
-    		return $pics[0]->path;
+    		return $pics[0];
     	}    	
     }
 

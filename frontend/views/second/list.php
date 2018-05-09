@@ -14,7 +14,7 @@ use frontend\models\BaseDecoration;
 
 $this->title = '房源列表';
 $this->params['breadcrumbs'][] = $this->title;
-echo $condition;
+
 ?>
 <style>
 	.line{
@@ -36,6 +36,9 @@ echo $condition;
 }
 .active{
 	color:red;
+}
+.normal{
+	color:#999;
 }
 .list{
 	width:84%;
@@ -154,7 +157,7 @@ echo $condition;
 					echo '<a class="active" href="' . Url::current(['d' => $key]) . '">' . $value . '</a>';
 				}
 				else{
-					echo '<a href="' . Url::current(['d' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['d' => $key]) . '">' . $value . '</a>';
 				}
 				echo '</p>';
 			}
@@ -169,7 +172,7 @@ echo $condition;
 					echo '<a class="active" href="' . Url::current(['p' => $key]) . '">' . $value . '</a>';
 				}
 				else{
-					echo '<a href="' . Url::current(['p' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['p' => $key]) . '">' . $value . '</a>';
 				}
 				echo '</p>';
 			}
@@ -184,7 +187,7 @@ echo $condition;
 					echo '<a class="active" href="' . Url::current(['a' => $key]) . '">' . $value . '</a>';
 				}
 				else{
-					echo '<a href="' . Url::current(['a' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['a' => $key]) . '">' . $value . '</a>';
 				}
 				echo '</p>';
 			}
@@ -199,7 +202,7 @@ echo $condition;
 					echo '<a class="active" href="' . Url::current(['ro' => $key]) . '">' . $value . '</a>';
 				}
 				else{
-					echo '<a href="' . Url::current(['ro' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['ro' => $key]) . '">' . $value . '</a>';
 				}
 				echo '</p>';
 			}

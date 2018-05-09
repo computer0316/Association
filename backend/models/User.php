@@ -37,11 +37,11 @@ class User extends \yii\db\ActiveRecord
 	}
 	
 	public function getPortrait(){
-		return Picture::getPic($this->id, '1', 'portrait');
+		return Picture::getPic($this->id, '1', 'portrait')->path;
 	}
 
 	public function getIdentification(){
-		return Picture::getPic($this->id, '1', 'identification');
+		return Picture::getPic($this->id, '1', 'identification')->path;
 	}
 
 	// 检查用户是否登录，如果登录返回用户对象，如果没登录返回false

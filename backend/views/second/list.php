@@ -11,6 +11,7 @@ use common\models\Picture;
 /* @var $model backend\models\Second */
 
 $this->title = '房源列表';
+$this->params['breadcrumbs'][] = '二手房';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>

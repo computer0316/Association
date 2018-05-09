@@ -80,7 +80,7 @@ class UserController extends Controller
 					$pic->create($user->id, "1", "portrait", $filepath);
 		        }
 		    }
-		    $picture = Picture::getPic($user->id, "1", "portrait");
+		    $picture = Picture::getPic($user->id, "1", "portrait")->path;
 		}
 		return $this->render('portrait',[
 			'picture' => $picture,
@@ -106,7 +106,7 @@ class UserController extends Controller
 					$pic->create($user->id, "1", "identification", $filepath);
 		        }
 		    }
-		    $picture = Picture::getPic($user->id, "1", "identification");
+		    $picture = Picture::getPic($user->id, "1", "identification")->path;
 		}
 		return $this->render('identification',[
 			'picture' => $picture,

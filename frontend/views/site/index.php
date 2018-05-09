@@ -1,6 +1,8 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Url;
+use frontend\models\BaseDecoration;
 
 $this->title = 'My Yii Application';
 ?>
@@ -122,8 +124,16 @@ $this->title = 'My Yii Application';
 	margin-left:10px;
 	margin-top:20px;
 }
+.second-ul .span1{
+	float:left;
+	width:180px;
+	margin-left:10px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
 .second-ul span{
-	margin-left:30px;
+	margin-left:20px;
 }
 	#second-img{		
 		width:748px;
@@ -330,7 +340,7 @@ $this->title = 'My Yii Application';
 		</div>
 	</div>
 </div>
-<div class="container">
+<div id="ad" class="container">
 	<img style="width:100%;margin-top:10px;" src="images/banner1.jpg" />
 	<img style="width:100%;margin-top:2px;" src="images/banner2.gif" />
 	<img style="width:100%;margin-top:2px;" src="images/banner3.gif" />
@@ -468,17 +478,18 @@ $this->title = 'My Yii Application';
 			<p class="more">更多>>></p>
 		</div>
 		<ul class="second-ul">
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
-			<li><a href="#">馨苑小区 二室二厅 保安塑胶球场</a><span>2室2厅2卫</span><span>180万</span><span>120㎡</span></li>
+			<?php
+				if($seconds){
+					foreach($seconds as $s){
+						echo '<li>'	;
+						echo '<span class="span1"><a href="' . Url::toRoute(['second/view', 'id' => $s->id]) . '">' . $s->community . ' - ' . BaseDecoration::findOne($s->decoration)->name . '</a></span>';
+						echo '<span>' . $s->room . '室' . $s->hall . '厅' . $s->toilet . '卫</span>';
+						echo '<span>' . $s->price . '万</span>';
+						echo '<span>' . $s->area . '㎡</span>';
+						echo '</li>';
+					}
+				}
+			?>
 		</ul>
 	</div>
 	<div id="second-img">

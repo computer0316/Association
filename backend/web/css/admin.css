@@ -33,7 +33,8 @@ a:hover{
 	font-size:12px;
 }
 .breadcrumb li:after{
-	content:" >";
+	content:">";
+	margin-left:10px;
 }
 li.active:after{
 	content:"";

@@ -32,11 +32,9 @@
 		color:#888;
 	}
 	input[type=file],button{
+		float:left;
 		width:160px;
 		height:35px;
-	}
-	button{		
-		float:left;
 	}
 </style>
 <img id="portrait-img" src="<?= $picture ?>" />
