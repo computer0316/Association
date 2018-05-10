@@ -8,12 +8,13 @@ use Yii;
  * This is the model class for table "second".
  *
  * @property integer $id
+ * @property integer $userid
  * @property string $title
  * @property integer $inner_id
  * @property integer $city_id
  * @property string $community
  * @property string $position
- * @property integer $type
+ * @property integer $housetype
  * @property integer $constructure
  * @property string $building_id
  * @property string $unit_id
@@ -24,7 +25,7 @@ use Yii;
  * @property integer $room
  * @property integer $hall
  * @property integer $toilet
- * @property string $direction
+ * @property integer $direction
  * @property integer $floor
  * @property integer $total_floor
  * @property integer $decoration
@@ -56,9 +57,8 @@ class Second extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-			[['title', 'community',  'room', 'hall', 'toilet', 'floor', 'total_floor', 'area', 'birth', 'price', 'only_house', 'licence_year'], 'required'],
-			[['housetype', 'constructure', 'decoration', 'direction','can_own', 'own_type'], 'integer', 'message' => '{attribute}必须选择'],
-            [['inner_id', 'city_id', 'room', 'hall', 'toilet', 'floor', 'total_floor', 'birth', 'licence_year', 'only_house', 'visit'], 'integer'],
+            [['userid', 'title', 'city_id', 'community', 'visit', 'updatetime'], 'required'],
+            [['userid', 'inner_id', 'city_id', 'housetype', 'constructure', 'room', 'hall', 'toilet', 'direction', 'floor', 'total_floor', 'decoration', 'birth', 'can_own', 'own_type', 'licence_year', 'only_house', 'visit'], 'integer'],
             [['price', 'area', 'inner_area', 'property_fee'], 'number'],
             [['updatetime'], 'safe'],
             [['title', 'community', 'position'], 'string', 'max' => 128],
@@ -73,7 +73,8 @@ class Second extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-             'id' => 'ID',
+            'id' => 'ID',
+            'userid' => '用户id',
             'title' => '标题',
             'inner_id' => '公司内部编号',
             'city_id' => '城市编号',

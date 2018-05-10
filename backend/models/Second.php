@@ -56,8 +56,8 @@ class Second extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-			[['title', 'community',  'room', 'hall', 'toilet', 'floor', 'total_floor', 'area', 'birth', 'price', 'only_house', 'licence_year'], 'required'],
-			[['housetype', 'constructure', 'decoration', 'direction','can_own', 'own_type'], 'integer', 'message' => '{attribute}必须选择'],
+			[['title', 'userid', 'community',  'room', 'hall', 'toilet', 'floor', 'total_floor', 'area', 'birth', 'price', 'only_house', 'licence_year'], 'required'],
+			[['userid', 'housetype', 'constructure', 'decoration', 'direction','can_own', 'own_type'], 'integer', 'message' => '{attribute}必须选择'],
             [['inner_id', 'city_id', 'room', 'hall', 'toilet', 'floor', 'total_floor', 'birth', 'licence_year', 'only_house', 'visit'], 'integer'],
             [['price', 'area', 'inner_area', 'property_fee'], 'number'],
             [['updatetime'], 'safe'],

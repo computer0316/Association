@@ -12,7 +12,7 @@ $(function(){
         var _this=$(this);
         _this.addClass('active').siblings('li').removeClass('active');
         var int=_this.index();
-        $('.activeimg').animate({left:int*-585},"slow");
+        $('.activeimg').animate({left:int*-585},"fast");
     });
     var list=$('.bot-img ul li').length;
     $('.activeimg').css({
@@ -31,12 +31,19 @@ var index=0;
 function next(list){
     if(index<list-1){
         index++;
-        $('.activeimg').animate({left:index*-585},"slow");
+        $('.activeimg').animate({left:index*-585},"fast");
         $('.bot-img ul li').eq(index).addClass('active').siblings('li').removeClass('active')
     }else{
         index=0;
-        $('.activeimg').animate({left:index*-585},"slow");
+        $('.activeimg').animate({left:index*-585},"fast");
         $('.bot-img ul li').eq(index).addClass('active').siblings('li').removeClass('active')
+        $('.bot-img ul').animate({left:index*-90},"fast");
+    }
+    if(index>4){
+    	$('.bot-img ul').animate({left:(index-4)*-100},"fast");
+    }
+    else{
+    	$('.bot-img ul').animate({left:0},"fast");
     }
 }
 //        иор╩уе
@@ -44,12 +51,19 @@ function prev(list){
     index--;
     if(index<0){
         index=list-1;
-        $('.activeimg').animate({left:index*-585},"slow");
+        $('.activeimg').animate({left:index*-585},"fast");
         $('.bot-img ul li').eq(index).addClass('active').siblings('li').removeClass('active')
     }else{
-        $('.activeimg').animate({left:index*-585},"slow");
+        $('.activeimg').animate({left:index*-585},"fast");
         $('.bot-img ul li').eq(index).addClass('active').siblings('li').removeClass('active')
     }
+    if(index>4){
+    	$('.bot-img ul').animate({left:(index-4)*-100},"fast");
+    }
+    else{
+    	$('.bot-img ul').animate({left:0},"fast");
+    }
+
 }
 
 

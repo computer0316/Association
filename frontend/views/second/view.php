@@ -8,6 +8,8 @@ use frontend\models\BaseDecoration;
 use frontend\models\BaseHousetype;
 use frontend\models\BaseDirection;
 use frontend\models\BaseConstructure;
+use frontend\models\User;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Second */
 
@@ -22,6 +24,35 @@ $this->params['breadcrumbs'][] = $this->title;
 	width:480px;
 	height:360px;
 }
+.content-right{
+	width:180px;
+}
+#broker{
+	width:100%;
+	height:150px;
+	margin-top:40px;
+}
+#broker .username{
+	margin:30px 20px;
+	font-size:20px;
+	clear:right;
+	width:100%;
+}
+#broker .company{
+	margin:0 20px;
+}
+#mobile{
+	width:100%;
+	height:88px;
+	line-height:88px;
+	background:orange;
+	text-align:center;
+	font-size:36px;
+}
+#portrait{
+	width:90px;
+	height:120px;
+}
 </style>
 <div class="container">
 	<div id="title-div" class="">
@@ -33,33 +64,33 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="all">
 		<div class="top-img">
 			<div class="activeimg">
-			<img src="images/1.jpg" />
-			<img src="images/2.jpg" />
-			<img src="images/3.jpg" />
-			<img src="images/4.jpg" />
-			<img src="images/5.jpg" />
-			<img src="images/1.jpg" />
-			<img src="images/2.jpg" />
-			<img src="images/3.jpg" />
-			<img src="images/4.jpg" />
-			<img src="images/5.jpg" />
+				<img src="images/1.jpg" />
+				<img src="images/2.jpg" />
+				<img src="images/3.jpg" />
+				<img src="images/4.jpg" />
+				<img src="images/5.jpg" />
+				<img src="images/1.jpg" />
+				<img src="images/2.jpg" />
+				<img src="images/3.jpg" />
+				<img src="images/4.jpg" />
+				<img src="images/5.jpg" />
 			</div>
-			<div class="left"><img src="images/left.png"> </div>
-			<div class="right"><img src="images/right.png"></div>
+			<div class="left"><img class="img-icon" src="images/left.png"> </div>
+			<div class="right"><img class="img-icon" src="images/right.png"></div>
 		</div>
 		<!-- 存放缩略图的容器-->
 		<div class="bot-img">
 			<ul>
-				<li><img src="images/1.jpg" /></li>
-				<li><img src="images/2.jpg" /></li>
-				<li><img src="images/3.jpg" /></li>
-				<li><img src="images/4.jpg" /></li>
-				<li><img src="images/5.jpg" /></li>
-				<li><img src="images/1.jpg" /></li>
-				<li><img src="images/2.jpg" /></li>
-				<li><img src="images/3.jpg" /></li>
-				<li><img src="images/4.jpg" /></li>
-				<li><img src="images/5.jpg" /></li>
+				<li><img  src="images/1.jpg" /></li>
+				<li><img  src="images/2.jpg" /></li>
+				<li><img  src="images/3.jpg" /></li>
+				<li><img  src="images/4.jpg" /></li>
+				<li><img  src="images/5.jpg" /></li>
+				<li><img  src="images/1.jpg" /></li>
+				<li><img  src="images/2.jpg" /></li>
+				<li><img  src="images/3.jpg" /></li>
+				<li><img  src="images/4.jpg" /></li>
+				<li><img  src="images/5.jpg" /></li>
 			</ul>
 		</div>
 	</div>
@@ -82,6 +113,18 @@ $this->params['breadcrumbs'][] = $this->title;
 			<p>小区：<?= $model->community ?> </p>
 			<p class="single">位置：<?= $model->position ?></p>
 		</div>
+		<div id="broker">
+		<?php
+			$user = User::findOne($model->userid);
+			echo '<img id="portrait" src="' . $user->getPortrait() . '" />';
+			echo '<div>';
+				echo '<p class="username">' . $user->name . '</p>';
+				echo '<p class="company">所属公司：' . '中介公司' . '</p>';
+			echo '</div>';
+
+		?>
+		</div>
+		<?php echo '<p id="mobile">' . $user->mobile . '</p>'; ?>
 	</div>
 </div>
 <div class="container">
