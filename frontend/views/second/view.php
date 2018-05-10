@@ -64,33 +64,28 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="all">
 		<div class="top-img">
 			<div class="activeimg">
-				<img src="images/1.jpg" />
-				<img src="images/2.jpg" />
-				<img src="images/3.jpg" />
-				<img src="images/4.jpg" />
-				<img src="images/5.jpg" />
-				<img src="images/1.jpg" />
-				<img src="images/2.jpg" />
-				<img src="images/3.jpg" />
-				<img src="images/4.jpg" />
-				<img src="images/5.jpg" />
+				<?php
+					$pics = Picture::getPics($model->id, '', 'second');
+					if($pics){
+						foreach($pics as $p){
+							echo '<img src="' . $p->path . '" />';
+						}
+					}
+				?>
 			</div>
-			<div class="left"><img class="img-icon" src="images/left.png"> </div>
-			<div class="right"><img class="img-icon" src="images/right.png"></div>
+			<div class="left"><img class="img-icon" src="web/images/left.png"> </div>
+			<div class="right"><img class="img-icon" src="web/images/right.png"></div>
 		</div>
 		<!-- 存放缩略图的容器-->
 		<div class="bot-img">
 			<ul>
-				<li><img  src="images/1.jpg" /></li>
-				<li><img  src="images/2.jpg" /></li>
-				<li><img  src="images/3.jpg" /></li>
-				<li><img  src="images/4.jpg" /></li>
-				<li><img  src="images/5.jpg" /></li>
-				<li><img  src="images/1.jpg" /></li>
-				<li><img  src="images/2.jpg" /></li>
-				<li><img  src="images/3.jpg" /></li>
-				<li><img  src="images/4.jpg" /></li>
-				<li><img  src="images/5.jpg" /></li>
+				<?php
+					if($pics){
+						foreach($pics as $p){
+							echo '<li><img src="' . $p->path . '" /></li>';
+						}
+					}
+				?>
 			</ul>
 		</div>
 	</div>
@@ -170,6 +165,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		?>
 	</div>
 	<div class="content-right">
-		2222222
+
 	</div>
 </div>

@@ -20,10 +20,10 @@ use common\widgets\Alert;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="css/carousel.css">
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/carousel.js"></script>
+    <link rel="stylesheet" href="web/css/site.css">
+    <link rel="stylesheet" href="web/css/carousel.css">
+    <script src="web/js/jquery-1.9.1.min.js"></script>
+    <script src="web/js/carousel.js"></script>
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -35,7 +35,7 @@ use common\widgets\Alert;
 <?php $this->beginBody() ?>
 <div class="login">
 	<div class="container">
-		<p>您好，欢迎来到廊坊二手房中心 [<a href="/association/backend/web/?r=user/login">登录</a>] 
+		<p>您好，欢迎来到廊坊二手房中心 [<a href="/association/backend/web/?r=user/login">登录</a>]
 			[<a href="/association/backend/web/?r=user/register">免费注册</a>]</p>
 		<p class="right-p">地图找房</p>
 	</div>
@@ -43,7 +43,7 @@ use common\widgets\Alert;
 <div class="container header">
 	<img src="images/logo.jpg" />
 	<div id="search">
-		
+
 	</div>
 </div>
 <div id="nav">

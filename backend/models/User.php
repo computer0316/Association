@@ -35,13 +35,25 @@ class User extends \yii\db\ActiveRecord
 			return false;
 		}
 	}
-	
+
 	public function getPortrait(){
-		return Picture::getPic($this->id, '1', 'portrait')->path;
+		$pic = Picture::getPic($this->id, '1', 'portrait');
+		if($pic){
+			return $pic->path;
+		}
+		else{
+			return '';
+		}
 	}
 
 	public function getIdentification(){
-		return Picture::getPic($this->id, '1', 'identification')->path;
+		$pic = Picture::getPic($this->id, '1', 'identification');
+		if($pic){
+			return $pic->path;
+		}
+		else{
+			return '';
+		}
 	}
 
 	// 检查用户是否登录，如果登录返回用户对象，如果没登录返回false
@@ -121,7 +133,7 @@ class User extends \yii\db\ActiveRecord
 			return false;
 		}
 	}
-	
+
 	// 检查手机号是否注册
 	public static function checkMobile($mobile){
 		return User::find()->where(['mobile' => $mobile])->one();
@@ -161,8 +173,8 @@ class User extends \yii\db\ActiveRecord
 	}
 
 
-    
-        
+
+
 
     public function scenarios()
     {

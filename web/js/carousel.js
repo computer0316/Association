@@ -37,7 +37,6 @@ function next(list){
         index=0;
         $('.activeimg').animate({left:index*-585},"fast");
         $('.bot-img ul li').eq(index).addClass('active').siblings('li').removeClass('active')
-        $('.bot-img ul').animate({left:index*-90},"fast");
     }
     if(index>4){
     	$('.bot-img ul').animate({left:(index-4)*-100},"fast");

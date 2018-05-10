@@ -22,8 +22,8 @@ use backend\models\User;
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="jquery-3.3.1.min.js"></script>
-    <link href="./css/admin.css" rel="stylesheet">
+	<script src="web/js/jquery-3.3.1.min.js"></script>
+    <link href="web/css/admin.css" rel="stylesheet">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -46,22 +46,22 @@ use backend\models\User;
 </header>
 <section>
 	<div id="left">
-		<p class="menu-title"><img src="icon/house.png">二手房</p>
+		<p class="menu-title"><img src="web/icon/house.png">二手房</p>
 			<a href="<?=Url::toRoute('second/create')?>"><p class="menu-item">房源添加</p></a>
-			<a href="<?=Url::toRoute('second/list')?>"><p class="menu-item">房源管理</p></a>		
-		<p class="menu-title"><img src="icon/house.png">新房</p>
+			<a href="<?=Url::toRoute('second/list')?>"><p class="menu-item">房源管理</p></a>
+		<p class="menu-title"><img src="web/icon/house.png">新房</p>
 			<a href="#"><p class="menu-item">小区添加</p></a>
 			<a href="#"><p class="menu-item">小区管理</p></a>
 			<a href="#"><p class="menu-item">配套管理</p></a>
-		<p class="menu-title"><img src="icon/article.png">文章管理</p>
+		<p class="menu-title"><img src="web/icon/article.png">文章管理</p>
 			<a href="#"><p class="menu-item">文章添加</p></a>
 			<a href="#"><p class="menu-item">文章管理</p></a>
 			<a href="#"><p class="menu-item">分类管理</p></a>
-		<p class="menu-title"><img src="icon/account.png">个人中心</p>
+		<p class="menu-title"><img src="web/icon/account.png">个人中心</p>
 			<a href="<?=Url::toRoute('user/edit')?>"><p class="menu-item">基本资料</p></a>
 			<a href="<?=Url::toRoute('user/attest')?>"><p class="menu-item">身份认证</p></a>
 			<a href="<?=Url::toRoute('user/chpass')?>"><p class="menu-item">修改密码</p></a>
-		<p class="menu-title"><img src="icon/authority.png">权限管理</p>
+		<p class="menu-title"><img src="web/icon/authority.png">权限管理</p>
 			<a href="<?=Url::toRoute('user/index')?>"><p class="menu-item">用户管理</p></a>
 			<a href="<?=Url::toRoute('test/index')?>"><p class="menu-item">测试</p></a>
 

@@ -13,6 +13,10 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+	    'assetManager' => [
+		    'basePath' => '@webroot/web/assets',
+		    'baseUrl' => '@web/web/assets'
+		],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],

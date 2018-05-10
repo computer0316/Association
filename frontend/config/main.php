@@ -12,6 +12,10 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+	    'assetManager' => [
+		    'basePath' => '@webroot/frontend/web/assets',
+		    'baseUrl' => '@web/frontend/web/assets'
+		],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],

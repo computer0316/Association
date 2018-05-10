@@ -28,7 +28,13 @@ class User extends \yii\db\ActiveRecord
         return 'user';
     }
 	public function getPortrait(){
-		return Picture::getPic($this->id, '1', 'portrait')->path;
+		$pic = Picture::getPic($this->id, '1', 'portrait');
+		if($pic){
+			return $pic->path;
+		}
+		else{
+			return 'web/images/portrait.jpg';
+		}
 	}
 
     /**

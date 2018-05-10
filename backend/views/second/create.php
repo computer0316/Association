@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		margin-bottom:20px;
 		color:#bbb;
 	}
-	#form-left,#form-right{		
+	#form-left,#form-right{
 		float:left;
 		width:700px;
 	}
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		margin-top:24px;
 	}
 	.line p{
-		line-height:30px;		
+		line-height:30px;
 	}
 	input,select{
 		height:30px;
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		float:left;
 		width:70px;
 		line-height:30px;
-		
+
 		margin-right:10px;
 	}
 	.form-group{
@@ -86,7 +86,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
 	<div id="community-ajax"></div>
 	<div class="create">
-
     <?php $form = ActiveForm::begin(); ?>
     	<div id="form-left">
 			<div class="line">

@@ -36,7 +36,7 @@ use app\assets\AppAsset;
 </div>
 
 <footer class="footer">
-        <p class="pull-left">廊坊市住房保障和房产管理局 2017</p>
+        <p class="pull-left"><?= Yii::$app->params['sitename'] ?></p>
 </footer>
 
 <?php $this->endBody() ?>
