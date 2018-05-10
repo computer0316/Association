@@ -5,7 +5,7 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'language' => 'zh-CN',
-    'vendorPath' =>  '../vendor',
+    'vendorPath' =>  '../../vendor',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

@@ -26,13 +26,13 @@
 </style>
 <a href="<?= Url::toRoute('user/portrait') ?>">
 	<div class="attest-block">
-		<img src="icon/account.png" />
+		<img src="web/icon/account.png" />
 		<p>上传头像（必选）</p>
 	</div>
 </a>
 <a href="<?= Url::toRoute('user/identification') ?>">
 	<div class="attest-block">
-		<img src="icon/idcard.png" />
+		<img src="web/icon/idcard.png" />
 		<p>上传身份证（必选）</p>
 	</div>
 </a>

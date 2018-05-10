@@ -91,8 +91,8 @@ $this->params['breadcrumbs'][] = $this->title;
 							echo '<p class="s2">' . $second->price . '元 &nbsp;' . floor($second->price * 10000/$second->area) . '元/㎡' . '</p>';
 							echo '<p class="s3">' . $second->area . '</p>';
 							echo '<p class="s3">';
-							echo '<a href="' . Url::toRoute(['second/edit', 'id' => $second->id]) . '"><img src="icon/edit-o.png" /></a>';
-							echo "<a onclick=\"return confirm('确认要删除吗？')\" href=\"" . Url::toRoute(['second/delete', 'id' => $second->id]) . '"><img src="icon/delete.png" /></a>';
+							echo '<a href="' . Url::toRoute(['second/edit', 'id' => $second->id]) . '"><img src="web/icon/edit-o.png" /></a>';
+							echo "<a onclick=\"return confirm('确认要删除吗？')\" href=\"" . Url::toRoute(['second/delete', 'id' => $second->id]) . '"><img src="web/icon/delete.png" /></a>';
 						?>					
 					</li>
 			<?php

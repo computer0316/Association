@@ -22,7 +22,7 @@ use backend\models\User;
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="web/js/jquery-3.3.1.min.js"></script>
+		<script src="web/js/jquery-3.3.1.min.js"></script>
     <link href="web/css/admin.css" rel="stylesheet">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -75,7 +75,7 @@ use backend\models\User;
 </section>
 
 <footer>
-	<p><a href="/association/frontend/web/">网站首页</a> 关于我们 联系我们 客户服务</p>
+	<p><a href="/association/">网站首页</a> 关于我们 联系我们 客户服务</p>
 </footer>
 
 <?php $this->endBody() ?>

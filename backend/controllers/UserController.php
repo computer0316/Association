@@ -32,15 +32,15 @@ class UserController extends Controller
 	public function behaviors(){
 		return [
 			'attestFilter' => [
-				'class'			=> AttestFilter::className(),				
+				'class'			=> AttestFilter::className(),
 				'except'		=> ['register', 'login', 'captcha','get-sms', 'captcha','test'],
 				'denyCallback'	=> function($rule, $action){
 					return $this->redirect(Url::toRoute('user/login'));
 				}
-			],		
+			],
 		];
 	}
-	
+
     public function actions(){
         return [
             'error' => [
@@ -48,7 +48,7 @@ class UserController extends Controller
             ],
         ];
     }
-    
+
 
 	// 身份认证
 	public function actionAttest(){
@@ -57,17 +57,17 @@ class UserController extends Controller
 			'user' => $user,
 		]);
 	}
-	
+
 	public function actionChangepw(){
-		
+
 	}
-	
+
 	// 上传头像
 	public function actionPortrait(){
 		$user = User::findOne(Yii::$app->session->get('userid'));
 		$upload = new UploadForm();
-		
-		$picture = 'images/portrait.jpg';
+
+		$picture = 'web/images/portrait.jpg';
 		if($user->getPortrait()){
 			$picture = $user->getPortrait();
 		}
@@ -92,8 +92,8 @@ class UserController extends Controller
 	public function actionIdentification(){
 		$user = User::findOne(Yii::$app->session->get('userid'));
 		$upload = new UploadForm();
-		
-		$picture = 'images/identification.jpg';
+
+		$picture = 'web/images/identification.jpg';
 		if($user->getIdentification()){
 			$picture = $user->getIdentification();
 		}
@@ -113,12 +113,12 @@ class UserController extends Controller
 			'upload' => $upload,
 		]);
 	}
-	
-	
+
+
 	public function actionTest(){
 		echo substr(rand(1000,9999), 0);
 	}
-	
+
 	/*
 	 * 用户列表
 	 */
@@ -146,7 +146,7 @@ class UserController extends Controller
 				Yii::$app->session->setFlash('message', '验证码不正确');
 				return $this->render('register', [
 					'loginForm' => $loginForm,
-				]);				
+				]);
 			}
 			if(User::checkMobile($loginForm->mobile)){
 				Yii::$app->session->setFlash('message', '手机号已被注册');
@@ -186,7 +186,7 @@ class UserController extends Controller
 			Yii::$app->session->setFlash('message',"user读取失败，请联系管理员。");
 		}
 	}
-	
+
 	public function actionLogin(){
 		$this->layout = 'login';
 		$loginForm = new LoginForm(['scenario' => 'login']);
@@ -203,7 +203,7 @@ class UserController extends Controller
 				'loginForm' => $loginForm,
 		]);
 	}
-	
+
 	// 修改密码
 	public function actionChpass(){
 		try{
@@ -231,7 +231,7 @@ class UserController extends Controller
 			'user' => $user,
 		]);
 	}
-	
+
 	public function actionLogout(){
 		User::logout();
 		$this->redirect(Url::toRoute("/site/index"));
