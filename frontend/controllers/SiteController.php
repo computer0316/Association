@@ -68,10 +68,6 @@ class SiteController extends Controller
         ];
     }
 
-	public function actionTest(){
-		echo '<meta charset="utf-8">';
-		var_dump(Sms::send("13931657890", "廊坊二手房", "233218"));
-	}
 
     /**
      * Displays homepage.
@@ -81,10 +77,12 @@ class SiteController extends Controller
     public function actionIndex()
     {
     	$this->layout = 'view';
-    	$seconds = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
+    	$second_text = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
+
     	
     	return $this->render('index', [
-    		'seconds'	=> $seconds,
+    		'second_text'	=> $second_text,
+
     	]);
     }
 

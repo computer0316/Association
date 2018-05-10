@@ -15,7 +15,13 @@ $this->title = '房源编号：'. $model->id;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
-
+.bigpic{
+	float:left;
+	margin-top:20px;
+	margin-right:20px;
+	width:480px;
+	height:360px;
+}
 </style>
 <div class="container">
 	<div id="title-div" class="">
@@ -110,6 +116,15 @@ $this->params['breadcrumbs'][] = $this->title;
 		<p class="spciality">
 			<?= $model->service ?>
 		</p>
+		<p class="spciality-title">户型</p>
+		<?php
+			$pictures = Picture::getPics($model->id, '', 'second');
+			if($pictures){
+				foreach($pictures as $p){
+					echo '<img class="bigpic" src="' . $p->path . '" />';
+				}
+			}
+		?>
 	</div>
 	<div class="content-right">
 		2222222

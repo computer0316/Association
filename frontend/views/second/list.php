@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 }
 .list img{
 	width:146px;
+	height:110px;
 }
 .list-first-line{
 	width:700px;
@@ -106,49 +107,49 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 <?php
 	$district = [
-		'0' => '不限', 
-		'131003' => '广阳', 
-		'131002' => '安次', 
+		'0' => '不限',
+		'131003' => '广阳',
+		'131002' => '安次',
 		'131001' => '开发区'
 	];
 	$price = [
 		'0'	=> '不限',
-		'1' => '30万以下', 
-		'2' => '30-40万', 
-		'3' => '40-50万', 
-		'4' => '50-60万', 
-		'5' => '60-80万', 
-		'6' => '80-100万', 
-		'7' => '100-120万', 
-		'8' => '120-160万', 
-		'9' => '160-200万', 
+		'1' => '30万以下',
+		'2' => '30-40万',
+		'3' => '40-50万',
+		'4' => '50-60万',
+		'5' => '60-80万',
+		'6' => '80-100万',
+		'7' => '100-120万',
+		'8' => '120-160万',
+		'9' => '160-200万',
 		'10' => '200万以上'
 	] ;
 	$area = [
-		'0' => '不限', 
-		'1' => '50㎡以下', 
-		'2' => '50-70㎡', 
-		'3' => '70-90㎡', 
-		'4' => '90-110㎡', 
-		'5' => '110-130㎡', 
-		'6' => '130-150㎡', 
-		'7' => '150-200㎡', 
-		'8' => '200-300㎡', 
-		'9' => '300-500㎡', 
+		'0' => '不限',
+		'1' => '50㎡以下',
+		'2' => '50-70㎡',
+		'3' => '70-90㎡',
+		'4' => '90-110㎡',
+		'5' => '110-130㎡',
+		'6' => '130-150㎡',
+		'7' => '150-200㎡',
+		'8' => '200-300㎡',
+		'9' => '300-500㎡',
 		'10' => '500㎡以上'
 	];
 	$room = [
-		'0' => '不限', 
-		'1' => '一室', 
-		'2' => '两室', 
-		'3' => '三室', 
-		'4' => '四室', 
+		'0' => '不限',
+		'1' => '一室',
+		'2' => '两室',
+		'3' => '三室',
+		'4' => '四室',
 		'5' => '四室以上'
 	];
 ?>
 <div class="container">
 	<div class="line">
-		
+
 		<p class="label">区域：</p>
 		<?php
 			foreach($district as $key => $value){
@@ -221,7 +222,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						<p class="perprice"><?= floor(($second->price * 10000) / $second->area) ?>元/㎡</p>
 					</div>
 
-					<img src="<?= smallPic(1) ?>" />
+					<img src="<?= smallPic($second->id) ?>" />
 					<div class="list-first-line">
 						<?php echo '<a href="?r=second/view&id=' . $second->id . '"><p class="list-title">' . $second->community . $second->birth . '年' . $second->decoration . '房' . $second->price . '万' . $second->area . '平米</p></a>'; ?>
 					</div>
@@ -248,6 +249,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 	function smallPic($id){
-		return Html::encode("uploads/1/2018/04/13-48-12-00.jpg");
+		return common\models\Picture::getPic($id, '', 'second')->path;
 	}
 ?>

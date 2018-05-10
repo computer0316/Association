@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 use frontend\models\BaseDecoration;
+use common\models\Picture;
 
 $this->title = 'My Yii Application';
 ?>
@@ -15,7 +16,7 @@ $this->title = 'My Yii Application';
 }
 .d1four{
 	width:25%;
-	margin-top:20px;	
+	margin-top:20px;
 }
 .d1title{
 	width:100%;
@@ -28,7 +29,7 @@ $this->title = 'My Yii Application';
 }
 .title-div{
 	margin-top:20px;
-	width:100%;	
+	width:100%;
 }
 .title-div .p1{
 	font-size:24px;
@@ -37,13 +38,13 @@ $this->title = 'My Yii Application';
 	float:right;
 	margin-top:12px;
 }
-.item-div .p2{	
+.item-div .p2{
 	margin-left:10px;
 	color:#999;
 }
 #article-left{
 	margin-top:10px;
-	width:200px;	
+	width:200px;
 }
 #article-left div,#article-right div{
 	text-align:center;
@@ -64,7 +65,7 @@ $this->title = 'My Yii Application';
 }
 #first{
 	font-size:24px;
-	line-height:64px;	
+	line-height:64px;
 	font-weight:bold;
 	text-align:center;
 	width:100%;
@@ -84,7 +85,7 @@ $this->title = 'My Yii Application';
 }
 #article-right{
 	margin-top:10px;
-	width:280px;	
+	width:280px;
 	margin-left:10px;
 }
 #article-right li{
@@ -110,7 +111,7 @@ $this->title = 'My Yii Application';
 	margin-left:10px;
 	margin-top:8px;
 }
- 
+
 .more{
 	float:right;
 	color:#999;
@@ -118,7 +119,7 @@ $this->title = 'My Yii Application';
 	margin-right:10px;
 }
 .second-ul{
-	
+
 }
 .second-ul li{
 	margin-left:10px;
@@ -135,22 +136,25 @@ $this->title = 'My Yii Application';
 .second-ul span{
 	margin-left:20px;
 }
-	#second-img{		
+	#second-img{
 		width:748px;
 		height:300px;
 		margin-top:10px;
 		margin-left:10px;
-		
+
 	}
 	.img-list{
 		position:relative;
 		width:230px;
+		height:173px;
 		margin-left:17px;
 		text-align:center;
 		margin-bottom:45px;
 	}
-	.img-list img{		
-		width:100%;
+	.img-list img{
+		width:230px;
+		height:173px;
+
 	}
 	.community-name{
 		position:absolute;
@@ -181,7 +185,7 @@ $this->title = 'My Yii Application';
 	}
 .nh-block{
 	position:relative;
-	width:283px;	
+	width:283px;
 	margin-right:20px;
 	margin-bottom:50px;
 }
@@ -230,7 +234,7 @@ $this->title = 'My Yii Application';
 }
 #nh-right .nhll{
 	margin-left:10px;
-	float:left;	
+	float:left;
 }
 #nh-right .nhlr{
 	float:right;
@@ -292,15 +296,15 @@ $this->title = 'My Yii Application';
 	</div>
 	<div id="article-left">
 		<div>
-			<img src="images/1.jpg" />		
+			<img src="images/1.jpg" />
 			<p>这里是图片描述</p>
 		</div>
 		<div>
-			<img src="images/2.jpg" />		
+			<img src="images/2.jpg" />
 			<p>这里是图片描述</p>
 		</div>
 	</div>
-	
+
 	<div id="article-middle">
 		<p id="first">这里是头条这里是头条这里是头条</p>
 		<ul>
@@ -324,10 +328,10 @@ $this->title = 'My Yii Application';
 			<li class="other">绿城玉兰花园：星空墅 瞰山观星悦生活</li>
 		</ul>
 	</div>
-	
+
 	<div id="article-right">
 		<div>
-			<img src="images/3.jpg" />		
+			<img src="images/3.jpg" />
 			<ul>
 				<li>君悦府：以品质 敬生活!致谢 一城厚爱!</li>
 				<li>枣庄碧桂园翡翠蓝山：小小赛车手火热进行中</li>
@@ -354,10 +358,10 @@ $this->title = 'My Yii Application';
 			<span class="p2">房产资讯</span><span class="p2">|</span>
 			<span class="p2">测试中心</span>
 		</div>
-	</div>	
+	</div>
 	<div id="nh-left">
-		<div class="nh-block">			
-			<img src="images/new/6.jpg" />			
+		<div class="nh-block">
+			<img src="images/new/6.jpg" />
 			<div class="nh-name-box"></div>
 			<p class="nh-name">这里是图片</p>
 			<div class="nh-line">
@@ -370,8 +374,8 @@ $this->title = 'My Yii Application';
 				<p class="nh-item">高铁站</p>
 			</div>
 		</div>
-		<div class="nh-block">			
-			<img src="images/new/9.jpg" />			
+		<div class="nh-block">
+			<img src="images/new/9.jpg" />
 			<div class="nh-name-box"></div>
 			<p class="nh-name">这里是图片</p>
 			<div class="nh-line">
@@ -384,8 +388,8 @@ $this->title = 'My Yii Application';
 				<p class="nh-item">高铁站</p>
 			</div>
 		</div>
-		<div class="nh-block">			
-			<img src="images/new/4.jpg" />			
+		<div class="nh-block">
+			<img src="images/new/4.jpg" />
 			<div class="nh-name-box"></div>
 			<p class="nh-name">这里是图片</p>
 			<div class="nh-line">
@@ -398,8 +402,8 @@ $this->title = 'My Yii Application';
 				<p class="nh-item">高铁站</p>
 			</div>
 		</div>
-		<div class="nh-block">			
-			<img src="images/new/3.jpg" />			
+		<div class="nh-block">
+			<img src="images/new/3.jpg" />
 			<div class="nh-name-box"></div>
 			<p class="nh-name">这里是图片</p>
 			<div class="nh-line">
@@ -412,8 +416,8 @@ $this->title = 'My Yii Application';
 				<p class="nh-item">高铁站</p>
 			</div>
 		</div>
-		<div class="nh-block">			
-			<img src="images/new/2.jpg" />			
+		<div class="nh-block">
+			<img src="images/new/2.jpg" />
 			<div class="nh-name-box"></div>
 			<p class="nh-name">这里是图片</p>
 			<div class="nh-line">
@@ -426,8 +430,8 @@ $this->title = 'My Yii Application';
 				<p class="nh-item">高铁站</p>
 			</div>
 		</div>
-		<div class="nh-block">			
-			<img src="images/new/1.jpg" />			
+		<div class="nh-block">
+			<img src="images/new/1.jpg" />
 			<div class="nh-name-box"></div>
 			<p class="nh-name">这里是图片</p>
 			<div class="nh-line">
@@ -479,8 +483,8 @@ $this->title = 'My Yii Application';
 		</div>
 		<ul class="second-ul">
 			<?php
-				if($seconds){
-					foreach($seconds as $s){
+				if($second_text){
+					foreach($second_text as $s){
 						echo '<li>'	;
 						echo '<span class="span1"><a href="' . Url::toRoute(['second/view', 'id' => $s->id]) . '">' . $s->community . ' - ' . BaseDecoration::findOne($s->decoration)->name . '</a></span>';
 						echo '<span>' . $s->room . '室' . $s->hall . '厅' . $s->toilet . '卫</span>';
@@ -493,60 +497,26 @@ $this->title = 'My Yii Application';
 		</ul>
 	</div>
 	<div id="second-img">
-		<div class="img-list">			
-			<img src="images/5.jpg" />			
-			<p class="community-name">这里是图片</p>
-			<div class="line">
-				<p class="price">320万</p>
-				<p>（9800元/㎡）</p>
-				<p class="roomtype">3室2厅2卫</p>
-			</div>
-		</div>		
-		<div class="img-list">			
-			<img src="images/6.jpg" />			
-			<p class="community-name">这里是图片</p>
-			<div class="line">
-				<p class="price">320万</p>
-				<p>（9800元/㎡）</p>
-				<p class="roomtype">3室2厅2卫</p>
-			</div>
-		</div>		
-		<div class="img-list">			
-			<img src="images/7.jpg" />			
-			<p class="community-name">这里是图片</p>
-			<div class="line">
-				<p class="price">320万</p>
-				<p>（9800元/㎡）</p>
-				<p class="roomtype">3室2厅2卫</p>
-			</div>
-		</div>		
-		<div class="img-list">			
-			<img src="images/8.jpg" />			
-			<p class="community-name">这里是图片</p>
-			<div class="line">
-				<p class="price">320万</p>
-				<p>（9800元/㎡）</p>
-				<p class="roomtype">3室2厅2卫</p>
-			</div>
-		</div>		
-		<div class="img-list">			
-			<img src="images/9.jpg" />			
-			<p class="community-name">这里是图片</p>
-			<div class="line">
-				<p class="price">320万</p>
-				<p>（9800元/㎡）</p>
-				<p class="roomtype">3室2厅2卫</p>
-			</div>
-		</div>		
-		<div class="img-list">			
-			<img src="images/11.jpg" />			
-			<p class="community-name">这里是图片</p>
-			<div class="line">
-				<p class="price">320万</p>
-				<p>（9800元/㎡）</p>
-				<p class="roomtype">3室2厅2卫</p>
-			</div>
-		</div>		
+		<?php
+			if($second_text){
+				$c = 0;
+				foreach($second_text as $s){
+					echo '<div class="img-list">';
+						echo '<img src="'. Picture::getPic($s->id, '', 'second')->path . '" />';
+						echo '<p class="community-name">' . $s->community . '</p>';
+						echo '<div class="line">';
+							echo '<p class="price">' . $s->price . '万</p>';
+							echo '<p>（' . floor($s->price*10000/$s->area) . '元/㎡）</p>';
+							echo '<p class="roomtype">' . $s->room . '室' . $s->hall . '厅' . $s->toilet . '卫</p>';
+						echo '</div>';
+					echo '</div>' . "\n";
+					$c++;
+					if($c==6){
+						break;
+					}
+				}
+			}
+		?>
 	</div>
 </div>
 
