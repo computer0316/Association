@@ -69,7 +69,13 @@ class SecondController extends Controller
         $upload = new UploadForm();
 		$userid = yii::$app->session->get('userid');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())){
+        	$model->userid = Yii::$app->session->get('userid');
+        	if(!$model->save()){
+        		echo '<meta charset="utf-8">';
+        		var_dump($model->errors);
+        		die();
+        	}
         	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
             $filepaths = $upload->upload($userid);
 			if($filepaths){
@@ -103,7 +109,7 @@ class SecondController extends Controller
 	    	return $this->redirect(Url::toRoute('second/list'));
 	    }
     }
-    
+
     public function actionDelete($id = '')
     {
     	if($id <> ''){
@@ -122,8 +128,8 @@ class SecondController extends Controller
 	    	return $this->redirect(Url::toRoute('second/list'));
 	    }
     }
-    
-    
+
+
             /**
      * Lists all Second models.
      * @return mixed
@@ -148,7 +154,7 @@ class SecondController extends Controller
                     'pagination'    => $pagination,
                     ]);
     }
-    
+
          /**
      * Displays a single Second model.
      * @param integer $id
@@ -164,7 +170,7 @@ class SecondController extends Controller
             'model' => $model,
         ]);
     }
-    
+
     /**
      * Finds the Second model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

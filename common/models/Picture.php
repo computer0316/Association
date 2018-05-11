@@ -73,7 +73,12 @@ class Picture extends \yii\db\ActiveRecord
     	$pics = self::getPics($item_id, $item_sub='', $item_name);
     	if($pics){
     		return $pics[0];
-    	}    	
+    	}
+    	else{
+    		$pic = new Picture();
+    		$pic->path = 'web/images/error.jpg';
+    		return $pic;
+    	}
     }
 
 }

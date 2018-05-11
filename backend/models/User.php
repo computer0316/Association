@@ -166,7 +166,8 @@ class User extends \yii\db\ActiveRecord
 			[['name', 'mobile', 'password', 'firsttime', 'updatetime', 'ip'], 'required'],
 			[['password', 'password1', 'password2'], 'required', 'on' => 'changepassword'],
 			[['firsttime', 'updatetime'], 'safe'],
-			[['name', 'mobile'], 'string', 'max' => 16],
+			[['name'], 'string', 'max' => 16],
+			[['mobile'], 'string', 'length' => [11,11]],
 			[['password', 'company'], 'string', 'max' => 64],
 			[['ip'], 'string', 'max' => 32]
 		];
@@ -180,7 +181,8 @@ class User extends \yii\db\ActiveRecord
     {
     	$scenarios = parent::scenarios();
         $scenatios['login'] = ['username', 'password'];
-        $scenarios['register'] = ['username', 'email', 'password'];
+        $scenarios['register1'] = ['mobile', 'verifyCode'];
+        $scenarios['register2'] = ['name', 'mobile', 'password1', 'password'];
         return $scenarios;
 	}
 	/**

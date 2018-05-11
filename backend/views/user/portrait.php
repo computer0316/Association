@@ -5,7 +5,7 @@
 	use yii\widgets\LinkPager;
 	use yii\captcha\Captcha;
 	use common\models\UploadForm;
-	
+
 	// 客户信息窗体
 	$this->title = '身份认证';
 	$this->params['breadcrumbs'][] = ['label' => '个人中心 >'];
@@ -19,7 +19,7 @@
 	}
 	#portrait-img{
 		margin:20px 120px;
-		width:120px;
+		width:108px;
 		height:160px;
 	}
 	#portrait-ul{

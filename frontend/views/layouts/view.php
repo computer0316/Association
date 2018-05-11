@@ -25,7 +25,7 @@ use common\widgets\Alert;
     <script src="web/js/jquery-1.9.1.min.js"></script>
     <script src="web/js/carousel.js"></script>
     <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= '房协房产系统' ?></title>
     <?php $this->head() ?>
     <style>
 

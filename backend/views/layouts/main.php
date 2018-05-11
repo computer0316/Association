@@ -22,7 +22,7 @@ use backend\models\User;
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="web/js/jquery-3.3.1.min.js"></script>
+		<script src="web/js/jquery-1.9.1.min.js"></script>
     <link href="web/css/admin.css" rel="stylesheet">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -39,6 +39,9 @@ use backend\models\User;
 	if($user){
 		echo '<p>欢迎：' . $user->name . '</p>';
 		echo '<p><a href="' . Url::toRoute('user/logout') . '">退出</a></p>';
+	}
+	else{
+		return $this->redirect('user/login');
 	}
 ?>
 
@@ -62,8 +65,8 @@ use backend\models\User;
 			<a href="<?=Url::toRoute('user/attest')?>"><p class="menu-item">身份认证</p></a>
 			<a href="<?=Url::toRoute('user/chpass')?>"><p class="menu-item">修改密码</p></a>
 		<p class="menu-title"><img src="web/icon/authority.png">权限管理</p>
-			<a href="<?=Url::toRoute('user/index')?>"><p class="menu-item">用户管理</p></a>
-			<a href="<?=Url::toRoute('test/index')?>"><p class="menu-item">测试</p></a>
+			<a href="#"><p class="menu-item">用户管理</p></a>
+			<a href="#"><p class="menu-item">测试</p></a>
 
 	</div>
 	<div id="right">
@@ -75,7 +78,7 @@ use backend\models\User;
 </section>
 
 <footer>
-	<p><a href="/association/">网站首页</a> 关于我们 联系我们 客户服务</p>
+	<p><a href="/Association/">网站首页</a> 关于我们 联系我们 客户服务</p>
 </footer>
 
 <?php $this->endBody() ?>

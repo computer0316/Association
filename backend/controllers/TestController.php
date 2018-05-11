@@ -26,20 +26,20 @@ class TestController extends Controller
         return [
 			'timer' => [
 				'class' => AttestFilter::className(),
-				'only' => ['test'],				
+				'only' => ['test'],
 			],
         ];
     }
 
 	public function actionTest1(){
 		$captcha = new Captcha();  //实例化一个对象
-		$captcha->doimg();  
+		$captcha->doimg();
 		Yii::$app->session->set('captcha', $captcha->getCode());//验证码保存到SESSION中
 	}
 	public function actionTest2(){
 		return $this->render('test2');
 	}
-	
+
     /**
      * {@inheritdoc}
      */
@@ -51,13 +51,13 @@ class TestController extends Controller
             ],
         ];
     }
-    
+
     public function actionScenario(){
     	echo '<meta charset="utf-8">';
     	$test = new Test(['scenario' => 'register']);
     	$test->name = 'tom';
     	if($test->save()){
-    		echo 'success';    		
+    		echo 'success';
     	}
     	else{
     		var_dump($test->errors);
@@ -72,14 +72,14 @@ class TestController extends Controller
 		return $this->render('index', ['test' => $test]);
 
 	}
-	
-	
+
+
 
     public function actionAjax($str){
     	$result = "";
 		$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
 		foreach($communities as $c){
-			$result .= '<p class="hitp">' . $c->name . '</p>';			
+			$result .= '<p class="hitp">' . $c->name . '</p>';
 		}
 		//echo $result;
 		return $result;

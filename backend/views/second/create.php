@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		float:left;
 		width:70px;
 		line-height:30px;
-
+		text-align:right;
 		margin-right:10px;
 	}
 	.form-group{
@@ -84,7 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
 	}
 </style>
 <div class="container">
-	<div id="community-ajax"></div>
 	<div class="create">
     <?php $form = ActiveForm::begin(); ?>
     	<div id="form-left">
@@ -94,8 +93,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="line">
 				<?= $form->field($model, 'city_id')->label('所在区域')->dropDownlist(['131003' => '广阳区', '131002' => '安次区', '131001' => '开发区']) ?>
 			</div>
-			<div class="line">
+			<div class="line" style="position:relative;">
 				<?= $form->field($model, 'community')->textInput(['style' => 'width:300px;', 'autocomplete' => "off"]) ?>
+				<div id="community-ajax"></div>
 			</div>
 			<div class="line">
 		        <?= $form->field($model, 'room')->textInput(['style' => 'width:30px;']) ?>
@@ -186,8 +186,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		position:absolute;
 		border:1px solid #ccc;
 		background:white;
-		left:377px;
-		top:322px;
+		left:80px;
+		top:31px;
 		width:300px;
 		display:none;
 	}

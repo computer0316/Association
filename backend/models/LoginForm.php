@@ -26,10 +26,11 @@ class LoginForm extends Model
     {
         return [
             [['mobile', 'verifyCode'], 'required', 'on' => 'register1'],
+            [['mobile'], 'string', 'length' => [11,11]],
             [['mobile', 'password', 'password1', 'smsCode'], 'required', 'on' => 'register2'],
             [['smsCode', 'password', 'password1'], 'string'],
             ['password', 'compare', 'compareAttribute' => 'password1'],
-            
+
         ];
     }
 
@@ -37,7 +38,7 @@ class LoginForm extends Model
     {
     	$scenarios = parent::scenarios();
     	$scenarios['login'] = ['mobile', 'password1'];
-        $scenarios['register1'] = ['mobile', 'verifyCode'];        
+        $scenarios['register1'] = ['mobile', 'verifyCode'];
         $scenarios['register2'] = ['smsCode', 'password', 'password1', 'mobile'];
         return $scenarios;
 	}

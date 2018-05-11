@@ -20,6 +20,7 @@ use common\models\Picture;
 use backend\models\LoginForm;
 use backend\models\User;
 use backend\models\AttestFilter;
+use backend\models\Captcha;
 
 use yii\Roc\IO;
 use yii\Roc\Session;
@@ -56,10 +57,6 @@ class UserController extends Controller
 		return $this->render('attest',[
 			'user' => $user,
 		]);
-	}
-
-	public function actionChangepw(){
-
 	}
 
 	// 上传头像
@@ -156,12 +153,18 @@ class UserController extends Controller
 			}
 			$smsCode = rand(100000,999999);
 			Yii::$app->session->set('smscode', $smsCode);
-			$loginForm->smsCode = $smsCode;
-			//Sms::send($loginForm->mobile, "房协房产系统", $smsCode);
+			//$loginForm->smsCode = $smsCode;
+			Sms::send($loginForm->mobile, "房协房产系统", $smsCode);
 			$loginForm->scenario = 'register2';
 			return $this->render('verifycode', ['loginForm' 	=> $loginForm]);
 		}
 		return $this->render('register', ['loginForm' => $loginForm]);
+	}
+
+	public function actionCaptcha(){
+		$captcha = new Captcha();  //实例化一个对象
+		$captcha->doimg();
+		Yii::$app->session->set('captcha', $captcha->getCode());//验证码保存到SESSION中
 	}
 
 	public function actionGetSms(){
@@ -179,7 +182,7 @@ class UserController extends Controller
 			}
 			else {
 			 	Yii::$app->session->setFlash('message',"验证码错误");
-			 	return $this->render('register', ['loginForm' => $loginForm]);
+			 	return $this->render('verifycode', ['loginForm' => $loginForm]);
 			}
 		}
 		else{

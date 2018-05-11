@@ -71,7 +71,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+    	$user = User::checkLogin();
+    	if($user){
+        	return $this->render('index');
+        }
+        else{
+        	return $this->redirect(Url::toRoute('user/login'));
+        }
     }
 
     /**

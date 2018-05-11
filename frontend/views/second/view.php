@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
 }
 #broker{
 	width:100%;
-	height:150px;
-	margin-top:40px;
+	height:160px;
+	margin-top:20px;
 }
 #broker .username{
 	margin:30px 20px;
@@ -44,14 +44,15 @@ $this->params['breadcrumbs'][] = $this->title;
 #mobile{
 	width:100%;
 	height:88px;
+	margin-top:10px;
 	line-height:88px;
 	background:orange;
 	text-align:center;
 	font-size:36px;
 }
 #portrait{
-	width:90px;
-	height:120px;
+	width:108px;
+	height:160px;
 }
 </style>
 <div class="container">

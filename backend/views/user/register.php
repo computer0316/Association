@@ -22,8 +22,8 @@
 	<?= $form->field($loginForm, 'mobile')->textInput(['autofocus' => true, 'class' => 'menu1']) ?>
 
 	<?= $form->field($loginForm, 'verifyCode') ?>
-	<img style="float:left;margin-left:130px;" title="点击刷新" src="<?= Url::toRoute('test/test1') ?>" align="absbottom" onclick="this.src='<?= Url::toRoute('test/test1') ?>'+'&'+Math.random();"></img>
-	
+	<img style="float:left;margin-left:130px;" title="点击刷新" src="<?= Url::toRoute('user/captcha') ?>" align="absbottom" onclick="this.src='<?= Url::toRoute('user/captcha') ?>'+'&'+Math.random();"></img>
+
 
 <div class="form-group button-group">
 

@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use common\models\Sms\Sms;
+use common\models\Picture;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -68,6 +69,10 @@ class SiteController extends Controller
         ];
     }
 
+	public function actionTest(){
+		$pic = Picture::getPic(1101, '', 'second');
+		var_dump($pic);
+	}
 
     /**
      * Displays homepage.
@@ -79,7 +84,7 @@ class SiteController extends Controller
     	$this->layout = 'view';
     	$second_text = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
 
-    	
+
     	return $this->render('index', [
     		'second_text'	=> $second_text,
 
