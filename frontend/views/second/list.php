@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\widgets\LinkPager;
 
-use common\models\Picture;
+use common\models\PictureManager;
 
 use frontend\models\BaseDecoration;
 
@@ -249,6 +249,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 	function smallPic($id){
-		return common\models\Picture::getPic($id, '', 'second')->path;
+		return common\models\PictureManager::getImage($id, 'second')->path;
 	}
 ?>

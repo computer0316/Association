@@ -81,9 +81,24 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-    	$this->layout = 'view';
+    	$this->layout = 'anju';
     	$second_text = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
 
+    	return $this->render('anju', [
+    		'second_text'	=> $second_text,
+
+    	]);
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return mixed
+     */
+    public function actionIndex1()
+    {
+    	$this->layout = 'view';
+    	$second_text = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
 
     	return $this->render('index', [
     		'second_text'	=> $second_text,

@@ -19,20 +19,26 @@ class UploadForm extends Model
     {
         return [
             [
-            	['imageFiles'], 
-            	'file', 
-            	'skipOnEmpty' => false, 
-            	'extensions' => 'png, jpg, gif', 
+            	['imageFiles'],
+            	'file',
+            	'skipOnEmpty' => false,
+            	'extensions' => 'png, jpg, gif',
             	'maxFiles' => 10,
             ],
         ];
     }
-    
-    public function upload($userid)
+
+    public function upload($userid, $pathType = 'month')
     {
     	$filepaths = [];
-        if ($this->validate()) { 
-        	$path = $this->createPath($userid);
+        if ($this->validate()) {
+        	$path = '';
+        	if($pathType == 'month'){
+        		$path = $this->createMonthPath($userid);
+        	}
+        	else{
+        		$path = $this->createCurrentPath($userid);
+        	}
             foreach ($this->imageFiles as $file) {
             	$filepath = $path . $this->createFilename($path, $file->extension);
             	$filepaths[] = $filepath;
@@ -43,30 +49,38 @@ class UploadForm extends Model
             return false;
         }
     }
-    
+
+    private function createCurrentPath($userid){
+    	$baseDir= "uploads/" . $userid;
+    	if(!file_exists($baseDir)){
+    		mkdir($baseDir, 0777, true);
+    	}
+    	return $baseDir . '/';
+    }
+
     // 生成一个路径
     // 路径以 uploads/ 开头
     // 后面依次是：用户ID/年/月/
-    private function createPath($userid){
+    private function createMonthPath($userid){
     	$baseDir= "uploads/" . $userid;
     	$year	= date("Y");
-    	$month	= date("m");    	
+    	$month	= date("m");
     	if(!file_exists($baseDir)){
-    		mkdir($baseDir, 0777, true);    		
+    		mkdir($baseDir, 0777, true);
     	}
-    	
-    	$baseDir = $baseDir . "/" . $year;    	
+
+    	$baseDir = $baseDir . "/" . $year;
     	if(!file_exists($baseDir)){
-    		mkdir($baseDir, 0777, true);    		
+    		mkdir($baseDir, 0777, true);
     	}
-    	
+
     	$baseDir = $baseDir . "/" . $month;
     	if(!file_exists($baseDir)){
     		mkdir($baseDir, 0777, true);
     	}
     	return $baseDir . '/';
     }
-    
+
     // 生成一个有效的文件名
     // 构成：时-分-秒-5位数字序号.扩展名
     // 如：10-21-33-00002.jpg
@@ -76,7 +90,7 @@ class UploadForm extends Model
     	$filepath = $path . $time . "-" . str_pad($i, 2, "0", STR_PAD_LEFT) . '.' . $ext;
     	while(file_exists($filepath)){
     		$i++;
-    		$filepath =  $path . $time . "-" . str_pad($i, 2, "0", STR_PAD_LEFT) . '.' . $ext;    		
+    		$filepath =  $path . $time . "-" . str_pad($i, 2, "0", STR_PAD_LEFT) . '.' . $ext;
     	}
     	return $time . "-" . str_pad($i, 2, "0", STR_PAD_LEFT) . '.' . $ext;
     }

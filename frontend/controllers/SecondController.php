@@ -13,7 +13,7 @@ use yii\web\UploadedFile;
 
 use common\models\LoginForm;
 use common\models\UploadForm;
-use common\models\Picture;
+use common\models\PictureManager;
 use frontend\models\Second;
 use frontend\models\BaseCommunity;
 
@@ -110,8 +110,8 @@ class SecondController extends Controller
 			}
 				$count = rand(1,10);
 				for($j=0; $j < $count; $j++){
-					$pic = new Picture();
-					$result = $pic->create($se->id, '', 'second', 'web/images/' . rand(1,90) . '.jpg');
+					$pic = new PictureManager();
+					$result = $pic->create($se->id, '', 'web/images/' . rand(1,90) . '.jpg', 'second');
 					if(!$result){
 						var_dump($result);
 						die();

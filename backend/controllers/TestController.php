@@ -5,10 +5,11 @@ use Yii;
 use yii\web\Controller;
 use yii\imagine\Image;
 use common\models\UploadForm;
+use common\models\Download;
 use backend\models\Test;
 use backend\models\AttestFilter;
 use backend\models\Captcha;
-
+use backend\models\BaseCompany;
 
 
 
@@ -31,15 +32,6 @@ class TestController extends Controller
         ];
     }
 
-	public function actionTest1(){
-		$captcha = new Captcha();  //实例化一个对象
-		$captcha->doimg();
-		Yii::$app->session->set('captcha', $captcha->getCode());//验证码保存到SESSION中
-	}
-	public function actionTest2(){
-		return $this->render('test2');
-	}
-
     /**
      * {@inheritdoc}
      */
@@ -52,17 +44,6 @@ class TestController extends Controller
         ];
     }
 
-    public function actionScenario(){
-    	echo '<meta charset="utf-8">';
-    	$test = new Test(['scenario' => 'register']);
-    	$test->name = 'tom';
-    	if($test->save()){
-    		echo 'success';
-    	}
-    	else{
-    		var_dump($test->errors);
-    	}
-    }
 
 	public function actionIndex(){
 		$test = new Test();
@@ -73,36 +54,29 @@ class TestController extends Controller
 
 	}
 
+	public function actionImage(){
+    	//生成一张填充模式200 x 200 的缩略图
+    	Image::thumbnail('web/images/girls1.jpg', 585 , 400, 'inset')
+        ->save(Yii::getAlias('web/images/girls11.jpg'),
+        ['quality' => 100]);
+    	//生成一张填充模式200 x 200 的缩略图
+    	Image::thumbnail('web/images/girls2.jpg', 585 , 400, 'inset')
+        ->save(Yii::getAlias('web/images/girls21.jpg'),
+        ['quality' => 100]);
 
+        $waterFile = "web/images/watermark.gif";
+            //在一张图片的100,100 的位置开始打一个水印
+	    Image::watermark('web/images/girls11.jpg', $waterFile, [410,300])
+	    ->save(Yii::getAlias('web/images/girls12.jpg'),
+	    ['quality' => 100]);
+	    Image::watermark('web/images/girls21.jpg', $waterFile, [410,300])
+	    ->save(Yii::getAlias('web/images/girls22.jpg'),
+	    ['quality' => 100]);
+        echo '<img src="web/images/girls11.jpg" />';
+        echo '<img src="web/images/girls21.jpg" />';
 
-    public function actionAjax($str){
-    	$result = "";
-		$communities = BaseCommunity::find()->where("name like '%" . $str . "%'")->limit(10)->all();
-		foreach($communities as $c){
-			$result .= '<p class="hitp">' . $c->name . '</p>';
-		}
-		//echo $result;
-		return $result;
-    }
+        echo '<img src="web/images/girls12.jpg" />';
+        echo '<img src="web/images/girls22.jpg" />';
 
-    public function actionUpload()
-    {
-        $model = new UploadForm();
-
-        if (Yii::$app->request->isPost) {
-            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
-            if ($model->upload()) {
-                // 文件上传成功
-                foreach($model->imageFiles as $file){
-                	echo $file->name . '<br />';
-                	echo $file->size . '<br />';
-                }
-                //return;
-            }
-        }
-
-        return $this->render('upload', ['model' => $model]);
-    }
-
-
+	}
 }

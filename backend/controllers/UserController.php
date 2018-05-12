@@ -15,7 +15,7 @@ use yii\web\UploadedFile;
 use app\models\Tools;
 
 use common\models\UploadForm;
-use common\models\Picture;
+use common\models\PictureManager;
 
 use backend\models\LoginForm;
 use backend\models\User;
@@ -70,14 +70,8 @@ class UserController extends Controller
 		}
 		if (Yii::$app->request->isPost) {
 	       	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
-	        $filepaths = $upload->upload($user->id);
-			if($filepaths){
-		        foreach($filepaths as $filepath){
-		            $pic = new Picture();
-					$pic->create($user->id, "1", "portrait", $filepath);
-		        }
-		    }
-		    $picture = Picture::getPic($user->id, "1", "portrait")->path;
+	       	PictureManager::saveImages($user->id, $upload, 'portrait');
+		    $picture = PictureManager::getImage($user->id, 'portrait', '1')->path;
 		}
 		return $this->render('portrait',[
 			'picture' => $picture,
@@ -85,7 +79,7 @@ class UserController extends Controller
 		]);
 	}
 
-	// 上传头像
+	// 上传身份证
 	public function actionIdentification(){
 		$user = User::findOne(Yii::$app->session->get('userid'));
 		$upload = new UploadForm();
@@ -96,14 +90,9 @@ class UserController extends Controller
 		}
 		if (Yii::$app->request->isPost) {
 	       	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
-	        $filepaths = $upload->upload($user->id);
-			if($filepaths){
-		        foreach($filepaths as $filepath){
-		            $pic = new Picture();
-					$pic->create($user->id, "1", "identification", $filepath);
-		        }
-		    }
-		    $picture = Picture::getPic($user->id, "1", "identification")->path;
+	       	PictureManager::saveImages($user->id, $upload, 'identification');
+		    $picture = PictureManager::getImage($user->id, 'identification', '1')->path;
+
 		}
 		return $this->render('identification',[
 			'picture' => $picture,

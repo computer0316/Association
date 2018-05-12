@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-use common\models\Picture;
+use common\models\PictureManager;
 use frontend\models\BaseDecoration;
 use frontend\models\BaseHousetype;
 use frontend\models\BaseDirection;
@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="top-img">
 			<div class="activeimg">
 				<?php
-					$pics = Picture::getPics($model->id, '', 'second');
+					$pics = PictureManager::getImages($model->id, 'second');
 					if($pics){
 						foreach($pics as $p){
 							echo '<img src="' . $p->path . '" />';
@@ -115,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			echo '<img id="portrait" src="' . $user->getPortrait() . '" />';
 			echo '<div>';
 				echo '<p class="username">' . $user->name . '</p>';
-				echo '<p class="company">所属公司：' . '中介公司' . '</p>';
+				echo '<p class="company">所属公司：' . ($user->company =='' ? '自由经纪人':$user->company) . '</p>';
 			echo '</div>';
 
 		?>
@@ -157,7 +157,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</p>
 		<p class="spciality-title">户型</p>
 		<?php
-			$pictures = Picture::getPics($model->id, '', 'second');
+			$pictures = PictureManager::getImages($model->id, 'second');
 			if($pictures){
 				foreach($pictures as $p){
 					echo '<img class="bigpic" src="' . $p->path . '" />';

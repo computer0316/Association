@@ -50,15 +50,20 @@ class Picture extends \yii\db\ActiveRecord
         ];
     }
 
-    public function create($item_id, $item_sub='', $item_name, $path){
-    	$this->item_id		= $item_id;
-    	$this->item_sub		= $item_sub;
-    	$this->item_name	= $item_name;
+	// 把上传的文件路径存储进数据库
+	// itemId 调用本函数的项目的id，比如二手房则是用户ID：$userid
+	// itemName 调用本函数的项目的id，比如二手房则是用户ID：'second'
+	// itemSub 调用本函数的项目的子编码，比如二手房里面用于区分户型图、环境图等
+	// 文件的存储的路径
+    public function create($itemId, $itemName, $path, $itemSub = '1'){
+    	$this->item_id		= $itemId;
+    	$this->item_name	= $itemName;
     	$this->path			= $path;
+    	$this->item_sub		= $itemSub;
     	return $this->save();
     }
 
-    public static function getPics($item_id, $item_sub='', $item_name){
+    public static function getPics($item_id, $item_name, $item_sub=''){
     	$pics = false;
     	if($item_sub<>''){
     		$pics = self::find()->orderBy('id desc')->where(['item_name' => $item_name, 'item_sub' => $item_sub, 'item_id' => $item_id])->all();
@@ -69,8 +74,8 @@ class Picture extends \yii\db\ActiveRecord
     	return $pics;
     }
 
-    public static function getPic($item_id, $item_sub='', $item_name){
-    	$pics = self::getPics($item_id, $item_sub='', $item_name);
+    public static function getPic($item_id, $item_name, $item_sub=''){
+    	$pics = self::getPics($item_id, $item_name, $itemSub='');
     	if($pics){
     		return $pics[0];
     	}

@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 use frontend\models\BaseDecoration;
-use common\models\Picture;
+use common\models\PictureManager;
 
 $this->title = 'My Yii Application';
 ?>
@@ -503,7 +503,7 @@ $this->title = 'My Yii Application';
 				foreach($second_text as $s){
 					echo '<a href="' . Url::toRoute(['second/view', 'id' => $s->id]) . '">';
 					echo '<div class="img-list">';
-						echo '<img src="'. Picture::getPic($s->id, '', 'second')->path . '" />';
+						echo '<img src="'. PictureManager::getImage($s->id, 'second')->path . '" />';
 						echo '<p class="community-name">' . $s->community . '</p>';
 						echo '<div class="line">';
 							echo '<p class="price">' . $s->price . '万</p>';

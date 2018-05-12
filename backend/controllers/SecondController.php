@@ -14,9 +14,8 @@ use yii\filters\VerbFilter;
 use backend\models\Second;
 use backend\models\User;
 use backend\models\BaseCommunity;
-use common\models\Picture;
 use common\models\UploadForm;
-
+use common\models\PictureManager;
 
 
 /**
@@ -77,13 +76,8 @@ class SecondController extends Controller
         		die();
         	}
         	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
-            $filepaths = $upload->upload($userid);
-			if($filepaths){
-	            foreach($filepaths as $filepath){
-	            	$pic = new Picture();
-					$pic->create($model->id, "1", "second", $filepath);
-	            }
-	        }
+        	PictureManager::saveImages($model->id, $upload, 'second');
+
             return $this->redirect(Url::toRoute('second/create'));
         }
 

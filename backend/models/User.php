@@ -7,7 +7,7 @@ use yii\helpers\Url;
 use yii\base\Exception;
 use yii\helpers\VarDumper;
 
-use common\models\Picture;
+use common\models\PictureManager;
 
 /**
  * This is the model class for table "user".
@@ -37,7 +37,7 @@ class User extends \yii\db\ActiveRecord
 	}
 
 	public function getPortrait(){
-		$pic = Picture::getPic($this->id, '1', 'portrait');
+		$pic = PictureManager::getImage($this->id, 'portrait');
 		if($pic){
 			return $pic->path;
 		}
@@ -47,7 +47,7 @@ class User extends \yii\db\ActiveRecord
 	}
 
 	public function getIdentification(){
-		$pic = Picture::getPic($this->id, '1', 'identification');
+		$pic = PictureManager::getImage($this->id, 'identification');
 		if($pic){
 			return $pic->path;
 		}
