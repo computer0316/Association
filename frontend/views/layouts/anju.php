@@ -25,6 +25,7 @@ use common\widgets\Alert;
     <script src="web/js/carousel.js"></script>
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Yii::$app->params['sitename'] ?></title>
+    <meta http-equiv="refresh" content="2">
     <?php $this->head() ?>
     <style>
 

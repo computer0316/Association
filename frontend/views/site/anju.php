@@ -79,13 +79,36 @@ $this->title = 'My Yii Application';
 		left:10px;top:-210px;
 		width:720px;
 		height:270px;
-		border:1px solid blue;
 	}
 	.b1content{
 		position:absolute;
 		left:0px;
 		top:0px;
-		border:1px solid red;
+	}
+	.search-box{
+		border:8px solid #f3f3f3;
+		border-radius:5px;
+		background:#f3f3f3;
+	}
+	.search-box input{
+		height:40px;
+		border:1px solid #ddd;
+		border-radius:5px;
+	}
+	#b1buy-search input{
+		width:80%;
+	}
+	button{
+		border:1px solid #f18800;
+		border-radius:5px;
+		padding:0 30px;
+		margin-left:10px;
+		height:42px;
+		background:#f18800;
+		font-size:18px;
+	}
+	#b1buy-search{
+		width:96%;
 	}
 </style>
 <div id="title" class="container">
@@ -110,7 +133,10 @@ $this->title = 'My Yii Application';
 		<p id="b1mall" class="b1title">商铺写字楼</p>
 		<div id="b1left-content">
 			<div id="b1buy1" class="b1content">
-
+				<div id="b1buy-search" class="search-box">
+					<input type="text" name="buy-input" />
+					<button type="submit">搜索</button>
+				</div>
 			</div>
 			<div id="b1sell1" class="b1content">
 
@@ -128,7 +154,7 @@ $this->title = 'My Yii Application';
 	</div>
 </div>
 <div id="block2" class="container">
-4
+<p style="font-size:24px;background:#ff8800;border:1px solid blue;border-radius:10px;"><i>this is a test</i></p>
 </div>
 <div id="block3" class="container">
 5
