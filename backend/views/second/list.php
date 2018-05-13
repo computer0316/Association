@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
 #list{
-	float:left;	
+	float:left;
 	width:800px;
 	margin:0 20px;
 	list-style-type:none;
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	font-size:14px;
 
 }
-#list li:nth-of-type(odd){ background:#e9e9e9;} 
+#list li:nth-of-type(odd){ background:#e9e9e9;}
 
 #list li p{
 	float:left;
@@ -35,14 +35,14 @@ $this->params['breadcrumbs'][] = $this->title;
 	white-space:nowrap; text-overflow:ellipsis; overflow:hidden;
 }
 .s1{
-	width:40px;	
+	width:40px;
 }
 .s2{
-	width:200px;	
+	width:200px;
 	overflow:hidden;
 }
 .s3{
-	width:100px;	
+	width:100px;
 }
 #list li img{
 	width:20px;
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 .pagination li{
 	float:left;
 	margin-left:5px;
-	background:#e9e9e9;	
+	background:#e9e9e9;
 	border:1px solid blue;
 }
 .pagination a{
@@ -79,24 +79,24 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
 	<ul id="list">
 		<li><p class="s1">编号</p><p class="s2">小区</p><p class="s3">户型</p><p class="s2">价格</p><p class="s3">面积</p><p class="s3">操作</p></li>
-		<?php		
+		<?php
 		if($seconds){
 			foreach($seconds as $second){
 			?>
 					<li>
 						<?php
 							echo '<p class="s1">' . $second->id . '</p>';
-							echo '<p class="s2">' . $second->community . '</p>';
+							echo '<p class="s2"><a target="_blank" href="/Association/?r=second/view&id=' . $second->id . '">' . $second->community . '</a></p>';
 							echo '<p class="s3">' . $second->room . '室' . $second->hall . '厅' . $second->toilet . '卫</p>';
 							echo '<p class="s2">' . $second->price . '元 &nbsp;' . floor($second->price * 10000/$second->area) . '元/㎡' . '</p>';
 							echo '<p class="s3">' . $second->area . '</p>';
 							echo '<p class="s3">';
 							echo '<a href="' . Url::toRoute(['second/edit', 'id' => $second->id]) . '"><img src="web/icon/edit-o.png" /></a>';
 							echo "<a onclick=\"return confirm('确认要删除吗？')\" href=\"" . Url::toRoute(['second/delete', 'id' => $second->id]) . '"><img src="web/icon/delete.png" /></a>';
-						?>					
+						?>
 					</li>
 			<?php
-			}		
+			}
 		}
 		else{
 			echo '还没有二手房信息';

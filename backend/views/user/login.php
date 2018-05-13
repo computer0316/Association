@@ -24,11 +24,12 @@
 	<?= $form->field($loginForm, 'mobile')->textInput(['autofocus' => true, 'class' => 'menu1']) ?>
 
 	<?= $form->field($loginForm, 'password1')->passwordInput() ?>
-	
+
 
 <div class="form-group button-group">
 
 	<?= Html::submitButton('提交', ['class' => 'submit']) ?>
+	<a href="<?= Url::toRoute('user/register') ?>">用户注册</a>
 
 </div>
 

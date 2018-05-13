@@ -40,9 +40,6 @@ use backend\models\User;
 		echo '<p>欢迎：' . $user->name . '</p>';
 		echo '<p><a href="' . Url::toRoute('user/logout') . '">退出</a></p>';
 	}
-	else{
-		return $this->redirect('user/login');
-	}
 ?>
 
 	</div>

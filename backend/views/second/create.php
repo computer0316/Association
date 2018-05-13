@@ -59,15 +59,34 @@ $this->params['breadcrumbs'][] = $this->title;
 		text-align:right;
 		margin-right:10px;
 	}
-	.form-group{
-		float:left;
+	.control-label[for=second-title]{
+		text-align:left;
+		margin-left:15px;
 	}
-	.form-group-inline label{
-		width:auto;
-		margin-left:10px;
+	.field-second-title .help-block{
+		left:15px;
+		top:55px;
+	}
+	.form-group, .inline{
+		float:left;
+		position:relative;
+	}
+	.inline .control-label{
+		display:none;
+	}
+	.inline .help-block{
+		position:absolute;
+		top:25px;
+		left:0px;
+		width:180px;
+		line-height:30px;
+		color:red;
 	}
 	.help-block{
-		float:right;
+		position:absolute;
+		top:25px;
+		left:80px;
+		width:180px;
 		line-height:30px;
 		color:red;
 	}
@@ -82,6 +101,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	input[type="file"]{
 		border:none;
 	}
+	.required label:before{
+		content:"*";
+		color:red;
+	}
 </style>
 <div class="container">
 	<div class="create">
@@ -89,6 +112,11 @@ $this->params['breadcrumbs'][] = $this->title;
     	<div id="form-left">
 			<div class="line">
 				<?= $form->field($model, 'inner_id')->label('内部编号') ?>
+			</div>
+			<div class="line">
+		        <?= $form->field($model, 'building_id')->textInput(['style' => 'width:30px;'])  ?>
+		        <?= $form->field($model, 'unit_id')->textInput(['style' => 'width:30px;'])  ?>
+		        <?= $form->field($model, 'room_id')->textInput(['style' => 'width:30px;'])  ?>
 			</div>
 			<div class="line">
 				<?= $form->field($model, 'city_id')->label('所在区域')->dropDownlist(['131003' => '广阳区', '131002' => '安次区', '131001' => '开发区']) ?>
@@ -104,19 +132,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 			<div class="line">
 				<label class="control-label">&nbsp;</label>
-		        <?= $form->field($model, 'housetype')->label(false)->dropDownlist(createDropDownlist(BaseHousetype::className(), ['空' => '房屋类型'])) ?>
-		        <?= $form->field($model, 'decoration')->label(false)->dropDownlist(createDropDownlist(BaseDecoration::className(), ['空' => '装修程度'])) ?>
-		        <?= $form->field($model, 'direction')->label(false)->dropDownlist(createDropDownlist(BaseDirection::className(), ['空' => '房屋朝向'])) ?>
-		        <?= $form->field($model, 'constructure')->label(false)->dropDownlist(createDropDownlist(BaseConstructure::className(), ['空' => '建筑结构'])) ?>
+		        <?= $form->field($model, 'housetype', ['options' => ['class' => 'inline']])->dropDownlist(createDropDownlist(BaseHousetype::className(), ['空' => '房屋类型'])) ?>
+		        <?= $form->field($model, 'decoration', ['options' => ['class' => 'inline']])->dropDownlist(createDropDownlist(BaseDecoration::className(), ['空' => '装修程度'])) ?>
+		        <?= $form->field($model, 'direction', ['options' => ['class' => 'inline']])->dropDownlist(createDropDownlist(BaseDirection::className(), ['空' => '房屋朝向'])) ?>
+		        <?= $form->field($model, 'constructure', ['options' => ['class' => 'inline']])->dropDownlist(createDropDownlist(BaseConstructure::className(), ['空' => '建筑结构'])) ?>
 			</div>
 			<div class="line">
 	        	<?= $form->field($model, 'floor')->textInput(['style' => 'width:30px;'])  ?>
 	        	<?= $form->field($model, 'total_floor')->textInput(['style' => 'width:30px;'])  ?>
-			</div>
-			<div class="line">
-		        <?= $form->field($model, 'building_id')->textInput(['style' => 'width:30px;'])  ?>
-		        <?= $form->field($model, 'unit_id')->textInput(['style' => 'width:30px;'])  ?>
-		        <?= $form->field($model, 'room_id')->textInput(['style' => 'width:30px;'])  ?>
 			</div>
 			<div class="line">
 		        <?= $form->field($model, 'area')->textInput(['style' => 'width:50px;'])  ?>
@@ -155,7 +178,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*'])->label('上传图片') ?>
 			</div>
 		</div>
-        <div class="line">
+        <div class="line" style="margin-top:40px;">
         	<label class="control-label">&nbsp;</label>
             <?= Html::submitButton('发布房源') ?>
         </div>
@@ -189,6 +212,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		left:80px;
 		top:31px;
 		width:300px;
+		z-index:5;
 		display:none;
 	}
 	#community-ajax p{

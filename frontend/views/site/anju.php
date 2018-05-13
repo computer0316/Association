@@ -441,7 +441,7 @@ $this->title = 'My Yii Application';
 		</div>
 	</div>
 	<div id="b1right">
-		<img src="web/images/fabu.jpg" />
+		<a href="admin.php?r=second/create"><img src="web/images/fabu.jpg" /></a>
 	</div>
 </div>
 <div id="block2" class="container">

@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
 use backend\models\Second;
 use backend\models\User;
 use backend\models\BaseCommunity;
+use backend\models\AttestFilter;
 use common\models\UploadForm;
 use common\models\PictureManager;
 
@@ -23,21 +24,17 @@ use common\models\PictureManager;
  */
 class SecondController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    //'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
+	public function behaviors(){
+		return [
+			'attestFilter' => [
+				'class'			=> AttestFilter::className(),
+				'except'		=> [],
+				'denyCallback'	=> function($rule, $action){
+					return $this->redirect(Url::toRoute('user/login'));
+				}
+			],
+		];
+	}
 
 	// 提供小区名称动态下拉的ajax数据
     public function actionCommunityAjax($str){

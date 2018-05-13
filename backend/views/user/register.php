@@ -28,7 +28,7 @@
 <div class="form-group button-group">
 
 	<?= Html::submitButton('提交', ['class' => 'submit']) ?>
-
+	<a href="<?= Url::toRoute('user/login') ?>">登录</a>
 </div>
 
 <?php
