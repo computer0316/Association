@@ -360,7 +360,7 @@ $this->title = 'My Yii Application';
 				<div id="b1sell-right">
 					<ul>
 						<li class="b1sell-title2">在本站发布</li>
-						<li class="b1sell-list">简单2不即可完成发布，方便快捷免费</li>
+						<li class="b1sell-list">简单2步即可完成发布，方便快捷免费</li>
 						<li class="b1sell-title2">优质经纪人全程服务</li>
 						<li class="b1sell-list">经纪人能力水平实时排名，提供优质服务</li>
 						<li class="b1sell-title2">客户群庞大</li>
