@@ -15,6 +15,7 @@ use common\models\LoginForm;
 use common\models\UploadForm;
 use common\models\PictureManager;
 use frontend\models\Second;
+use frontend\models\Condition;
 use frontend\models\BaseCommunity;
 
 
@@ -160,10 +161,10 @@ class SecondController extends Controller
     	}
 
     	$condition = '';
-   		$condition = $this->joinCondition($condition, $district);
-   		$condition = $this->joinCondition($condition, $this->price($p));
-   		$condition = $this->joinCondition($condition, $this->area($a));
-   		$condition = $this->joinCondition($condition, $this->room($ro));
+   		$condition = Condition::join($condition, $district);
+   		$condition = Condition::join($condition, Condition::createPrice($p));
+   		$condition = Condition::join($condition, Condition::createArea($a));
+   		$condition = Condition::join($condition, Condition::createRoom($ro));
 
 
   		$query = Second::find()->where($condition)->orderBy('id desc');
@@ -182,120 +183,7 @@ class SecondController extends Controller
                 'pagination'    => $pagination,
             ]);
     }
-    	private function joinCondition($condition, $new){
-    		if($condition<>''){
-    			if($new<>''){
-    				return $condition . ' and ' . $new;
-    			}
-    			else{
-    				return $condition;
-    			}
-    		}
-    		else{
-    			return $new;
-    		}
-    	}
-    	private function price($p){
-    		switch($p){
-    			case 1:
-    				return 'price < 30';
-    				break;
-    			case 2:
-    				return 'price > 30 and price < 40';
-    				break;
-    			case 3:
-    				return 'price > 40 and price < 50';
-    				break;
-    			case 4:
-    				return 'price > 50 and price < 60';
-    				break;
-    			case 5:
-    				return 'price > 60 and price < 80';
-    				break;
-    			case 6:
-    				return 'price > 80 and price < 100';
-    				break;
-    			case 7:
-    				return 'price > 100 and price < 120';
-    				break;
-    			case 8:
-    				return 'price > 120 and price < 160';
-    				break;
-    			case 9:
-    				return 'price > 160 and price < 200';
-    				break;
-    			case 10:
-    				return 'price > 200';
-    				break;
-    			case 0:
-    			default:
-    				return '';
-    				break;
-    		}
-    	}
 
-    	private function area($a){
-    		switch($a){
-    			case 1:
-    				return 'area < 50';
-    				break;
-    			case 2:
-    				return 'area > 50 and area < 70';
-    				break;
-    			case 3:
-    				return 'area > 70 and area < 90';
-    				break;
-    			case 4:
-    				return 'area > 90 and area < 110';
-    				break;
-    			case 5:
-    				return 'area > 110 and area < 130';
-    				break;
-    			case 6:
-    				return 'area > 130 and area < 150';
-    				break;
-    			case 7:
-    				return 'area > 150 and area < 200';
-    				break;
-    			case 8:
-    				return 'area > 200 and area < 3000';
-    				break;
-    			case 9:
-    				return 'area > 300 and area < 500';
-    				break;
-    			case 10:
-    				return 'area > 500';
-    				break;
-    			case 0:
-    			default:
-    				return '';
-    				break;
-    		}
-    	}
-
-    	private function room($ro){
-    		switch($ro){
-    			case 1:
-    				return 'room = 1';
-    				break;
-    			case 2:
-    				return 'room = 2';
-    				break;
-    			case 3:
-    				return 'room = 3';
-    				break;
-    			case 4:
-    				return 'room = 4';
-    				break;
-    			case 5:
-    				return 'room > 4';
-    				break;
-    			case 0:
-    			default:
-    				return '';
-    				break;
-    		}
-    	}
 
 
      /**

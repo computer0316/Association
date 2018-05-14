@@ -8,6 +8,7 @@ use yii\widgets\LinkPager;
 use common\models\PictureManager;
 
 use frontend\models\BaseDecoration;
+use frontend\models\Condition;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Second */
@@ -112,40 +113,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		'131002' => '安次',
 		'131001' => '开发区'
 	];
-	$price = [
-		'0'	=> '不限',
-		'1' => '30万以下',
-		'2' => '30-40万',
-		'3' => '40-50万',
-		'4' => '50-60万',
-		'5' => '60-80万',
-		'6' => '80-100万',
-		'7' => '100-120万',
-		'8' => '120-160万',
-		'9' => '160-200万',
-		'10' => '200万以上'
-	] ;
-	$area = [
-		'0' => '不限',
-		'1' => '50㎡以下',
-		'2' => '50-70㎡',
-		'3' => '70-90㎡',
-		'4' => '90-110㎡',
-		'5' => '110-130㎡',
-		'6' => '130-150㎡',
-		'7' => '150-200㎡',
-		'8' => '200-300㎡',
-		'9' => '300-500㎡',
-		'10' => '500㎡以上'
-	];
-	$room = [
-		'0' => '不限',
-		'1' => '一室',
-		'2' => '两室',
-		'3' => '三室',
-		'4' => '四室',
-		'5' => '四室以上'
-	];
 ?>
 <div class="container">
 	<div class="line">
@@ -167,13 +134,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="line">
 		<p class="label">总价：</p>
 		<?php
-			foreach($price as $key => $value){
+			foreach(Condition::$priceLevel as $key => $value){
 				echo '<p class="item">';
 				if($key == $p){
-					echo '<a class="active" href="' . Url::current(['p' => $key]) . '">' . $value . '</a>';
+					echo '<a class="active" href="' . Url::current(['p' => $key]) . '">' . $value[0] . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['p' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['p' => $key]) . '">' . $value[0] . '</a>';
 				}
 				echo '</p>';
 			}
@@ -182,13 +149,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="line">
 		<p class="label">面积：</p>
 		<?php
-			foreach($area as $key => $value){
+			foreach(Condition::$areaLevel as $key => $value){
 				echo '<p class="item">';
 				if($key == $a){
-					echo '<a class="active" href="' . Url::current(['a' => $key]) . '">' . $value . '</a>';
+					echo '<a class="active" href="' . Url::current(['a' => $key]) . '">' . $value[0] . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['a' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['a' => $key]) . '">' . $value[0] . '</a>';
 				}
 				echo '</p>';
 			}
@@ -197,13 +164,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="line">
 		<p class="label">厅室：</p>
 		<?php
-			foreach($room as $key => $value){
+			foreach(Condition::$roomLevel as $key => $value){
 				echo '<p class="item">';
 				if($key == $ro){
-					echo '<a class="active" href="' . Url::current(['ro' => $key]) . '">' . $value . '</a>';
+					echo '<a class="active" href="' . Url::current(['ro' => $key]) . '">' . $value[0] . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['ro' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current(['ro' => $key]) . '">' . $value[0] . '</a>';
 				}
 				echo '</p>';
 			}
