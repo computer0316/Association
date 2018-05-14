@@ -1,8 +1,0 @@
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
-		<p class="hitp">这里是测试文字</p>
