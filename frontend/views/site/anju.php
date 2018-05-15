@@ -4,6 +4,7 @@
 use yii\helpers\Url;
 use frontend\models\BaseDecoration;
 use common\models\PictureManager;
+use frontend\models\Condition;
 
 $this->title = 'My Yii Application';
 ?>
@@ -327,10 +328,12 @@ $this->title = 'My Yii Application';
 						<p class="b1category-item">开发区</p>
 					</div>
 					<div>
-						<p class="b1category-item">30-40万</p>
-						<p class="b1category-item">40-50万</p>
-						<p class="b1category-item">50-60万</p>
-						<p class="b1category-item">60-80万</p>
+						<?php
+							foreach(Condition::$priceLevel as $key => $price){
+								echo '<a href="' . Url::toRoute(['second/list', 'p' => $key ]) . '"><p class="b1category-item">' . $price[0] . '</p>';
+							}
+						?>
+
 					</div>
 				</div>
 				<div id="b1buy-c2" class="b1buy-category">

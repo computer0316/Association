@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 use frontend\models\BaseDecoration;
+use frontend\models\Condition;
 use common\models\PictureManager;
 
 $this->title = 'My Yii Application';
