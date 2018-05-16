@@ -134,7 +134,7 @@ $this->title = 'My Yii Application';
 		color:white;
 	}
 	.b1buy-category{
-		width:280px;
+		/*width:280px;*/
 		margin:30px;
 	}
 	.b1category-item{
@@ -330,12 +330,13 @@ $this->title = 'My Yii Application';
 					<div>
 						<?php
 							foreach(Condition::$priceLevel as $key => $price){
-								echo '<a href="' . Url::toRoute(['second/list', 'p' => $key ]) . '"><p class="b1category-item">' . $price[0] . '</p>';
+								echo '<a href="' . Url::toRoute(['second/list', 'p' => $key ]) . '"><p class="b1category-item">' . $price[0] . '</p></a>';
 							}
 						?>
 
 					</div>
 				</div>
+				<!--
 				<div id="b1buy-c2" class="b1buy-category">
 					<p class="b1category-title">新房</p>
 					<div>
@@ -351,6 +352,7 @@ $this->title = 'My Yii Application';
 						<p class="b1category-item">1.5万以上</p>
 					</div>
 				</div>
+				-->
 			</div>
 			<div id="b1sell1" class="b1content" data-type="2" style="display:none;">
 				<div id="b1sell-left">
@@ -457,45 +459,45 @@ $this->title = 'My Yii Application';
 			<div class="b-community2">
 				<p class="b-title1">超人气小区</p>
 				<img src="web/images/33.jpg" />
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 105]) ?>"><p class="b-item1">广阳 - 圣泰新苑</p></a>
 				<p class="b-item">20333元/㎡</p>
-				<p class="b-item1">安次- 华夏第九元</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 22]) ?>"><p class="b-item1">广阳 - 锦绣花苑</p></a>
 				<p class="b-item">20333元/㎡</p>
 			</div>
 			<div class="b-community2">
 				<p class="b-title1">最舒适小区</p>
 				<img src="web/images/50.jpg" />
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 12]) ?>"><p class="b-item1">广阳 - 孔雀城公园海</p></a>
 				<p class="b-item">20333元/㎡</p>
-				<p class="b-item1">安次- 华夏第九元</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 9]) ?>"><p class="b-item1">广阳 - 幸福城朗园</p></a>
 				<p class="b-item">20333元/㎡</p>
 			</div>
 			<div class="b-community4">
 				<p class="b-title2">交通便利</p>
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 36]) ?>"><p class="b-item1">广阳 - 尚都新苑</p></a>
 				<p class="b-item">20333元/㎡</p>
-				<p class="b-item1">安次- 华夏第九元</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 42]) ?>"><p class="b-item1">安次 - 丰盛小区</p></a>
 				<p class="b-item">20333元/㎡</p>
 			</div>
 			<div class="b-community4">
 				<p class="b-title2">商业繁华</p>
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 98]) ?>"><p class="b-item1">安次 - 宏泰美树</p></a>
 				<p class="b-item">20333元/㎡</p>
-				<p class="b-item1">安次- 华夏第九元</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 143]) ?>"><p class="b-item1">安次 - 恒基嘉园</p></a>
 				<p class="b-item">20333元/㎡</p>
 			</div>
 			<div class="b-community4">
 				<p class="b-title2">高端小区</p>
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 316]) ?>"><p class="b-item1">广阳 - 万和南区</p></a>
 				<p class="b-item">20333元/㎡</p>
-				<p class="b-item1">安次- 华夏第九元</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 324]) ?>"><p class="b-item1">安次- 万和尚品</p></a>
 				<p class="b-item">20333元/㎡</p>
 			</div>
 			<div class="b-community4">
 				<p class="b-title2">大型小区</p>
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 236]) ?>"><p class="b-item1">广阳 - 万达广场</p></a>
 				<p class="b-item">20333元/㎡</p>
-				<p class="b-item1">安次- 华夏第九元</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 4]) ?>"><p class="b-item1">广阳 - 吉祥小区</p></a>
 				<p class="b-item">20333元/㎡</p>
 			</div>
 		</div>
@@ -523,7 +525,7 @@ $this->title = 'My Yii Application';
 			<div class="b-community4">
 				<p class="b-title2">交通便利</p>
 				<img class="b-c4-img" src="web/images/23.jpg" />
-				<p class="b-item1">广阳 - 万和南区</p>
+				<a href="<?= Url::toRoute(['second/list', 'c' => 316]) ?>"><p class="b-item1">广阳 - 万和南区</p></a>
 				<p class="b-item">20333元/㎡</p>
 				<p class="b-item1">安次- 华夏第九元</p>
 				<p class="b-item">20333元/㎡</p>
@@ -579,10 +581,12 @@ $this->title = 'My Yii Application';
 </div>
 <script>
 	$(document).ready(function(){
+		/*
 		$(".b1title").mouseover(function(){
 			var num = $(this).data("type");
 			$(".b1content").css('display', 'none');
 			$(".b1content[data-type=" + num + "]").css('display', 'block');
 		});
+		*/
 	});
 </script>

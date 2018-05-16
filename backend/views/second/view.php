@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 use common\models\Picture;
+use frontend\models\BaseCommunity;
 use frontend\models\BaseDecoration;
 use frontend\models\BaseHousetype;
 use frontend\models\BaseDirection;
@@ -19,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </style>
 <div class="container">
 	<div id="title-div" class="">
-		<p class="title"><?php echo $model->community . $model->birth . '年' . $model->decoration . '房' . $model->price . '万' . $model->area . '平米'; ?></p>
+		<p class="title"><?php echo BaseCommunity::findOne($model->community_id)->name . $model->birth . '年' . $model->decoration . '房' . $model->price . '万' . $model->area . '平米'; ?></p>
 		<p class="tips single">房源编号：<?= $model->id ?></p>
 		<p class="tips"><?= date("m-d", strtotime($model->updatetime)) ?></p><p class="tips"><?= $model->visit ?>人浏览</p>
 	</div>
@@ -73,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<p><?= $model->birth ?>建</p>
 		</div>
 		<div id="community">
-			<p>小区：<?= $model->community ?> </p>
+			<p>小区：<?= BaseCommunity::findOne($model->community_id)->name ?> </p>
 			<p class="single">位置：<?= $model->position ?></p>
 		</div>
 	</div>

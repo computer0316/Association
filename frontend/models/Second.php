@@ -13,6 +13,7 @@ use Yii;
  * @property integer $inner_id
  * @property integer $city_id
  * @property string $community
+ * @property integer $community_id
  * @property string $position
  * @property integer $housetype
  * @property integer $constructure
@@ -57,11 +58,11 @@ class Second extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['userid', 'title', 'city_id', 'community', 'visit', 'updatetime'], 'required'],
-            [['userid', 'inner_id', 'city_id', 'housetype', 'constructure', 'room', 'hall', 'toilet', 'direction', 'floor', 'total_floor', 'decoration', 'birth', 'can_own', 'own_type', 'licence_year', 'only_house', 'visit'], 'integer'],
+            [['userid', 'title', 'city_id', 'community_id', 'room', 'hall', 'toilet', 'floor', 'total_floor', 'area', 'can_own', 'own_type', 'birth', 'license_year', 'birth', 'only_house', 'price', 'title', 'updatetime'], 'required'],
+            [['userid', 'inner_id', 'city_id', 'community_id', 'housetype', 'constructure', 'room', 'hall', 'toilet', 'direction', 'floor', 'total_floor', 'decoration', 'birth', 'can_own', 'own_type', 'license_year', 'only_house', 'visit'], 'integer'],
             [['price', 'area', 'inner_area', 'property_fee'], 'number'],
             [['updatetime'], 'safe'],
-            [['title', 'community', 'position'], 'string', 'max' => 128],
+            [['title', 'position'], 'string', 'max' => 128],
             [['building_id', 'unit_id', 'room_id'], 'string', 'max' => 8],
             [['house_info', 'mood', 'service'], 'string', 'max' => 512],
         ];
@@ -74,38 +75,38 @@ class Second extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'userid' => '用户id',
-            'title' => '标题',
+            'userid' => 'Userid',
+           'title' => '标题',
             'inner_id' => '公司内部编号',
             'city_id' => '城市编号',
-            'community' => '小区名称',
-            'position' => '坐落位置',
+            'community_id' => '小区编号',
+            'position' => '位置',
             'housetype' => '房屋类型',
             'constructure' => '结构类型',
-            'building_id' => '栋号',
+            'building_id' => '楼号',
             'unit_id' => '单元',
-            'room_id' => '房号',
+            'room_id' => '房间',
             'price' => '价格',
             'area' => '建筑面积',
-            'inner_area' => '套内面积',
+            'inner_area' => '使用面积',
             'room' => '室',
             'hall' => '厅',
             'toilet' => '卫',
             'direction' => '朝向',
             'floor' => '楼层',
-            'total_floor' => '总层数',
+            'total_floor' => '总层',
             'decoration' => '装修程度',
             'birth' => '建成年份',
             'can_own' => '产权年限',
             'own_type' => '产权类型',
-            'licence_year' => '房本年份',
+            'license_year' => '房本时间',
             'only_house' => '唯一住房',
-            'house_info' => '房源介绍',
+            'house_info' => '房源信息',
             'mood' => '房主心情',
-            'service' => '服务介绍',
-            'visit' => 'Visit',
+            'service' => '提供服务',
             'property_fee' => '物业费',
-            'updatetime' => '提交时间',
+            'visit' => '访问次数',
+            'updatetime' => '更新时间',
         ];
     }
 }

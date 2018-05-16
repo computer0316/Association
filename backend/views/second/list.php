@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 use yii\widgets\LinkPager;
 
 use common\models\Picture;
+use backend\models\BaseCommunity;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Second */
@@ -86,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<li>
 						<?php
 							echo '<p class="s1">' . $second->id . '</p>';
-							echo '<p class="s2"><a target="_blank" href="/Association/?r=second/view&id=' . $second->id . '">' . $second->community . '</a></p>';
+							echo '<p class="s2"><a target="_blank" href="/Association/?r=second/view&id=' . $second->id . '">' . BaseCommunity::findOne($second->community_id)->name . '</a></p>';
 							echo '<p class="s3">' . $second->room . '室' . $second->hall . '厅' . $second->toilet . '卫</p>';
 							echo '<p class="s2">' . $second->price . '元 &nbsp;' . floor($second->price * 10000/$second->area) . '元/㎡' . '</p>';
 							echo '<p class="s3">' . $second->area . '</p>';

@@ -12,6 +12,16 @@ use Yii;
  */
 class BaseCommunity extends \yii\db\ActiveRecord
 {
+	public function create(){
+		$comm = $this->find()->where("name like '%" . $this->name . "%'")->one();
+		if($comm){
+			$this->id = $comm->id;
+		}
+		else{
+			$this->save();
+		}
+		return true;
+	}
     /**
      * @inheritdoc
      */
@@ -38,7 +48,7 @@ class BaseCommunity extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => '小区名称',
         ];
     }
 }

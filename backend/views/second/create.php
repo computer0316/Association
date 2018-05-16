@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $form->field($model, 'city_id')->label('所在区域')->dropDownlist(['131003' => '广阳区', '131002' => '安次区', '131001' => '开发区']) ?>
 			</div>
 			<div class="line" style="position:relative;">
-				<?= $form->field($model, 'community')->textInput(['style' => 'width:300px;', 'autocomplete' => "off"]) ?>
+				<?= $form->field($community, 'name')->textInput(['style' => 'width:300px;', 'autocomplete' => "off"]) ?>
 				<div id="community-ajax"></div>
 			</div>
 			<div class="line">
@@ -153,7 +153,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	        	<?= $form->field($model, 'birth')->textInput(['style' => 'width:50px;'])  ?>
 			</div>
 			<div class="line">
-				<?= $form->field($model, 'licence_year')->textInput(['style' => 'width:50px;'])  ?>
+				<?= $form->field($model, 'license_year')->textInput(['style' => 'width:50px;'])  ?>
 				<?= $form->field($model, 'only_house')->dropDownlist(['0' => '否', '1' => '是']) ?>
 			</div>
 			<div class="line">
@@ -187,12 +187,12 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <script>
 	$(document).ready(function(){
-		$("#second-community").on('input propertychange', function(){
-			$("#community-ajax").load('?r=second/community-ajax&str=' + $("#second-community").val(), function(response, status){
+		$("#basecommunity-name").on('input propertychange', function(){
+			$("#community-ajax").load('?r=second/community-ajax&str=' + $("#basecommunity-name").val(), function(response, status){
 					if(status=="success" && response!='false'){
 						$("#community-ajax").css("display", "block");
 						$("p.hitp").click(function(){
-							$("#second-community").val($(this).text());
+							$("#basecommunity-name").val($(this).text());
 							$("#community-ajax").css("display", "none");
 						});
 					}

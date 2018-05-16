@@ -69,11 +69,6 @@ class SiteController extends Controller
         ];
     }
 
-	public function actionTest(){
-		$pic = Picture::getPic(1101, '', 'second');
-		var_dump($pic);
-	}
-
     /**
      * Displays homepage.
      *

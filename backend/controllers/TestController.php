@@ -10,6 +10,7 @@ use backend\models\Test;
 use backend\models\AttestFilter;
 use backend\models\Captcha;
 use backend\models\BaseCompany;
+use backend\models\BaseCommunity;
 
 
 
@@ -46,12 +47,12 @@ class TestController extends Controller
 
 
 	public function actionIndex(){
-		$test = new Test();
-		if($test->load(yii::$app->request->post()) && $test->save()){
-			return $this->redirect(Url::toRoute('test/index'));
-		}
-		return $this->render('index', ['test' => $test]);
-
+		$community = new BaseCommunity();
+		$community->name = "华夏经典";
+		echo '<meta charset="utf-8">';
+		var_dump($community);
+		$community->create();
+		var_dump($community);
 	}
 
 	public function actionImage(){

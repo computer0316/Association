@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
+use frontend\models\BaseCommunity;
 
 /**
  * Create condition string use in mysql where field
@@ -25,6 +26,15 @@ class Condition extends Model
     	}
     	else{
     		return $new;
+    	}
+    }
+
+    public static function createCommunity($c){
+    	if($c > 0){
+   			return 'community_id = ' . $c;
+    	}
+    	else{
+			return '';
     	}
     }
 

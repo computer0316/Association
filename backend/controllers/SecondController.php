@@ -61,39 +61,46 @@ class SecondController extends Controller
      */
     public function actionCreate()
     {
-		$model = new Second();
-        $upload = new UploadForm();
+		$model		= new Second();
+        $upload		= new UploadForm();
+        $community	= new BaseCommunity();
 		$userid = yii::$app->session->get('userid');
 
-        if ($model->load(Yii::$app->request->post())){
-        	$model->userid = Yii::$app->session->get('userid');
+		$post = Yii::$app->request->post();
+
+		if($community->load($post) && $community->create() && $model->load($post)){
+			$model->community_id	= $community->id;
+        	$model->userid			= Yii::$app->session->get('userid');
         	if(!$model->save()){
         		echo '<meta charset="utf-8">';
         		var_dump($model->errors);
-        		die();
         	}
         	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
         	PictureManager::saveImages($model->id, $upload, 'second');
-
+			Yii::$app->session->setFlash('message', '房源添加成功');
             return $this->redirect(Url::toRoute('second/create'));
-        }
+		}
+
 
         return $this->render('create', [
-            'model' => $model,
-            'upload'=> $upload,
+        	'community'	=> $community,
+            'model'		=> $model,
+            'upload'	=> $upload,
         ]);
     }
     public function actionEdit($id = '')
     {
     	if($id <> ''){
 			$model = Second::findOne($id);
+			$community = BaseCommunity::findOne($model->community_id);
 			$userid = yii::$app->session->get('userid');
 	        if ($model->load(Yii::$app->request->post()) && $model->save()) {
 	        	Yii::$app->session->setFlash("message", '成功编辑房源');
 	            return $this->redirect(Url::toRoute('second/edit'));
 	        }
 	        return $this->render('edit', [
-    	        'model' => $model,
+	        	'community'	=> $community,
+    	        'model'		=> $model,
         	]);
 	    }
 	    else{

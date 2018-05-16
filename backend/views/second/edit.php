@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		margin-bottom:20px;
 		color:#bbb;
 	}
-	#form-left,#form-right{		
+	#form-left,#form-right{
 		float:left;
 		width:700px;
 	}
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		margin-top:24px;
 	}
 	.line p{
-		line-height:30px;		
+		line-height:30px;
 	}
 	input,select{
 		height:30px;
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		float:left;
 		width:70px;
 		line-height:30px;
-		
+
 		margin-right:10px;
 	}
 	.form-group{
@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $form->field($model, 'city_id')->label('所在区域')->dropDownlist(['131003' => '广阳区', '131002' => '安次区', '131001' => '开发区']) ?>
 			</div>
 			<div class="line">
-				<?= $form->field($model, 'community')->textInput(['style' => 'width:300px;', 'autocomplete' => "off"]) ?>
+				<?= $form->field($community, 'name')->textInput(['style' => 'width:300px;', 'autocomplete' => "off"]) ?>
 			</div>
 			<div class="line">
 		        <?= $form->field($model, 'room')->textInput(['style' => 'width:30px;']) ?>
@@ -131,7 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	        	<?= $form->field($model, 'birth')->textInput(['style' => 'width:50px;'])  ?>
 			</div>
 			<div class="line">
-				<?= $form->field($model, 'licence_year')->textInput(['style' => 'width:50px;'])  ?>
+				<?= $form->field($model, 'license_year')->textInput(['style' => 'width:50px;'])  ?>
 				<?= $form->field($model, 'only_house')->dropDownlist(['0' => '否', '1' => '是']) ?>
 			</div>
 			<div class="line">
