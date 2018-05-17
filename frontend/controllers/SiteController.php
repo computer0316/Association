@@ -16,6 +16,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Second;
+use frontend\models\Search;
 
 /**
  * Site controller
@@ -80,6 +81,7 @@ class SiteController extends Controller
     	$second_text = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
 
     	return $this->render('anju', [
+    		'search'		=> new Search(),
     		'second_text'	=> $second_text,
 
     	]);

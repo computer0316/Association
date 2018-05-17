@@ -1,9 +1,10 @@
 <?php
 
-namespace app\models;
+namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
+use frontent\models\BaseCommunity;
 
 /**
  * LoginForm is the model behind the login form.
@@ -13,9 +14,7 @@ use yii\base\Model;
  */
 class Search extends Model
 {
-    public $mobile;
-    public $smsCode;
-    public $verifyCode;
+    public $text;
 
     /**
      * @return array the validation rules.
@@ -23,7 +22,6 @@ class Search extends Model
     public function rules()
     {
         return [
-            [['text'], 'required'],
             [['text'], 'string'],
         ];
     }

@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
+use yii\widgets\ActiveForm;
+use yii\widgets\Breadcrumbs;
 use yii\widgets\LinkPager;
 
 use common\models\PictureManager;
@@ -42,7 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
 	color:#999;
 }
 .list{
-	width:84%;
 	padding:30px 0;
 	border-bottom:1px solid #f1f1f1;
 }
@@ -54,10 +55,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	height:110px;
 }
 .list-first-line{
-	width:700px;
+	width:500px;
 }
 .list-line{
-	width:700px;
+	width:500px;
 	margin-top:10px;
 }
 .list-title{
@@ -105,6 +106,31 @@ $this->params['breadcrumbs'][] = $this->title;
         	display:block;
         	padding:2px 8px;
         }
+        #form{
+        	border:1px solid #ddd;
+        	border-radius:5px;
+            width:800px;
+        	height:40px;
+        	margin:30px 80px;
+        }
+        #form input{
+        	float:left;
+        	outline:none;
+        	border:0;
+        	width:690px;
+        	height:30px;
+        	margin:3px;
+        }
+        #form button{
+        	float:right;
+        	border:1px solid orange;
+        	border-radius:0 5px 5px 0;
+        	width:90px;
+        	height:40px;
+        	background:orange;
+        	color:white;
+        	border:0px;
+        }
 </style>
 <?php
 	$district = [
@@ -114,18 +140,47 @@ $this->params['breadcrumbs'][] = $this->title;
 		'131001' => '开发区'
 	];
 ?>
+<div class="container header">
+	<img src="web/images/logo.jpg" />
+	<div id="form">
+	<?php
+    	$form = ActiveForm::begin(['action' => Url::toRoute('second/list')]);
+	        echo $form->field($search, 'text')->label(false)->textInput(['placeholder' => "请输入小区名称、地址..."]);
+			echo Html::submitButton('搜索房源');
+		ActiveForm::end();
+	?>
+	</div>
+</div>
+<!--<div class="nav">
+	<div class="container">
+		<ul class="nav-ul">
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">廊坊新房</a></li>
+			<li><a href="#">廊坊二手房</a></li>
+			<li><a href="#">廊坊出租</a></li>
+			<li><a href="#">房产资讯</a></li>
+			<li><a href="#">廊坊求购</a></li>
+		</ul>
+	</div>
+</div>
+-->
+<div class="container">
+		<?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+</div>
 <div class="container">
 	<div class="line">
-
 		<p class="label">区域：</p>
 		<?php
+			Url::current($searchUrlArray + ['s' => 'aa']);
 			foreach($district as $key => $value){
 				echo '<p class="item">';
 				if($key == $d){
-					echo '<a class="active" href="' . Url::current(['d' => $key]) . '">' . $value . '</a>';
+					echo '<a class="active" href="' . Url::current($searchUrlArray +$searchUrlArray + ['d' => $key]) . '">' . $value . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['d' => $key]) . '">' . $value . '</a>';
+					echo '<a class="normal" href="' . Url::current($searchUrlArray + ['d' => $key]) . '">' . $value . '</a>';
 				}
 				echo '</p>';
 			}
@@ -137,10 +192,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			foreach(Condition::$priceLevel as $key => $value){
 				echo '<p class="item">';
 				if($key == $p){
-					echo '<a class="active" href="' . Url::current(['p' => $key]) . '">' . $value[0] . '</a>';
+					echo '<a class="active" href="' . Url::current($searchUrlArray + ['p' => $key]) . '">' . $value[0] . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['p' => $key]) . '">' . $value[0] . '</a>';
+					echo '<a class="normal" href="' . Url::current($searchUrlArray + ['p' => $key]) . '">' . $value[0] . '</a>';
 				}
 				echo '</p>';
 			}
@@ -152,10 +207,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			foreach(Condition::$areaLevel as $key => $value){
 				echo '<p class="item">';
 				if($key == $a){
-					echo '<a class="active" href="' . Url::current(['a' => $key]) . '">' . $value[0] . '</a>';
+					echo '<a class="active" href="' . Url::current($searchUrlArray + ['a' => $key]) . '">' . $value[0] . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['a' => $key]) . '">' . $value[0] . '</a>';
+					echo '<a class="normal" href="' . Url::current($searchUrlArray + ['a' => $key]) . '">' . $value[0] . '</a>';
 				}
 				echo '</p>';
 			}
@@ -167,10 +222,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			foreach(Condition::$roomLevel as $key => $value){
 				echo '<p class="item">';
 				if($key == $ro){
-					echo '<a class="active" href="' . Url::current(['ro' => $key]) . '">' . $value[0] . '</a>';
+					echo '<a class="active" href="' . Url::current($searchUrlArray + ['ro' => $key]) . '">' . $value[0] . '</a>';
 				}
 				else{
-					echo '<a class="normal" href="' . Url::current(['ro' => $key]) . '">' . $value[0] . '</a>';
+					echo '<a class="normal" href="' . Url::current($searchUrlArray + ['ro' => $key]) . '">' . $value[0] . '</a>';
 				}
 				echo '</p>';
 			}
@@ -178,6 +233,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 </div>
 <div class="container">
+	<div style="width:70%;float:left;">
 		<?php
 		if($seconds){
 			foreach($seconds as $second){
@@ -212,6 +268,33 @@ $this->params['breadcrumbs'][] = $this->title;
 			echo '<p style="margin:100px;">没有找到符合条件的房源</p>';
 		}
 		?>
+	</div>
+	<div style="float:left;width:29%;border:1px solid #ddd;border-radius:5px;margin-top:10px;">
+		<div style="text-align:center;">
+			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
+			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		</div>
+		<div style="text-align:center;">
+			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
+			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		</div>
+		<div style="text-align:center;">
+			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
+			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		</div>
+		<div style="text-align:center;">
+			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
+			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		</div>
+		<div style="text-align:center;">
+			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
+			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		</div>
+		<div style="text-align:center;">
+			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
+			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		</div>
+	</div>
 </div>
 
 <?php

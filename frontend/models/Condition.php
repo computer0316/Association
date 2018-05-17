@@ -29,6 +29,27 @@ class Condition extends Model
     	}
     }
 
+    // 根据给定的搜索关键字返回查询字符串
+    public static function createSearch($s){
+    	if($s<>''){
+    		$community = BaseCommunity::find()->where("name like '%" . $s . "%'")->column();
+    		$str = '';
+    		if($community){
+    			$str = '(';
+    			foreach($community as $d){
+    				$str .= $d . ',';
+    			}
+    			$str = trim($str, ',');
+    			$str .= ')';
+    			return 'community_id in ' . $str;
+    		}
+    	}
+    	else{
+    		return '';
+    	}
+    }
+
+	// 根据给定的小区编号返回查询字符串
     public static function createCommunity($c){
     	if($c > 0){
    			return 'community_id = ' . $c;
@@ -38,7 +59,18 @@ class Condition extends Model
     	}
     }
 
+	// 根据给定的区域编号返回查询字符串
+    public static function createDistrict($districtId){
+    	if($districtId <> 0){
+    		return 'city_id = ' . $districtId;
+    	}
+    	else{
+    		return '';
+    	}
+    }
+
 	public static $priceLevel = [
+		'0' => ['不限', ''],
 		'1'	=> ['小于30万', 'price < 30'],
     	'2' => ['30-50万', 'price > 30 and price < 50'],
     	'3' => ['50-70万', 'price > 50 and price < 70'],
@@ -62,6 +94,7 @@ class Condition extends Model
 	}
 
 	public static $areaLevel = [
+		'0' => ['不限', ''],
 		'1' => ['小于50㎡', 'area < 50'],
 		'2' => ['50-70㎡', 'area >50  and area < 70'],
 		'3' => ['70-90㎡', 'area > 70 and area < 90'],
@@ -85,6 +118,7 @@ class Condition extends Model
 	}
 
 	public static $roomLevel = [
+		'0' => ['不限', ''],
 		'1' => ['一室', 'room = 1'],
 		'2' => ['二室', 'room = 2'],
 		'3' => ['三室', 'room = 3'],

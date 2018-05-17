@@ -13,19 +13,13 @@ use frontend\models\BaseCommunity;
  */
 class TestController extends Controller
 {
-	public function actionTest(){
-		$seconds = Second::find()->where("community_id =''")->all();
-		$i=1;
-		echo count($seconds);
-		echo '<meta charset="utf-8">';
-		ob_start();
-		foreach($seconds as $s){
-			$comm = BaseCommunity::find()->where(['name' => $s->community])->one();
-			$s->community_id = $comm->id;
-			$s->save();
-			echo $i++ . ' ' . $s->community . '<br />';
-			ob_flush();
-			flush();
+	public function actionIndex(){
+		$a['a']= false;
+		var_dump($a['a']);
+		if(true){
+			$a['a'] = 'b';
+			var_dump($a['a']);
 		}
+		var_dump($a['a']);
 	}
 }

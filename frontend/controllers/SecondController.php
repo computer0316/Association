@@ -16,6 +16,7 @@ use common\models\UploadForm;
 use common\models\Picture;
 use common\models\PictureManager;
 use frontend\models\Second;
+use frontend\models\Search;
 use frontend\models\Condition;
 use frontend\models\BaseCommunity;
 
@@ -152,19 +153,31 @@ class SecondController extends Controller
         /**
      * Lists all Second models.
      * @return mixed
+     * $d $district 地区
+     * $c $community 小区
+     * $p $price 价格
+     * $a $area 面积
+     * $ro $room 几室
+     * $s $search 搜索文本
      */
-    public function actionList($d=0, $c=0, $p=0, $a=0, $ro=0)
+    public function actionList($d=0, $c=0, $p=0, $a=0, $ro=0, $s=0)
     {
     	$this->layout = 'list';
-    	$district = '';
-    	if($d <> 0){
-    		$district = 'city_id = ' . $d;
-    	}
-
     	$condition = '';
-    	$condition = Condition::join($condition, Condition::createCommunity($c));
 
-   		$condition = Condition::join($condition, $district);
+    	$search = new Search();
+		$searchUrlArray['s'] = false;
+    	if($search->load(Yii::$app->request->post())){
+    		$searchUrlArray['s'] = $search->text;
+    		$condition = Condition::join($condition, Condition::createSearch($search->text));
+    	}
+    	else{
+    		$searchUrlArray['s'] = $s;
+    		$condition = Condition::join($condition, Condition::createSearch($s));
+	    }
+
+    	$condition = Condition::join($condition, Condition::createCommunity($c));
+   		$condition = Condition::join($condition, Condition::createDistrict($d));
    		$condition = Condition::join($condition, Condition::createPrice($p));
    		$condition = Condition::join($condition, Condition::createArea($a));
    		$condition = Condition::join($condition, Condition::createRoom($ro));
@@ -178,12 +191,15 @@ class SecondController extends Controller
                     ->limit($pagination->limit)
                     ->all();
         return $this->render('list', [
-        		'd'	=> $d,
-        		'p'	=> $p,
-        		'a'	=> $a,
+        		'd'		=> $d,
+        		'p'		=> $p,
+        		'a'		=> $a,
         		'ro'	=> $ro,
-                'seconds'     => $seconds,
-                'pagination'    => $pagination,
+        		'searchUrlArray'	=> $searchUrlArray,
+        		'search'			=> new Search(),
+                'seconds'     		=> $seconds,
+                'condition'			=> $condition,
+                'pagination'    	=> $pagination,
             ]);
     }
 

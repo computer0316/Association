@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 use frontend\models\BaseDecoration;
 use common\models\PictureManager;
 use frontend\models\Condition;
@@ -117,8 +119,12 @@ $this->title = 'My Yii Application';
 		border:1px solid #ddd;
 		border-radius:5px;
 	}
+	.form-group{
+		float:left;
+		width:80%;
+	}
 	#b1buy-search input{
-		width:60%;
+		width:95%;
 	}
 	#b1buy-search input[type=text]{
 		padding-left:10px;
@@ -127,7 +133,7 @@ $this->title = 'My Yii Application';
 		border:1px solid #f18800;
 		border-radius:5px;
 		padding:0 30px;
-		margin-left:10px;
+		margin:10px;
 		height:42px;
 		background:#f18800;
 		font-size:18px;
@@ -289,7 +295,7 @@ $this->title = 'My Yii Application';
 	}
 </style>
 <div id="title" class="container">
-	<p id="site-title">房协二手房</p>
+	<p id="site-title"><?= Yii::$app->params['sitename'] ?></p>
 </div>
 <div class="nav">
 	<div id="nav-div" class="container">
@@ -316,9 +322,12 @@ $this->title = 'My Yii Application';
 		<div id="b1left-content">
 			<div id="b1buy1" class="b1content" data-type="1">
 				<div id="b1buy-search" class="search-box">
-					<input type="text" name="buy-input" placeholder="请输入小区名称、地址..."/>
-					<button type="submit">二手房</button>
-					<button type="submit">新房</button>
+					<?php
+				    	$form = ActiveForm::begin(['action' => Url::toRoute('second/list')]);
+				        echo $form->field($search, 'text')->label(false)->textInput(['placeholder' => "请输入小区名称、地址..."]);
+						echo Html::submitButton('二手房');
+						ActiveForm::end();
+					?>
 				</div>
 				<div id="b1buy-c1" class="b1buy-category">
 					<div>
@@ -330,6 +339,10 @@ $this->title = 'My Yii Application';
 					<div>
 						<?php
 							foreach(Condition::$priceLevel as $key => $price){
+								if($key == 0 ){
+									//跳过第一个元素：不限
+									continue;
+								}
 								echo '<a href="' . Url::toRoute(['second/list', 'p' => $key ]) . '"><p class="b1category-item">' . $price[0] . '</p></a>';
 							}
 						?>

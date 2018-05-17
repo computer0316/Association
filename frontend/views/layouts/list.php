@@ -4,11 +4,12 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\models\Search;
 
 
 ?>
@@ -40,27 +41,7 @@ use common\widgets\Alert;
 	</div>
 </div>
 
-<div class="container header">
-	<img src="web/images/logo.jpg" />
-</div>
-<!--<div class="nav">
-	<div class="container">
-		<ul class="nav-ul">
-			<li><a href="#">网站首页</a></li>
-			<li><a href="#">廊坊新房</a></li>
-			<li><a href="#">廊坊二手房</a></li>
-			<li><a href="#">廊坊出租</a></li>
-			<li><a href="#">房产资讯</a></li>
-			<li><a href="#">廊坊求购</a></li>
-		</ul>
-	</div>
-</div>
--->
-<div class="container">
-		<?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-</div>
+
 <?= $content ?>
 <div class="footer">
 	<p class="single">网站首页 | 关于我们 | 合作伙伴 | 加入我们 | 联系我们 | 网站地图</p>
