@@ -131,6 +131,34 @@ $this->params['breadcrumbs'][] = $this->title;
         	color:white;
         	border:0px;
         }
+        #main-left{
+        	width:70%;
+        }
+        #main-right{
+        	width:29%;
+        	border:1px solid #ddd;
+        	border-radius:5px;
+        	margin-top:10px;
+        }
+        .list-adv{
+        	width:100%;
+        	margin-top:10px;
+        	text-align:center;
+        }
+        .list-adv p{
+        	font-size:16px;
+        	margin-bottom:20px;
+        	float:none;
+        }
+        .p2{
+        	color:orangered;
+        }
+        .list-adv img{
+        	float:none;
+        	width:320px;
+        	height:240px;
+        	margin:10px;
+        }
 </style>
 <?php
 	$district = [
@@ -151,7 +179,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	?>
 	</div>
 </div>
-<!--<div class="nav">
+<!--
+<div class="nav">
 	<div class="container">
 		<ul class="nav-ul">
 			<li><a href="#">网站首页</a></li>
@@ -233,7 +262,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 </div>
 <div class="container">
-	<div style="width:70%;float:left;">
+	<div id="main-left">
 		<?php
 		if($seconds){
 			foreach($seconds as $second){
@@ -269,31 +298,28 @@ $this->params['breadcrumbs'][] = $this->title;
 		}
 		?>
 	</div>
-	<div style="float:left;width:29%;border:1px solid #ddd;border-radius:5px;margin-top:10px;">
-		<div style="text-align:center;">
-			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
-			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+	<div id="main-right">
+		<div class="list-adv">
+			<img src="web/images/38.jpg" />
+			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
 		</div>
-		<div style="text-align:center;">
-			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
-			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		<div class="list-adv">
+			<img src="web/images/50.jpg" />
+			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
 		</div>
-		<div style="text-align:center;">
-			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
-			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		<div class="list-adv">
+			<img src="web/images/51.jpg" />
+			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
 		</div>
-		<div style="text-align:center;">
-			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
-			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		<div class="list-adv">
+			<img src="web/images/52.jpg" />
+			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
 		</div>
-		<div style="text-align:center;">
-			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
-			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
+		<div class="list-adv">
+			<img src="web/images/53.jpg" />
+			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
 		</div>
-		<div style="text-align:center;">
-			<img style="margin:15px;width:50%;" src="web/images/38.jpg" />
-			<p style="float:none;font-size:16px;">金桥小区优质房源</p>
-		</div>
+
 	</div>
 </div>
 
