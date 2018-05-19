@@ -19,6 +19,7 @@ use common\models\PictureManager;
 
 use backend\models\LoginForm;
 use backend\models\User;
+use backend\models\Identification;
 use backend\models\AttestFilter;
 use backend\models\Captcha;
 
@@ -81,22 +82,28 @@ class UserController extends Controller
 
 	// 上传身份证
 	public function actionIdentification(){
-		$user = User::findOne(Yii::$app->session->get('userid'));
-		$upload = new UploadForm();
+		$user			= User::findOne(Yii::$app->session->get('userid'));
+		$upload			= new UploadForm();
 
 		$picture = 'web/images/identification.jpg';
 		if($user->getIdentification()){
 			$picture = $user->getIdentification();
 		}
 		if (Yii::$app->request->isPost) {
+			$user->load(Yii::$app->request->post());
+			if($user->save()){
+				Yii::$app->session->setFlash('message', '信息保存成功');
+			}
 	       	$upload->imageFiles = UploadedFile::getInstances($upload, 'imageFiles');
 	       	PictureManager::saveImages($user->id, $upload, 'identification');
 		    $picture = PictureManager::getImage($user->id, 'identification', '1')->path;
 
 		}
+		$user->scenario = 'identification';
 		return $this->render('identification',[
-			'picture' => $picture,
-			'upload' => $upload,
+			'user'		=> $user,
+			'picture'	=> $picture,
+			'upload'	=> $upload,
 		]);
 	}
 

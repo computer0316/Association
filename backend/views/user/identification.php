@@ -5,7 +5,8 @@
 	use yii\widgets\LinkPager;
 	use yii\captcha\Captcha;
 	use common\models\UploadForm;
-	
+	use backend\models\Identification;
+
 	// 客户信息窗体
 	$this->title = '身份认证';
 	$this->params['breadcrumbs'][] = ['label' => '个人中心 >'];
@@ -16,6 +17,23 @@
 		float:left;
 		width:100%;
 		margin:20px;
+	}
+	.form-group{
+		float:left;
+		width:100%;
+		margin:10px;
+		padding:10px;
+	}
+	.help-block{
+		float:left;
+		color:red;
+	}
+	.control-label{
+		float:left;
+		width:100px;
+		margin:0 10px;
+		text-align:right;
+		line-height:28px;
 	}
 	#portrait-img{
 		margin:20px 60px;
@@ -31,17 +49,33 @@
 		line-height:18px;
 		color:#888;
 	}
-	input[type=file],button{
+	input[type=text]{
 		float:left;
+		height:28px;
+		font-size:18px;
+		padding-left:5px;
+	}
+	input[type=file]{
+		float:left;
+		margin-left:120px;
+	}
+	button{
+		float:left;
+		clear:both;
 		width:160px;
 		height:35px;
+		margin-left:140px;
 	}
 </style>
 <img id="portrait-img" src="<?= $picture ?>" />
-<?php $form = ActiveForm::begin(); ?>
-	    <?= $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => false, 'accept' => 'image/*'])->label(false) ?>
-        <?= Html::submitButton('上传头像') ?>
-<?php ActiveForm::end(); ?>
+<?php
+	$form = ActiveForm::begin();
+		echo $form->field($user, 'name');
+		echo $form->field($user, 'identification');
+		echo $form->field($upload, 'imageFiles[]')->fileInput(['multiple' => false, 'accept' => 'image/*'])->label(false);
+        echo Html::submitButton('上传头像');
+	ActiveForm::end();
+?>
 
 <p style="margin:10px 20px;"><b>请按以下要求上传：</b></p>
 

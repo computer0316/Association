@@ -164,10 +164,12 @@ class User extends \yii\db\ActiveRecord
 	{
 		return [
 			[['name', 'mobile', 'password', 'firsttime', 'updatetime', 'ip'], 'required'],
+			[['name', 'identification'], 'required', 'on' => 'identification'],
 			[['password', 'password1', 'password2'], 'required', 'on' => 'changepassword'],
 			[['firsttime', 'updatetime'], 'safe'],
 			[['name'], 'string', 'max' => 16],
 			[['mobile'], 'string', 'length' => [11,11]],
+			['identification', 'string', 'length' => [18,18]],
 			[['password', 'company'], 'string', 'max' => 64],
 			[['ip'], 'string', 'max' => 32]
 		];
@@ -183,6 +185,7 @@ class User extends \yii\db\ActiveRecord
         $scenatios['login'] = ['username', 'password'];
         $scenarios['register1'] = ['mobile', 'verifyCode'];
         $scenarios['register2'] = ['name', 'mobile', 'password1', 'password'];
+        $scenarios['identification'] = ['name', 'identification'];
         return $scenarios;
 	}
 	/**
@@ -194,6 +197,7 @@ class User extends \yii\db\ActiveRecord
 			'id' => 'ID',
 			'name' => '姓名',
 			'mobile' => '手机号',
+			'identification' => '身份证号',
 			'password' => '密码',
 			'firsttime' => '首次登陆',
 			'updatetime' => '最后登陆',
