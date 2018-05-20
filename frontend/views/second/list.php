@@ -9,6 +9,7 @@ use yii\widgets\LinkPager;
 
 use common\models\PictureManager;
 
+use frontend\models\BaseCommunity;
 use frontend\models\BaseDecoration;
 use frontend\models\Condition;
 
@@ -145,12 +146,18 @@ $this->params['breadcrumbs'][] = $this->title;
         	margin-top:10px;
         	text-align:center;
         }
-        .list-adv p{
+        .p{
+        	width:100%;
         	font-size:16px;
-        	margin-bottom:20px;
-        	float:none;
+        }
+        .p1{
+        	margin-left:20px;
+        	overflow:hidden;
+        	white-space:nowrap;
         }
         .p2{
+        	margin-right:10px;
+        	float:right;
         	color:orangered;
         }
         .list-adv img{
@@ -265,66 +272,58 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div id="main-left">
 		<?php
 		if($seconds){
-			foreach($seconds as $second){
-			?>
-				<div class="list">
-					<div class="list-price">
-						<p class="price"><?= floor($second->price) ?></p>
-						<p class="price-unit">万元</p>
-						<p class="perprice"><?= floor(($second->price * 10000) / $second->area) ?>元/㎡</p>
-					</div>
-
-					<img src="<?= smallPic($second->id) ?>" />
-					<div class="list-first-line">
-						<?php echo '<a href="?r=second/view&id=' . $second->id . '"><p class="list-title">' . $second->community . $second->birth . '年' . $second->decoration . '房' . $second->price . '万' . $second->area . '平米</p></a>'; ?>
-					</div>
-					<div class="list-line">
-						<p class="item"><?= $second->room ?>室<?= $second->hall ?>厅<?= $second->toilet ?>卫</p>
-						<p class="item"><?= $second->area ?>㎡</p>
-						<p class="item"><?= BaseDecoration::findOne($second->decoration)->name ?></p>
-						<p class="item"><?= $second->floor ?> 层 / 共 <?= $second->total_floor ?> 层</p>
-					</div>
-					<div class="list-line">
-						<p class="item"><?= $second->community ?></p>
-							<p class="item"><?= $second->position ?></p>
-					</div>
-				</div>
-			<?php
-			}
-			echo LinkPager::widget(['pagination' => $pagination,]);
+			listShow($seconds, $pagination);
 		}
 		else{
-			echo '<p style="margin:100px;">没有找到符合条件的房源</p>';
+			echo '<p style="margin-left:20px;margin-top:20px;font-size:14px;">没有找到符合条件的房源，为您推荐如下房源：</p>';
+			listShow($natural, $pagination);
 		}
 		?>
 	</div>
 	<div id="main-right">
-		<div class="list-adv">
-			<img src="web/images/38.jpg" />
-			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
-		</div>
-		<div class="list-adv">
-			<img src="web/images/50.jpg" />
-			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
-		</div>
-		<div class="list-adv">
-			<img src="web/images/51.jpg" />
-			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
-		</div>
-		<div class="list-adv">
-			<img src="web/images/52.jpg" />
-			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
-		</div>
-		<div class="list-adv">
-			<img src="web/images/53.jpg" />
-			<p><span class="p1">金桥小区优质房源</span> <span class="p2">350万</span></p>
-		</div>
-
+		<?php
+			foreach($bestFive as $b){
+				echo '<a href="' . Url::toRoute(['second/view', 'id' => $b->id]) . '">';
+				echo '<div class="list-adv">';
+					echo '<img src="' . smallPic($b->id) . '" />';
+					echo '<div class="p"><p class="p1">' . BaseCommunity::findOne($b->community_id)->name . '</p> <p class="p2">' . $b->price . '万</p></div>';
+				echo '</div>';
+				echo '</a>';
+			}
+		?>
 	</div>
 </div>
 
 <?php
 	function smallPic($id){
 		return common\models\PictureManager::getImage($id, 'second')->path;
+	}
+
+	function listShow($seconds, $pagination){
+		foreach($seconds as $second){
+			echo '<div class="list">';
+				echo '<div class="list-price">';
+					echo '<p class="price">' . floor($second->price) . '</p>';
+					echo '<p class="price-unit">万元</p>';
+					echo '<p class="perprice">' . floor(($second->price * 10000) / $second->area) . '元/㎡</p>';
+				echo '</div>';
+
+				echo '<img src="' . smallPic($second->id) . '" />';
+				echo '<div class="list-first-line">';
+					echo '<a href="?r=second/view&id=' . $second->id . '"><p class="list-title">' . BaseCommunity::findOne($second->community_id)->name . $second->birth . '年' . $second->decoration . '房' . $second->price . '万' . $second->area . '平米</p></a>';
+				echo '</div>';
+				echo '<div class="list-line">';
+					echo '<p class="item">' . $second->room . '室' . $second->hall . '厅' . $second->toilet . '卫</p>';
+					echo '<p class="item">' . $second->area . '㎡</p>';
+					echo '<p class="item">' . BaseDecoration::findOne($second->decoration)->name . '</p>';
+					echo '<p class="item">' . $second->floor . ' 层 / 共 ' . $second->total_floor . ' 层</p>';
+					echo '</div>';
+					echo '<div class="list-line">';
+						echo '<p class="item">' . BaseCommunity::findOne($second->community_id)->name . '</p>';
+						echo '<p class="item">' . $second->position . '</p>';
+					echo '</div>';
+				echo '</div>';
+		}
+		echo LinkPager::widget(['pagination' => $pagination,]);
 	}
 ?>

@@ -78,11 +78,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
     	$this->layout = 'anju';
-    	$second_text = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
+    	$second = Second::find()->orderBy('id desc')->where('1=1')->limit(11)->all();
 
     	return $this->render('anju', [
     		'search'		=> new Search(),
-    		'second_text'	=> $second_text,
+    		'second'	=> $second,
 
     	]);
     }

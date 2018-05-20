@@ -12,7 +12,6 @@ use Yii;
  * @property string $title
  * @property integer $inner_id
  * @property integer $city_id
- * @property string $community
  * @property integer $community_id
  * @property string $position
  * @property integer $housetype

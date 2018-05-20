@@ -11,6 +11,8 @@ use backend\models\AttestFilter;
 use backend\models\Captcha;
 use backend\models\BaseCompany;
 use backend\models\BaseCommunity;
+use backend\models\Second;
+
 
 
 
@@ -47,12 +49,18 @@ class TestController extends Controller
 
 
 	public function actionIndex(){
-		$community = new BaseCommunity();
-		$community->name = "华夏经典";
+		echo 'a';
+		$seco = Second::find()->where('1=1')->all();
 		echo '<meta charset="utf-8">';
-		var_dump($community);
-		$community->create();
-		var_dump($community);
+		ob_start();
+		foreach($seco as $s){
+			$comm = BaseCommunity::findOne($s->community_id);
+			if(!$comm){
+				echo $s->id . ' ' . $s->title . '<br />';
+				ob_flush();
+				flush();
+			}
+		}
 	}
 
 	public function actionImage(){

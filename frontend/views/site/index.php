@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use frontend\models\BaseCommunity;
 use frontend\models\BaseDecoration;
 use frontend\models\Condition;
 use common\models\PictureManager;
@@ -487,7 +488,7 @@ $this->title = 'My Yii Application';
 				if($second_text){
 					foreach($second_text as $s){
 						echo '<li>'	;
-						echo '<span class="span1"><a href="' . Url::toRoute(['second/view', 'id' => $s->id]) . '">' . $s->community . ' - ' . BaseDecoration::findOne($s->decoration)->name . '</a></span>';
+						echo '<span class="span1"><a href="' . Url::toRoute(['second/view', 'id' => $s->id]) . '">' . BaseCommunity::findOne($model->community_id)->name . ' - ' . BaseDecoration::findOne($s->decoration)->name . '</a></span>';
 						echo '<span>' . $s->room . '室' . $s->hall . '厅' . $s->toilet . '卫</span>';
 						echo '<span>' . $s->price . '万</span>';
 						echo '<span>' . $s->area . '㎡</span>';
@@ -505,7 +506,7 @@ $this->title = 'My Yii Application';
 					echo '<a href="' . Url::toRoute(['second/view', 'id' => $s->id]) . '">';
 					echo '<div class="img-list">';
 						echo '<img src="'. PictureManager::getImage($s->id, 'second')->path . '" />';
-						echo '<p class="community-name">' . $s->community . '</p>';
+						echo '<p class="community-name">' . BaseCommunity::findOne($model->community_id)->name . '</p>';
 						echo '<div class="line">';
 							echo '<p class="price">' . $s->price . '万</p>';
 							echo '<p>（' . floor($s->price*10000/$s->area) . '元/㎡）</p>';

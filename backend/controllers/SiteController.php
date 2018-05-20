@@ -48,22 +48,6 @@ class SiteController extends Controller
         }
     }
 
-    public function actionAdd(){
-    	echo '<meta charset="utf-8">';
-    	echo "测试";
-    	dir();
-    	$strs = IO::getStringsFromFile("d:\work\web\advanced\documents\community.txt");
-    	foreach($strs as $str){
-    		$comm = new Community();
-    		$comm->name = $str;
-    		if($comm->save()){
-    			echo $str . '<br />';
-    		}
-    	}
-    }
-
-
-
     /**
      * Displays homepage.
      *
